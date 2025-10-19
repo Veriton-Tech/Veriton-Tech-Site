@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import BannerCarousel from "./BannerCarousel";
+
 function SectionHeading({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
     <div className="text-center max-w-[800px] mx-auto">
@@ -14,7 +16,8 @@ function SectionHeading({ title, subtitle }: { title: string; subtitle?: string 
 export default function Home() {
   return (
     <div className="font-sans">
-      {/* ...hero section removed as requested... */}
+      {/* Banner Section - Always show before Our Services */}
+      <BannerCarousel />
 
       {/* Our Services - Enhanced Theme */}
       <section className="py-16 sm:py-24 bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 dark:from-blue-900/30 dark:via-cyan-900/20 dark:to-blue-800/30">

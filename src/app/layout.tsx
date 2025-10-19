@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}>
@@ -30,20 +31,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <span className="text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-cyan-500 to-blue-400 drop-shadow">Veriton Tech</span>
             </div>
             <nav className="hidden md:flex items-center gap-8 text-base font-semibold">
-              <a href="#" className="px-3 py-1 rounded-lg hover:bg-blue-100 dark:hover:bg-cyan-900/30 hover:text-blue-700 dark:hover:text-cyan-400 transition">Home</a>
-              <a href="#about" className="px-3 py-1 rounded-lg hover:bg-blue-100 dark:hover:bg-cyan-900/30 hover:text-blue-700 dark:hover:text-cyan-400 transition">About</a>
-              <a href="#services" className="px-3 py-1 rounded-lg hover:bg-blue-100 dark:hover:bg-cyan-900/30 hover:text-blue-700 dark:hover:text-cyan-400 transition">Services</a>
-              <a href="#careers" className="px-3 py-1 rounded-lg hover:bg-blue-100 dark:hover:bg-cyan-900/30 hover:text-blue-700 dark:hover:text-cyan-400 transition">Careers</a>
-              <a href="#faq" className="px-3 py-1 rounded-lg hover:bg-blue-100 dark:hover:bg-cyan-900/30 hover:text-blue-700 dark:hover:text-cyan-400 transition">FAQ</a>
-              <a href="#contact" className="px-3 py-1 rounded-lg hover:bg-blue-100 dark:hover:bg-cyan-900/30 hover:text-blue-700 dark:hover:text-cyan-400 transition">Contact Us</a>
+              <a href="/" className="px-3 py-1 rounded-lg hover:bg-blue-100 dark:hover:bg-cyan-900/30 hover:text-blue-700 dark:hover:text-cyan-400 transition">Home</a>
+              <a href="/services" className="px-3 py-1 rounded-lg hover:bg-blue-100 dark:hover:bg-cyan-900/30 hover:text-blue-700 dark:hover:text-cyan-400 transition">Services</a>
+              <a href="/about" className="px-3 py-1 rounded-lg hover:bg-blue-100 dark:hover:bg-cyan-900/30 hover:text-blue-700 dark:hover:text-cyan-400 transition">About</a>
+              <a href="/careers" className="px-3 py-1 rounded-lg hover:bg-blue-100 dark:hover:bg-cyan-900/30 hover:text-blue-700 dark:hover:text-cyan-400 transition">Careers</a>
+              <a href="/faq" className="px-3 py-1 rounded-lg hover:bg-blue-100 dark:hover:bg-cyan-900/30 hover:text-blue-700 dark:hover:text-cyan-400 transition">FAQ</a>
+              <a href="/contact" className="px-3 py-1 rounded-lg hover:bg-blue-100 dark:hover:bg-cyan-900/30 hover:text-blue-700 dark:hover:text-cyan-400 transition">Contact Us</a>
             </nav>
           </div>
         </header>
 
-        {/* Sliding Banner Section (Client Component) */}
-        <BannerCarousel />
-  {/* Main Content */}
-  <main>{children}</main>
+        {/* Main Content */}
+        <main>{children}</main>
 
         <Footer />
       </body>

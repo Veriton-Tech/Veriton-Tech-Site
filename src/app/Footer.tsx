@@ -16,15 +16,17 @@ export default function Footer() {
             <a href="#" aria-label="Instagram" className="p-2 rounded-full bg-pink-500 text-white hover:bg-pink-600 transition"><FaInstagram /></a>
           </div>
         </div>
+  {/* Spacer for separation (reduced) */}
+  <div className="hidden md:block md:w-4"></div>
         {/* Quick Links */}
         <div>
           <h3 className="text-lg font-bold mb-4 text-blue-700 dark:text-cyan-400">Quick Links</h3>
           <ul className="space-y-2">
-            <li><a href="#home" className="hover:text-cyan-600 transition">Home</a></li>
-            <li><a href="#about" className="hover:text-cyan-600 transition">About</a></li>
-            <li><a href="#services" className="hover:text-cyan-600 transition">Services</a></li>
-            <li><a href="#careers" className="hover:text-cyan-600 transition">Careers</a></li>
-            <li><a href="#contact" className="hover:text-cyan-600 transition">Contact Us</a></li>
+            <li><a href="/" className="hover:text-cyan-600 transition">Home</a></li>
+            <li><a href="/about" className="hover:text-cyan-600 transition">About</a></li>
+            <li><a href="/services" className="hover:text-cyan-600 transition">Services</a></li>
+            <li><a href="/careers" className="hover:text-cyan-600 transition">Careers</a></li>
+            <li><a href="/contact" className="hover:text-cyan-600 transition">Contact Us</a></li>
           </ul>
         </div>
         {/* Our Services - Elegant & Interactive */}
