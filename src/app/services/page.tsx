@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../Footer";
 
 const services = [
   { name: "Android Development", icon: "🤖", desc: "Custom Android apps for business and consumers." },

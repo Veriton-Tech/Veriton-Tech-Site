@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import BannerCarousel from "./BannerCarousel";
 
 function SectionHeading({ title, subtitle }: { title: string; subtitle?: string }) {
@@ -95,7 +93,7 @@ export default function Home() {
         <div className="max-w-[1100px] mx-auto px-6 sm:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-700 dark:text-cyan-400 mb-2">What Our Customers are Saying About Us</h2>
-            <p className="text-base text-black/60 dark:text-white/60">Real feedback from businesses we've helped grow and succeed.</p>
+            <p className="text-base text-black/60 dark:text-white/60">Real feedback from businesses we&apos;ve helped grow and succeed.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[

@@ -6,7 +6,7 @@ export default function ContactPage() {
       <div className="max-w-[700px] mx-auto px-6 sm:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-700 dark:text-cyan-400 mb-2">Contact Us</h2>
-          <p className="text-base text-black/60 dark:text-white/60">We'd love to hear from you! Reach out for a free consultation or any questions.</p>
+          <p className="text-base text-black/60 dark:text-white/60">We&apos;d love to hear from you! Reach out for a free consultation or any questions.</p>
         </div>
         <div className="bg-white dark:bg-cyan-900/40 rounded-3xl shadow-xl p-8 sm:p-12 text-lg text-black/80 dark:text-white/80">
           <form className="space-y-6">

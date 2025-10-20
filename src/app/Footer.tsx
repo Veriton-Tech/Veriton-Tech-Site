@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
@@ -22,11 +23,11 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-bold mb-4 text-blue-700 dark:text-cyan-400">Quick Links</h3>
           <ul className="space-y-2">
-            <li><a href="/" className="hover:text-cyan-600 transition">Home</a></li>
-            <li><a href="/about" className="hover:text-cyan-600 transition">About</a></li>
-            <li><a href="/services" className="hover:text-cyan-600 transition">Services</a></li>
-            <li><a href="/careers" className="hover:text-cyan-600 transition">Careers</a></li>
-            <li><a href="/contact" className="hover:text-cyan-600 transition">Contact Us</a></li>
+            <li><Link href="/" className="hover:text-cyan-600 transition">Home</Link></li>
+            <li><Link href="/about" className="hover:text-cyan-600 transition">About</Link></li>
+            <li><Link href="/services" className="hover:text-cyan-600 transition">Services</Link></li>
+            <li><Link href="/careers" className="hover:text-cyan-600 transition">Careers</Link></li>
+            <li><Link href="/contact" className="hover:text-cyan-600 transition">Contact Us</Link></li>
           </ul>
         </div>
         {/* Our Services - Elegant & Interactive */}
