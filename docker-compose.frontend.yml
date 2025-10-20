@@ -10,8 +10,8 @@ services:
     ports:
       - "3000:3000"
     networks:
-      - hojaega
+      - hojaega_net
 
 networks:
-  hojaega:
+  hojaega_net:
     external: true
