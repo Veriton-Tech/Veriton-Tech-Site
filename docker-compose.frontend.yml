@@ -7,11 +7,10 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
-    ports:
-      - "3000:3000"
     networks:
-      - hojaega_net
+      - hojaega
 
 networks:
-  hojaega_net:
-    driver: bridge
+  hojaega:
+    external:
+      name: veriton-tech-site_hojaega_net
