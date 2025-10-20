@@ -1,0 +1,10 @@
+node_modules
+.next
+npm-debug.log
+.DS_Store
+.vscode
+.env
+.env.local
+.env.development
+.env.production
+coverage
