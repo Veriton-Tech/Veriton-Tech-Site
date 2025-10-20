@@ -14,4 +14,4 @@ services:
 
 networks:
   hojaega_net:
-    external: true
+    driver: bridge
