@@ -8,9 +8,12 @@ services:
       - NODE_ENV=production
       - PORT=3000
     networks:
-      - hojaega
+      - caddy_net
 
 networks:
-  hojaega:
-    external:
-      name: veriton-tech-site_hojaega_net
+  # Join the existing Caddy/stack network so Caddy can reach this service by name.
+  # Set CADDY_NETWORK_NAME to the actual network on your server, e.g. "hojaega_hojaega_net".
+  # Example to discover it on server: `docker network ls | grep hojaega`.
+  caddy_net:
+    external: true
+    name: ${CADDY_NETWORK_NAME:-hojaega_net}
