@@ -64,7 +64,7 @@ export default function BannerCarousel() {
   }, []);
 
   return (
-    <section className="w-full relative py-32 border-b border-black/10 dark:border-white/10 overflow-hidden">
+  <section className="w-full relative py-15 sm:py-15 border-b border-black/10 dark:border-white/10 overflow-hidden">
       {/* Gradient Overlay */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-blue-100 via-cyan-100 to-blue-200 dark:from-blue-900/40 dark:via-cyan-900/30 dark:to-blue-800/40" />
       {/* Glassmorphism Effect */}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "./Footer";
+import MobileMenu from "../components/MobileMenu";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <header className="sticky top-0 z-30 bg-gradient-to-r from-blue-50 via-cyan-100 to-blue-200 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-blue-800/60 backdrop-blur-xl shadow-lg border-b border-blue-200 dark:border-cyan-700/40">
           <div className="max-w-[1200px] mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
             <div className="flex items-center gap-3">
+              <MobileMenu />
               <span className="text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-cyan-500 to-blue-400 drop-shadow">Veriton Tech</span>
             </div>
             <nav className="hidden md:flex items-center gap-8 text-base font-semibold">

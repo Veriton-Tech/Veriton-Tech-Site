@@ -1,4 +1,5 @@
 import BannerCarousel from "./BannerCarousel";
+import TeamCarousel from "../components/TeamCarousel";
 
 function SectionHeading({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
@@ -87,42 +88,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      {/* Testimonials Section - enhanced and interactive */}
+      {/* Our Team - Interactive and Elegant */}
       <section className="py-16 sm:py-24 bg-gradient-to-br from-cyan-50 via-blue-50 to-cyan-100 dark:from-cyan-900/20 dark:via-blue-900/10 dark:to-cyan-800/20">
         <div className="max-w-[1100px] mx-auto px-6 sm:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-700 dark:text-cyan-400 mb-2">What Our Customers are Saying About Us</h2>
-            <p className="text-base text-black/60 dark:text-white/60">Real feedback from businesses we&apos;ve helped grow and succeed.</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-700 dark:text-cyan-400 mb-2">Our Team</h2>
+            <p className="text-base text-black/60 dark:text-white/60">Meet the experts building products and services at Veriton Tech.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {[
-              {
-                name: "Ayesha K.",
-                company: "Startup Founder",
-                text: "Veriton Tech delivered our Android app on time and exceeded expectations. Their support is top-notch!",
-                avatar: "🧑‍💻"
-              },
-              {
-                name: "Michael S.",
-                company: "E-Commerce Manager",
-                text: "Our Shopify store runs smoother than ever. The team is responsive and truly understands business needs.",
-                avatar: "🛒"
-              },
-              {
-                name: "Priya D.",
-                company: "CTO, SaaS Company",
-                text: "Cloud migration was seamless. Veriton Tech's expertise saved us time and money.",
-                avatar: "☁️"
-              },
-            ].map((t, idx) => (
-              <div key={idx} className="rounded-3xl bg-white dark:bg-cyan-900/40 shadow-xl p-8 flex flex-col items-center text-center ring-2 ring-cyan-100 dark:ring-blue-900 hover:ring-cyan-400 dark:hover:ring-blue-400 transition-all hover:scale-105">
-                <div className="text-5xl mb-3 animate-bounce group-hover:animate-none">{t.avatar}</div>
-                <p className="text-lg text-black/80 dark:text-white/80 mb-4 italic">“{t.text}”</p>
-                <div className="font-bold text-blue-700 dark:text-cyan-400">{t.name}</div>
-                <div className="text-sm text-black/60 dark:text-white/60">{t.company}</div>
-              </div>
-            ))}
+
+          <div>
+            {/* Team carousel (interactive) */}
+            <TeamCarousel />
           </div>
         </div>
       </section>
