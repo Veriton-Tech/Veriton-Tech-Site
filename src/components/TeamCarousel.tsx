@@ -47,11 +47,15 @@ export default function TeamCarousel() {
     if (!cardRef.current || !trackRef.current) return;
     const w = cardRef.current.offsetWidth;
     setCardWidth(w);
-    const cs = window.getComputedStyle(trackRef.current as Element) as any;
+    const cs = window.getComputedStyle(trackRef.current as Element);
     let gap = 24;
-    if (cs && (cs.columnGap || cs.gap)) {
-      const g = parseFloat(cs.columnGap || cs.gap);
-      if (!Number.isNaN(g)) gap = g;
+    if (cs) {
+      // Prefer reading via getPropertyValue to avoid relying on typed properties
+      const gapStr = cs.getPropertyValue("column-gap") || cs.getPropertyValue("gap");
+      const g = parseFloat(gapStr);
+      if (!Number.isNaN(g)) {
+        gap = g;
+      }
     }
     stride.current = Math.round(w + gap);
     setOffset(-currentIndexRef.current * stride.current);
