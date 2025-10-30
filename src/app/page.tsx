@@ -19,7 +19,7 @@ export default function Home() {
       <BannerCarousel />
 
       {/* Our Services - Enhanced Theme */}
-      <section className="py-16 sm:py-24 bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 dark:from-blue-900/30 dark:via-cyan-900/20 dark:to-blue-800/30">
+  <section className="py-16 sm:py-24 bg-neutral-50 dark:bg-neutral-900">
         <div className="max-w-[1100px] mx-auto px-6 sm:px-8">
           <SectionHeading
             title="Our Services"
@@ -34,18 +34,18 @@ export default function Home() {
             ].map((s) => (
               <button
                 key={s.name}
-                className="group rounded-3xl border-0 bg-white dark:bg-cyan-900/40 p-10 shadow-xl hover:shadow-2xl transition-all text-center hover:scale-105 relative overflow-hidden ring-2 ring-blue-100 dark:ring-cyan-800 hover:ring-cyan-400 dark:hover:ring-blue-400"
+                className={`group rounded-3xl border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-900/50 p-10 shadow-sm hover:shadow-md transition-all text-center hover:scale-[1.02] relative overflow-hidden`}
                 type="button"
                 style={{ position: 'relative' }}
               >
-                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 rounded-t-3xl opacity-20"></div>
+                <div className="absolute top-0 left-0 w-full h-px bg-black/10 dark:bg-white/10" />
                 <div className="flex flex-col items-center justify-center">
-                  <div className="text-5xl mb-3 animate-bounce group-hover:animate-none text-blue-500 dark:text-cyan-400 drop-shadow-lg">{s.icon}</div>
-                  <div className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-cyan-500 to-blue-400 text-2xl mb-2 group-hover:scale-110 transition-transform">{s.name}</div>
+                  <div className={`text-5xl mb-3`}>{s.icon}</div>
+                  <div className={`font-extrabold text-neutral-900 dark:text-white text-2xl mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors`}>{s.name}</div>
                   <div className="text-base text-black/70 dark:text-white/70 mb-4 max-w-[180px] mx-auto">{s.desc}</div>
-                  <span className="inline-block mt-2 px-5 py-2 rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-sm font-bold shadow group-hover:from-blue-700 group-hover:to-cyan-700 transition">Learn More</span>
+                  <span className={`inline-block mt-2 px-5 py-2 rounded-full bg-indigo-600 text-white text-sm font-bold shadow hover:bg-indigo-700 transition`}>Learn More</span>
                 </div>
-                <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 rounded-b-3xl opacity-10"></div>
+                <div className="absolute bottom-0 left-0 w-full h-px bg-black/10 dark:bg-white/10" />
               </button>
             ))}
           </div>
@@ -53,7 +53,7 @@ export default function Home() {
       </section>
 
       {/* How Veriton Tech Works - Enhanced Theme */}
-      <section className="py-16 sm:py-24 bg-gradient-to-br from-cyan-50 via-blue-50 to-cyan-100 dark:from-cyan-900/20 dark:via-blue-900/10 dark:to-cyan-800/20 border-y border-blue-100 dark:border-cyan-800">
+  <section className="py-16 sm:py-24 bg-white dark:bg-neutral-950 border-y border-black/10 dark:border-white/10">
         <div className="max-w-[1100px] mx-auto px-6 sm:px-8">
           <SectionHeading title="How Veriton Tech works" />
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -77,10 +77,10 @@ export default function Home() {
                 icon: "✅"
               },
             ].map((s) => (
-              <div key={s.step} className="rounded-3xl bg-white dark:bg-cyan-900/40 shadow-xl p-10 flex flex-col items-center text-center ring-2 ring-cyan-100 dark:ring-blue-900 hover:ring-cyan-400 dark:hover:ring-blue-400 transition-all hover:scale-105">
+              <div key={s.step} className="rounded-3xl bg-white dark:bg-neutral-900/50 shadow-sm p-10 flex flex-col items-center text-center border border-black/5 dark:border-white/10 hover:shadow-md transition-all hover:scale-[1.02]">
                 <div className="text-4xl mb-3 drop-shadow-lg animate-bounce group-hover:animate-none">{s.icon}</div>
-                <div className="size-8 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white flex items-center justify-center text-sm font-bold mb-2 shadow">{s.step}</div>
-                <h3 className="mt-2 font-extrabold text-lg text-blue-700 dark:text-cyan-400">{s.title}</h3>
+                <div className="size-8 rounded-full bg-indigo-600 text-white flex items-center justify-center text-sm font-bold mb-2 shadow">{s.step}</div>
+                <h3 className="mt-2 font-extrabold text-lg text-neutral-900 dark:text-white">{s.title}</h3>
                 <p className="text-base text-black/70 dark:text-white/70 mt-2">{s.desc}</p>
               </div>
             ))}
@@ -89,10 +89,10 @@ export default function Home() {
       </section>
 
       {/* Our Team - Interactive and Elegant */}
-      <section className="py-16 sm:py-24 bg-gradient-to-br from-cyan-50 via-blue-50 to-cyan-100 dark:from-cyan-900/20 dark:via-blue-900/10 dark:to-cyan-800/20">
+  <section className="py-16 sm:py-24 bg-neutral-50 dark:bg-neutral-900">
         <div className="max-w-[1100px] mx-auto px-6 sm:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-700 dark:text-cyan-400 mb-2">Our Team</h2>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 dark:text-white mb-2">Our Team</h2>
             <p className="text-base text-black/60 dark:text-white/60">Meet the experts building products and services at Veriton Tech.</p>
           </div>
 

@@ -126,15 +126,15 @@ export default function TeamCarousel() {
                 <div
                   key={i}
                   ref={i === 0 ? cardRef : null}
-                  className="flex-shrink-0 w-[320px] md:w-[360px] h-[520px] rounded-3xl shadow-2xl overflow-hidden transform transition-transform duration-500 hover:-translate-y-4 hover:scale-105 cursor-pointer bg-gradient-to-tr from-blue-900/20 via-cyan-900/20 to-black/20 backdrop-blur-md border border-white/10"
+                  className="flex-shrink-0 w-[320px] md:w-[360px] h-[520px] rounded-3xl shadow-sm overflow-hidden transform transition-transform duration-500 hover:-translate-y-2 hover:scale-[1.02] cursor-pointer bg-white/80 dark:bg-neutral-900/60 backdrop-blur-md border border-black/5 dark:border-white/10"
                 >
                   <div className="h-[70%] flex items-center justify-center">
                     <div className="text-6xl">{m.avatar}</div>
                   </div>
                   <div className="h-[30%] p-5 flex flex-col justify-center">
-                    <div className="font-extrabold text-lg text-blue-200">{m.name}</div>
-                    <div className="text-sm text-white/70">{m.role}</div>
-                    <div className="mt-2 text-white/80 text-sm">{m.bio}</div>
+                    <div className="font-extrabold text-lg text-neutral-900 dark:text-white">{m.name}</div>
+                    <div className="text-sm text-neutral-700 dark:text-white/70">{m.role}</div>
+                    <div className="mt-2 text-neutral-600 dark:text-white/80 text-sm">{m.bio}</div>
                   </div>
                 </div>
               ))}
@@ -143,11 +143,11 @@ export default function TeamCarousel() {
         </div>
 
         <div className="mt-4 flex items-center justify-center gap-2">
-          {team.map((_, i) => (
+      {team.map((_, i) => (
             <button
               key={i}
               onClick={() => scrollToIndex(i)}
-              className={`w-3 h-3 rounded-full transition-colors ${i === index ? "bg-blue-400" : "bg-white/40"}`}
+              className={`w-3 h-3 rounded-full transition-all ${i === index ? "bg-indigo-600 shadow" : "bg-white/40 hover:bg-white/60"}`}
               aria-label={`Go to ${i + 1}`}
             />
           ))}
