@@ -18,7 +18,7 @@ export default function CareersPage() {
             <li>UI/UX Designers</li>
             <li>Project Managers</li>
           </ul>
-          <p className="mb-6">If you are interested in working with us, please send your resume and a brief introduction to <a href="mailto:careers@veritontech.com" className="text-blue-600 dark:text-cyan-400 underline font-semibold">careers@veritontech.com</a>.</p>
+          <p className="mb-6">If you are interested in working with us, please send your resume and a brief introduction to <a href="mailto:veritoninfo@gmail.com" className="text-blue-600 dark:text-cyan-400 underline font-semibold">veritoninfo@gmail.com</a>.</p>
           <p>We look forward to hearing from you and exploring how you can make an impact at Veriton Tech!</p>
         </div>
       </div>

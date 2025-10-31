@@ -2,8 +2,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const team = [
-  { name: "Kamran Basheer", role: "Founder & CEO", bio: "Visionary leader driving Veriton Tech to deliver innovative solutions.", avatar: "🧑‍💼" },
-  { name: "Faizan Basheer", role: "Android Developer", bio: "Builds performant and user-friendly Android applications with modern practices.", avatar: "🤖" },
+  { name: "Kamran Basheer", role: "Founder & CEO", bio: "Visionary leader driving Veriton Tech to deliver innovative solutions.", avatar: "🧑‍💼", image: "/Kamran Basheer.jpeg", linkedin: "https://www.linkedin.com/in/kamran-basheer/" },
+  { name: "Faizan Basheer", role: "Android Developer", bio: "Builds performant and user-friendly Android applications with modern practices.", avatar: "🤖", image: "/Faizan Basheer.jpeg", linkedin: "https://www.linkedin.com/in/faizan-basheer-433026322/" },
 ];
 
 export default function TeamCarousel() {
@@ -17,7 +17,6 @@ export default function TeamCarousel() {
   const startOffset = useRef(0);
   const stride = useRef(0);
   const [offset, setOffset] = useState(0);
-  const [cardWidth, setCardWidth] = useState<number | null>(null);
   const snapTimer = useRef<number | null>(null);
 
   useEffect(() => {
@@ -45,17 +44,12 @@ export default function TeamCarousel() {
 
   const measureStride = () => {
     if (!cardRef.current || !trackRef.current) return;
-    const w = cardRef.current.offsetWidth;
-    setCardWidth(w);
-    const cs = window.getComputedStyle(trackRef.current as Element);
+  const w = cardRef.current.offsetWidth;
+    const cs = window.getComputedStyle(trackRef.current as Element) as any;
     let gap = 24;
-    if (cs) {
-      // Prefer reading via getPropertyValue to avoid relying on typed properties
-      const gapStr = cs.getPropertyValue("column-gap") || cs.getPropertyValue("gap");
-      const g = parseFloat(gapStr);
-      if (!Number.isNaN(g)) {
-        gap = g;
-      }
+    if (cs && (cs.columnGap || cs.gap)) {
+      const g = parseFloat(cs.columnGap || cs.gap);
+      if (!Number.isNaN(g)) gap = g;
     }
     stride.current = Math.round(w + gap);
     setOffset(-currentIndexRef.current * stride.current);
@@ -111,30 +105,50 @@ export default function TeamCarousel() {
   return (
     <div className="w-full min-h-screen flex flex-col items-center justify-center">
       <div className="max-w-[900px] w-full">
-        <div className="relative flex justify-center py-6 px-4 md:px-8">
-          <div ref={wrapperRef} className="overflow-hidden" style={cardWidth ? { width: `${cardWidth}px` } : undefined}>
+        <div className="relative flex justify-center py-6 px-2 sm:px-4 md:px-8">
+          <div ref={wrapperRef} className="box-border w-full max-w-[90vw] sm:w-[320px] md:w-[360px] overflow-hidden">
             <div
               ref={trackRef}
               onPointerDown={onPointerDown}
               onPointerMove={onPointerMove}
               onPointerUp={onPointerUp}
               onPointerCancel={onPointerUp}
-              className="flex gap-7 items-stretch"
+              className="flex gap-4 sm:gap-7 items-stretch px-2 sm:px-0"
               style={{ transform: `translateX(${offset}px)`, transition: isDown.current ? "none" : "transform 450ms cubic-bezier(.2,.9,.2,1)" }}
             >
               {team.map((m, i) => (
                 <div
                   key={i}
                   ref={i === 0 ? cardRef : null}
-                  className="flex-shrink-0 w-[320px] md:w-[360px] h-[520px] rounded-3xl shadow-sm overflow-hidden transform transition-transform duration-500 hover:-translate-y-2 hover:scale-[1.02] cursor-pointer bg-white/80 dark:bg-neutral-900/60 backdrop-blur-md border border-black/5 dark:border-white/10"
+                  className="flex-shrink-0 w-[90vw] sm:w-[320px] md:w-[360px] min-h-[420px] md:h-[520px] rounded-3xl shadow-2xl overflow-hidden transform transition-transform duration-500 hover:-translate-y-4 hover:scale-105 cursor-pointer bg-gradient-to-tr from-blue-900/20 via-cyan-900/20 to-black/20 backdrop-blur-md border border-white/10"
+                  role={m.linkedin ? "link" : undefined}
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if ((e.key === "Enter" || e.key === " ") && m.linkedin) {
+                      window.open(m.linkedin, "_blank", "noopener,noreferrer");
+                    }
+                  }}
+                  onClick={() => {
+                    if (m.linkedin) {
+                      window.open(m.linkedin, "_blank", "noopener,noreferrer");
+                    }
+                  }}
                 >
-                  <div className="h-[70%] flex items-center justify-center">
-                    <div className="text-6xl">{m.avatar}</div>
-                  </div>
-                  <div className="h-[30%] p-5 flex flex-col justify-center">
-                    <div className="font-extrabold text-lg text-neutral-900 dark:text-white">{m.name}</div>
-                    <div className="text-sm text-neutral-700 dark:text-white/70">{m.role}</div>
-                    <div className="mt-2 text-neutral-600 dark:text-white/80 text-sm">{m.bio}</div>
+                  <div className="flex flex-col min-h-full">
+                    {m.image ? (
+                      <div className="w-full h-[55%] sm:h-[70%] overflow-hidden">
+                        <img src={m.image} alt={m.name} className="w-full h-full object-cover block" />
+                      </div>
+                    ) : (
+                      <div className="flex-1 flex items-center justify-center p-6">
+                        <div className="text-6xl sm:text-7xl">{m.avatar}</div>
+                      </div>
+                    )}
+                    <div className="p-5 flex flex-col justify-center">
+                      <div className="font-extrabold text-lg text-blue-200">{m.name}</div>
+                      <div className="text-sm text-white/70">{m.role}</div>
+                      <div className="mt-2 text-white/80 text-sm">{m.bio}</div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -143,11 +157,11 @@ export default function TeamCarousel() {
         </div>
 
         <div className="mt-4 flex items-center justify-center gap-2">
-      {team.map((_, i) => (
+          {team.map((_, i) => (
             <button
               key={i}
               onClick={() => scrollToIndex(i)}
-              className={`w-3 h-3 rounded-full transition-all ${i === index ? "bg-indigo-600 shadow" : "bg-white/40 hover:bg-white/60"}`}
+              className={`w-3 h-3 rounded-full transition-colors ${i === index ? "bg-blue-400" : "bg-white/40"}`}
               aria-label={`Go to ${i + 1}`}
             />
           ))}

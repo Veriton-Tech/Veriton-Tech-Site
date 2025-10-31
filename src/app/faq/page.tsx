@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     question: "How can I contact Veriton Tech?",
-    answer: "You can reach us via the Contact Us page or email us at info@veritontech.com.",
+    answer: "You can reach us via the Contact Us page or email us at veritoninfo@gmail.com.",
   },
   {
     question: "Do you offer custom solutions?",

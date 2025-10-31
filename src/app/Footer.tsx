@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="flex gap-4 mt-2">
             <a href="#" aria-label="Facebook" className="p-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition"><FaFacebookF /></a>
             <a href="#" aria-label="Twitter" className="p-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition"><FaTwitter /></a>
-            <a href="#" aria-label="LinkedIn" className="p-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition"><FaLinkedinIn /></a>
+            <a href="https://www.linkedin.com/company/veriton-tech" target="_blank" rel="noreferrer noopener" aria-label="Veriton Tech on LinkedIn" className="p-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition"><FaLinkedinIn /></a>
             <a href="#" aria-label="Instagram" className="p-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition"><FaInstagram /></a>
           </div>
         </div>
@@ -45,7 +45,7 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-bold mb-4 text-neutral-900 dark:text-white">Contact Info</h3>
           <ul className="space-y-2">
-            <li><a href="mailto:Info@veriton.com" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Info@veriton.com</a></li>
+            <li><a href="mailto:veritoninfo@gmail.com" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">veritoninfo@gmail.com</a></li>
           </ul>
         </div>
         {/* Copyright & Credits */}
