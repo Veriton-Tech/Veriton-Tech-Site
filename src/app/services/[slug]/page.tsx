@@ -101,7 +101,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       <div className="min-h-screen flex items-center justify-center">
         <div className="max-w-md text-center">
           <h2 className="text-2xl font-bold mb-4">Service not found</h2>
-          <p className="mb-6">We couldn't find that service. Please choose from our services page.</p>
+          <p className="mb-6">We couldn&apos;t find that service. Please choose from our services page.</p>
           <Link href="/" className="inline-block px-4 py-2 bg-indigo-600 text-white rounded">Go home</Link>
         </div>
       </div>

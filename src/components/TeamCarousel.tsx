@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const team = [
   { name: "Kamran Basheer", role: "Founder & CEO", bio: "Visionary leader driving Veriton Tech to deliver innovative solutions.", avatar: "🧑‍💼", image: "/Kamran Basheer.jpeg", linkedin: "https://www.linkedin.com/in/kamran-basheer/" },
@@ -45,10 +46,11 @@ export default function TeamCarousel() {
   const measureStride = () => {
     if (!cardRef.current || !trackRef.current) return;
   const w = cardRef.current.offsetWidth;
-    const cs = window.getComputedStyle(trackRef.current as Element) as any;
+    const cs = window.getComputedStyle(trackRef.current as Element);
     let gap = 24;
-    if (cs && (cs.columnGap || cs.gap)) {
-      const g = parseFloat(cs.columnGap || cs.gap);
+    if (cs) {
+      const gapStr = cs.getPropertyValue("column-gap") || cs.getPropertyValue("gap");
+      const g = parseFloat(gapStr);
       if (!Number.isNaN(g)) gap = g;
     }
     stride.current = Math.round(w + gap);
@@ -136,8 +138,8 @@ export default function TeamCarousel() {
                 >
                   <div className="flex flex-col min-h-full">
                     {m.image ? (
-                      <div className="w-full h-[55%] sm:h-[70%] overflow-hidden">
-                        <img src={m.image} alt={m.name} className="w-full h-full object-cover block" />
+                      <div className="relative w-full h-[55%] sm:h-[70%] overflow-hidden">
+                        <Image src={m.image} alt={m.name} fill className="object-cover" sizes="(max-width: 640px) 90vw, 360px" />
                       </div>
                     ) : (
                       <div className="flex-1 flex items-center justify-center p-6">

@@ -47,7 +47,7 @@ export default function ContactPage() {
         headers: {
           // If hitting Formspree or local API which expect JSON, they will still accept FormData on many setups.
           Accept: "application/json",
-        } as any,
+        } as HeadersInit,
       });
 
       if (res.ok) {
@@ -61,12 +61,13 @@ export default function ContactPage() {
         try {
           const obj = JSON.parse(text);
           text = obj.message || JSON.stringify(obj);
-        } catch (_) {}
+        } catch {}
         setErrorMessage(text || "Failed to send message. Please try again later.");
         setStatus("error");
       }
-    } catch (err: any) {
-      setErrorMessage(err?.message || "Network error");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      setErrorMessage(message || "Network error");
       setStatus("error");
     }
   };
