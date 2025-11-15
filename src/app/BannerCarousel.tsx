@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 
 const banners = [
   {
@@ -12,7 +13,7 @@ const banners = [
           Discover innovative solutions tailored for your growth. Our team delivers reliability, expertise, and a seamless tech experience.
         </p>
         <div className="flex justify-center gap-4">
-          <a href="#contact" className="rounded-full px-8 py-3 bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700 transition text-lg">Contact Us</a>
+          <Link href="/contact" className="rounded-full px-8 py-3 bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700 transition text-lg">Contact Us</Link>
           <a href="#readmore" className="rounded-full px-8 py-3 border border-black/10 dark:border-white/10 text-neutral-900 dark:text-white font-semibold shadow hover:bg-black/5 dark:hover:bg-white/10 transition text-lg">Read More</a>
         </div>
       </>
@@ -28,7 +29,7 @@ const banners = [
           Our dedicated professionals are available 24/7 to resolve your issues and keep your business running smoothly.
         </p>
         <div className="flex justify-center gap-4">
-          <a href="#contact" className="rounded-full px-8 py-3 bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700 transition text-lg">Contact Us</a>
+          <Link href="/contact" className="rounded-full px-8 py-3 bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700 transition text-lg">Contact Us</Link>
           <a href="#readmore" className="rounded-full px-8 py-3 border border-black/10 dark:border-white/10 text-neutral-900 dark:text-white font-semibold shadow hover:bg-black/5 dark:hover:bg-white/10 transition text-lg">Read More</a>
         </div>
       </>
@@ -44,7 +45,7 @@ const banners = [
           Unlock new opportunities with our advanced technology services. Let us help you transform your vision into reality.
         </p>
         <div className="flex justify-center gap-4">
-          <a href="#contact" className="rounded-full px-8 py-3 bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700 transition text-lg">Contact Us</a>
+          <Link href="/contact" className="rounded-full px-8 py-3 bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700 transition text-lg">Contact Us</Link>
           <a href="#readmore" className="rounded-full px-8 py-3 border border-black/10 dark:border-white/10 text-neutral-900 dark:text-white font-semibold shadow hover:bg-black/5 dark:hover:bg-white/10 transition text-lg">Read More</a>
         </div>
       </>
