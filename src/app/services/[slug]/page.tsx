@@ -1,6 +1,7 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
+import ServiceAccordion from "@/components/ServiceAccordion";
+import EstimateWidget from "@/components/EstimateWidget";
 
 type Service = {
   title: string;
@@ -69,29 +70,10 @@ const SERVICES: Record<string, Service> = {
   },
 };
 
-function Accordion({ items }: { items: { q: string; a: string }[] }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-  return (
-    <div className="space-y-2">
-      {items.map((it, i) => (
-        <div key={i} className="rounded-lg border border-gray-200 dark:border-neutral-800 overflow-hidden">
-          <button
-            type="button"
-            onClick={() => setOpenIndex(openIndex === i ? null : i)}
-            className="w-full text-left px-4 py-3 bg-white dark:bg-neutral-900 flex items-center justify-between"
-            aria-expanded={openIndex === i}
-          >
-            <span className="font-semibold">{it.q}</span>
-            <span className="text-neutral-500">{openIndex === i ? "−" : "+"}</span>
-          </button>
-          {openIndex === i ? (
-            <div className="px-4 py-3 bg-gray-50 dark:bg-neutral-800 text-sm text-neutral-700 dark:text-neutral-200">{it.a}</div>
-          ) : null}
-        </div>
-      ))}
-    </div>
-  );
+export function generateStaticParams() {
+  return Object.keys(SERVICES).map((slug) => ({ slug }));
 }
+
 
 export default function ServicePage({ params }: { params: { slug: string } }) {
   const slug = params.slug;
@@ -126,7 +108,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
 
               <div className="mb-6">
                 <h3 className="font-bold mb-3">Frequently asked questions</h3>
-                <Accordion items={s.faqs} />
+                <ServiceAccordion items={s.faqs} />
               </div>
 
               <div className="mt-6">
@@ -147,39 +129,4 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
   );
 }
 
-function EstimateWidget() {
-  const [budget, setBudget] = useState<string>("");
-  const [timeline, setTimeline] = useState<string>("4-8 weeks");
-  const [result, setResult] = useState<string | null>(null);
-
-  const estimate = () => {
-    if (!budget) {
-      setResult("Please select a budget range.");
-      return;
-    }
-    setResult(`Estimated scope: With a ${budget} budget we typically deliver a first MVP within ${timeline}. Contact us for a tailored quote.`);
-  };
-
-  return (
-    <div className="space-y-3 text-sm">
-      <label className="block font-medium">Budget</label>
-      <select value={budget} onChange={(e) => setBudget(e.target.value)} className="w-full p-2 rounded border">
-        <option value="">Choose...</option>
-        <option value="$5k-$10k">$5k-$10k</option>
-        <option value="$10k-$25k">$10k-$25k</option>
-        <option value="$25k+">$25k+</option>
-      </select>
-
-      <label className="block font-medium">Timeline</label>
-      <select value={timeline} onChange={(e) => setTimeline(e.target.value)} className="w-full p-2 rounded border">
-        <option>4-8 weeks</option>
-        <option>8-16 weeks</option>
-        <option>3+ months</option>
-      </select>
-
-      <button onClick={estimate} className="w-full mt-2 py-2 bg-indigo-600 text-white rounded">Estimate</button>
-
-      {result ? <div className="mt-3 text-sm text-neutral-700 dark:text-neutral-300">{result}</div> : null}
-    </div>
-  );
-}
+// Client-only widgets moved to components; imported above.
