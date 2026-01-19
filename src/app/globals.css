@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0f;
-  --foreground: #e0e0ff;
-  --neon-cyan: #00ffff;
-  --neon-purple: #bf00ff;
-  --neon-pink: #ff00ff;
-  --neon-blue: #00aaff;
+  --background: #f8fafc;
+  --foreground: #1e293b;
+  --neon-cyan: #06b6d4;
+  --neon-purple: #a855f7;
+  --neon-pink: #ec4899;
+  --neon-blue: #3b82f6;
 }
 
 @theme inline {
@@ -17,11 +17,12 @@
 }
 
 body {
-  background: #0a0a0f;
+  background: linear-gradient(to bottom, #f8fafc 0%, #e0f2fe 50%, #f8fafc 100%);
   color: var(--foreground);
   font-family: 'Geist', -apple-system, sans-serif;
   overflow-x: hidden;
   position: relative;
+  min-height: 100vh;
 }
 
 /* Futuristic Grid Background */
@@ -33,8 +34,8 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(6, 182, 212, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.08) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
   z-index: 0;
@@ -48,9 +49,9 @@ body::after {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 20% 50%, rgba(191, 0, 255, 0.08) 0%, transparent 50%),
-              radial-gradient(circle at 80% 50%, rgba(0, 170, 255, 0.08) 0%, transparent 50%),
-              radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.05) 0%, transparent 50%);
+  background: radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.10) 0%, transparent 50%);
   animation: orbitOrbs 30s linear infinite;
   pointer-events: none;
   z-index: 0;
@@ -130,11 +131,11 @@ body::after {
 .holographic-text {
   background: linear-gradient(
     90deg,
-    #00ffff 0%,
-    #bf00ff 25%,
-    #00aaff 50%,
-    #ff00ff 75%,
-    #00ffff 100%
+    #06b6d4 0%,
+    #a855f7 25%,
+    #3b82f6 50%,
+    #ec4899 75%,
+    #06b6d4 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -144,15 +145,16 @@ body::after {
 }
 
 .glassmorphism {
-  background: rgba(15, 15, 30, 0.6);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 255, 255, 0.2);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.06);
 }
 
 .cyber-border {
   position: relative;
-  border: 1px solid rgba(0, 255, 255, 0.3);
+  border: 1px solid rgba(6, 182, 212, 0.4);
 }
 
 .cyber-border::before {
@@ -188,7 +190,7 @@ body::after {
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.8), transparent);
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.6), transparent);
   animation: scanLine 4s linear infinite;
   pointer-events: none;
 }

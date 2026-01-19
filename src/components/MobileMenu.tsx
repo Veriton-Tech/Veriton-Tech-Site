@@ -102,35 +102,35 @@ export default function MobileMenu() {
                 <Link 
                   href="/" 
                   onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                  className="py-3 px-4 rounded-lg text-slate-700 hover:text-cyan-600 glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
                 >
                   → Home
                 </Link>
                 <Link 
                   href="/services" 
                   onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                  className="py-3 px-4 rounded-lg text-slate-700 hover:text-cyan-600 glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
                 >
                   → Services
                 </Link>
                 <Link 
                   href="/about" 
                   onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                  className="py-3 px-4 rounded-lg text-slate-700 hover:text-cyan-600 glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
                 >
                   → About
                 </Link>
                 <Link 
                   href="/careers" 
                   onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                  className="py-3 px-4 rounded-lg text-slate-700 hover:text-cyan-600 glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
                 >
                   → Careers
                 </Link>
                 <Link 
                   href="/faq" 
                   onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                  className="py-3 px-4 rounded-lg text-slate-700 hover:text-cyan-600 glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
                 >
                   → FAQ
                 </Link>

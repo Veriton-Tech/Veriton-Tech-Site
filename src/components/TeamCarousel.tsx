@@ -105,7 +105,7 @@ export default function TeamCarousel() {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center">
+    <div className="w-full flex flex-col items-center">
       <div className="max-w-[900px] w-full">
         <div className="relative flex justify-center py-6 px-2 sm:px-4 md:px-8">
           <div ref={wrapperRef} className="box-border w-full max-w-[90vw] sm:w-[320px] md:w-[360px] overflow-hidden">
@@ -122,7 +122,7 @@ export default function TeamCarousel() {
                 <div
                   key={i}
                   ref={i === 0 ? cardRef : null}
-                  className="flex-shrink-0 w-[90vw] sm:w-[320px] md:w-[360px] min-h-[420px] md:h-[520px] rounded-3xl shadow-2xl overflow-hidden transform transition-transform duration-500 hover:-translate-y-4 hover:scale-105 cursor-pointer bg-gradient-to-tr from-blue-900/20 via-cyan-900/20 to-black/20 backdrop-blur-md border border-white/10"
+                  className="flex-shrink-0 w-[90vw] sm:w-[320px] md:w-[360px] h-[420px] md:h-[520px] rounded-3xl shadow-2xl overflow-hidden transform transition-transform duration-500 hover:-translate-y-4 cursor-pointer bg-white backdrop-blur-md border border-cyan-200"
                   role={m.linkedin ? "link" : undefined}
                   tabIndex={0}
                   onKeyDown={(e) => {
@@ -136,10 +136,10 @@ export default function TeamCarousel() {
                     }
                   }}
                 >
-                  <div className="flex flex-col min-h-full">
+                  <div className="flex flex-col h-full">
                     {m.image ? (
                       <div className="relative w-full h-[55%] sm:h-[70%] overflow-hidden">
-                        <Image src={m.image} alt={m.name} fill className="object-cover" sizes="(max-width: 640px) 90vw, 360px" />
+                        <Image src={m.image} alt={m.name} fill className="object-cover" sizes="(max-width: 640px) 90vw, 360px" unoptimized />
                       </div>
                     ) : (
                       <div className="flex-1 flex items-center justify-center p-6">
@@ -147,9 +147,9 @@ export default function TeamCarousel() {
                       </div>
                     )}
                     <div className="p-5 flex flex-col justify-center">
-                      <div className="font-extrabold text-lg text-blue-200">{m.name}</div>
-                      <div className="text-sm text-white/70">{m.role}</div>
-                      <div className="mt-2 text-white/80 text-sm">{m.bio}</div>
+                      <div className="font-extrabold text-lg text-slate-800">{m.name}</div>
+                      <div className="text-sm text-slate-600">{m.role}</div>
+                      <div className="mt-2 text-slate-700 text-sm">{m.bio}</div>
                     </div>
                   </div>
                 </div>

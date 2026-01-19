@@ -1,4 +1,13 @@
 import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us — Veriton Tech",
+  description: "Learn about Veriton Tech's mission to empower businesses with innovative Android, Shopify, web development, and cloud solutions.",
+  alternates: {
+    canonical: '/about',
+  },
+};
 
 export default function AboutPage() {
   return (

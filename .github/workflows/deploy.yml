@@ -20,11 +20,5 @@ jobs:
             cd /root/atveriton/Veriton-Tech-Site
             git pull origin main
             export CADDY_NETWORK_NAME=hojaega-backend_hojaega_net
-            # Stop and remove the old container
-            docker compose -f docker-compose.frontend.yml down
-            # Build without cache to ensure fresh build
-            docker compose -f docker-compose.frontend.yml build --no-cache
-            # Start the new container
-            docker compose -f docker-compose.frontend.yml up -d
-            # Clean up old images
+            docker compose -f docker-compose.frontend.yml up -d --build
             docker image prune -f

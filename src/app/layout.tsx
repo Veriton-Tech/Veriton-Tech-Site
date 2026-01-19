@@ -17,6 +17,26 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Veriton Tech — Android, Shopify, Web & Cloud Services",
   description: "Veriton Tech provides expert Android, Shopify, web development, and cloud services for businesses and entrepreneurs.",
+  metadataBase: new URL('https://atveriton.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "Veriton Tech — Android, Shopify, Web & Cloud Services",
+    description: "Veriton Tech provides expert Android, Shopify, web development, and cloud services for businesses and entrepreneurs.",
+    url: 'https://atveriton.com',
+    siteName: 'Veriton Tech',
+    locale: 'en_US',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 import Link from "next/link";
@@ -37,25 +57,25 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               </span>
             </div>
             <nav className="hidden md:flex items-center gap-6 text-base font-semibold">
-              <Link href="/" className="relative px-4 py-2 text-cyan-200 hover:text-white transition-all group">
+              <Link href="/" className="relative px-4 py-2 text-slate-700 hover:text-cyan-600 transition-all group">
                 <span className="relative z-10">Home</span>
-                <span className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/20 rounded-lg transition-all border border-cyan-500/0 group-hover:border-cyan-500/50"></span>
+                <span className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 rounded-lg transition-all border border-cyan-500/0 group-hover:border-cyan-500/30"></span>
               </Link>
-              <Link href="/services" className="relative px-4 py-2 text-cyan-200 hover:text-white transition-all group">
+              <Link href="/services" className="relative px-4 py-2 text-slate-700 hover:text-cyan-600 transition-all group">
                 <span className="relative z-10">Services</span>
-                <span className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/20 rounded-lg transition-all border border-cyan-500/0 group-hover:border-cyan-500/50"></span>
+                <span className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 rounded-lg transition-all border border-cyan-500/0 group-hover:border-cyan-500/30"></span>
               </Link>
-              <Link href="/about" className="relative px-4 py-2 text-cyan-200 hover:text-white transition-all group">
+              <Link href="/about" className="relative px-4 py-2 text-slate-700 hover:text-cyan-600 transition-all group">
                 <span className="relative z-10">About</span>
-                <span className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/20 rounded-lg transition-all border border-cyan-500/0 group-hover:border-cyan-500/50"></span>
+                <span className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 rounded-lg transition-all border border-cyan-500/0 group-hover:border-cyan-500/30"></span>
               </Link>
-              <Link href="/careers" className="relative px-4 py-2 text-cyan-200 hover:text-white transition-all group">
+              <Link href="/careers" className="relative px-4 py-2 text-slate-700 hover:text-cyan-600 transition-all group">
                 <span className="relative z-10">Careers</span>
-                <span className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/20 rounded-lg transition-all border border-cyan-500/0 group-hover:border-cyan-500/50"></span>
+                <span className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 rounded-lg transition-all border border-cyan-500/0 group-hover:border-cyan-500/30"></span>
               </Link>
-              <Link href="/faq" className="relative px-4 py-2 text-cyan-200 hover:text-white transition-all group">
+              <Link href="/faq" className="relative px-4 py-2 text-slate-700 hover:text-cyan-600 transition-all group">
                 <span className="relative z-10">FAQ</span>
-                <span className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/20 rounded-lg transition-all border border-cyan-500/0 group-hover:border-cyan-500/50"></span>
+                <span className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 rounded-lg transition-all border border-cyan-500/0 group-hover:border-cyan-500/30"></span>
               </Link>
               <Link href="/contact" className="relative px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-lg hover:from-cyan-400 hover:to-purple-500 transition-all shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/70 hover:scale-105">
                 Contact Us
