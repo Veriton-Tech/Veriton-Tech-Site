@@ -64,7 +64,7 @@ const banners = [
       <>
         <span className="text-5xl sm:text-6xl font-extrabold mb-6 block relative">
           <span className="holographic-text">Innovate</span> and grow with{" "}
-          <span className="holographic-text">Veriton Tech</span> solutions
+          <span className="holographic-text">Veriton</span> solutions
         </span>
         <p className="text-lg sm:text-xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed">
           Unlock new opportunities with our advanced technology services. Let us help you transform your vision into reality.

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -10,44 +10,12 @@ export default function Footer() {
       <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50"></div>
       
       <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
-        {/* Logo, Description & Social Media */}
+        {/* Logo & Description */}
         <div className="flex flex-col items-start md:items-start">
           <span className="text-3xl font-extrabold tracking-tight holographic-text mb-3">Veriton</span>
           <p className="text-sm text-slate-600 mb-6 max-w-xs leading-relaxed">
             Veriton delivers Android, Shopify, web & cloud solutions for modern businesses. Empowering growth with reliable technology and expert support.
           </p>
-          <div className="flex gap-3 mt-2">
-            <a 
-              href="#" 
-              aria-label="Facebook" 
-              className="p-3 rounded-lg glassmorphism border border-cyan-500/30 text-slate-600 hover:text-slate-900 hover:border-cyan-500/60 transition-all hover:shadow-lg hover:shadow-cyan-500/30 group"
-            >
-              <FaFacebookF className="group-hover:scale-110 transition-transform" />
-            </a>
-            <a 
-              href="#" 
-              aria-label="Twitter" 
-              className="p-3 rounded-lg glassmorphism border border-cyan-500/30 text-cyan-300 hover:text-cyan-100 hover:border-cyan-500/60 transition-all hover:shadow-lg hover:shadow-cyan-500/30 group"
-            >
-              <FaTwitter className="group-hover:scale-110 transition-transform" />
-            </a>
-            <a 
-              href="https://www.linkedin.com/company/veriton-tech" 
-              target="_blank" 
-              rel="noreferrer noopener" 
-              aria-label="Veriton on LinkedIn" 
-              className="p-3 rounded-lg glassmorphism border border-cyan-500/30 text-cyan-300 hover:text-cyan-100 hover:border-cyan-500/60 transition-all hover:shadow-lg hover:shadow-cyan-500/30 group"
-            >
-              <FaLinkedinIn className="group-hover:scale-110 transition-transform" />
-            </a>
-            <a 
-              href="#" 
-              aria-label="Instagram" 
-              className="p-3 rounded-lg glassmorphism border border-cyan-500/30 text-cyan-300 hover:text-cyan-100 hover:border-cyan-500/60 transition-all hover:shadow-lg hover:shadow-cyan-500/30 group"
-            >
-              <FaInstagram className="group-hover:scale-110 transition-transform" />
-            </a>
-          </div>
         </div>
         
         {/* Spacer for separation */}
@@ -86,6 +54,18 @@ export default function Footer() {
                 className="text-slate-700 hover:text-cyan-100 transition-all inline-flex items-center gap-2 hover:gap-3"
               >
                 <span className="text-cyan-400">✉</span> veritoninfo@gmail.com
+              </a>
+            </li>
+            <li>
+              <a 
+                href="https://www.linkedin.com/company/veriton-tech" 
+                target="_blank" 
+                rel="noreferrer noopener" 
+                aria-label="Veriton on LinkedIn" 
+                className="pl-2 pr-4 py-2 mt-1 ml-[-8px] rounded-xl bg-gradient-to-r from-cyan-50 via-blue-50 to-cyan-100 dark:from-cyan-900/40 dark:via-blue-900/30 dark:to-cyan-800/30 border border-cyan-500/20 text-cyan-700 dark:text-cyan-200 hover:text-cyan-100 hover:border-cyan-500/60 transition-all hover:shadow-lg hover:shadow-cyan-500/30 group inline-flex items-center gap-2"
+              >
+                <FaLinkedinIn className="group-hover:scale-110 transition-transform" />
+                <span>LinkedIn</span>
               </a>
             </li>
           </ul>

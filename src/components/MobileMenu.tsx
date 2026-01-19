@@ -137,7 +137,7 @@ export default function MobileMenu() {
                 <Link 
                   href="/contact" 
                   onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold border border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/50 transition-all hover:scale-105"
+                  className="py-3 px-4 rounded-lg text-slate-700 hover:text-cyan-600 glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2 font-semibold"
                 >
                   Contact Us
                 </Link>

@@ -2,10 +2,43 @@ import React from "react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us — Veriton Tech",
-  description: "Learn about Veriton Tech's mission to empower businesses with innovative Android, Shopify, web development, and cloud solutions.",
+  title: "About Us — Veriton",
+  description: "Learn about Veriton's mission to empower businesses with innovative Android, Shopify, web development, and cloud solutions.",
   alternates: {
     canonical: '/about',
+  },
+  keywords: [
+    "About Veriton",
+    "Veriton Technologies",
+    "Tech Company",
+    "Android Development",
+    "Shopify Development",
+    "Web Development",
+    "Cloud Solutions",
+    "Business Technology",
+    "IT Services",
+    "Company Mission"
+  ],
+  openGraph: {
+    title: "About Us — Veriton",
+    description: "Learn about Veriton's mission to empower businesses with innovative technology solutions, including Android, Shopify, web, and cloud services.",
+    url: 'https://atveriton.com/about',
+    type: 'website',
+    siteName: 'Veriton',
+    images: [
+      {
+        url: 'https://atveriton.com/public/og-about.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'About Veriton Technologies',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "About Us — Veriton",
+    description: "Learn about Veriton's mission to empower businesses with innovative technology solutions, including Android, Shopify, web, and cloud services.",
+    images: ['https://atveriton.com/public/og-about.jpg'],
   },
 };
 
@@ -14,11 +47,11 @@ export default function AboutPage() {
     <main className="font-sans min-h-screen flex flex-col py-16 sm:py-24 bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 dark:from-blue-900/30 dark:via-cyan-900/20 dark:to-blue-800/30">
       <div className="max-w-[900px] mx-auto px-6 sm:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-700 dark:text-cyan-400 mb-2">About Veriton Tech</h2>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-700 dark:text-cyan-400 mb-2">About Veriton</h2>
           <p className="text-base text-black/60 dark:text-white/60">Empowering businesses with innovative technology solutions</p>
         </div>
         <div className="bg-white dark:bg-cyan-900/40 rounded-3xl shadow-xl p-8 sm:p-12 text-lg text-black/80 dark:text-white/80">
-          <p className="mb-6">Veriton Tech is a leading provider of Android, Shopify, web development, and cloud services. Our mission is to help businesses and entrepreneurs harness the power of technology to achieve their goals.</p>
+          <p className="mb-6">Veriton is a leading provider of Android, Shopify, web development, and cloud services. Our mission is to help businesses and entrepreneurs harness the power of technology to achieve their goals.</p>
           <p className="mb-6">With a team of experienced professionals, we deliver modern, scalable, and secure solutions tailored to your unique needs. From custom mobile apps to robust e-commerce platforms and cloud infrastructure, we ensure your digital success.</p>
           <p className="mb-6">We believe in innovation, transparency, and long-term partnerships. Our commitment to quality and customer satisfaction sets us apart in the industry.</p>
           <ul className="list-disc pl-6 mb-6">
@@ -30,6 +63,62 @@ export default function AboutPage() {
           <p>Ready to transform your business? <a href="#contact" className="text-blue-600 dark:text-cyan-400 underline font-semibold">Contact us</a> today!</p>
         </div>
       </div>
+
+      {/* FAQ Schema JSON-LD for SEO */}
+      <script type="application/ld+json" suppressHydrationWarning>
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What services does Veriton offer?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Veriton offers Android & web development, Shopify e-commerce solutions, cloud infrastructure, and dedicated customer service."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How can Veriton help my business?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We help businesses harness technology for growth by delivering modern, scalable, and secure solutions tailored to your needs."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I contact Veriton?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can contact us through our website's contact form or by emailing veritoninfo@gmail.com."
+              }
+            }
+          ]
+        })}
+      </script>
+
+      {/* Breadcrumb Schema JSON-LD for SEO */}
+      <script type="application/ld+json" suppressHydrationWarning>
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://atveriton.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "About",
+              "item": "https://atveriton.com/about"
+            }
+          ]
+        })}
+      </script>
     </main>
   );
 }

@@ -77,8 +77,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <span className="relative z-10">FAQ</span>
                 <span className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 rounded-lg transition-all border border-cyan-500/0 group-hover:border-cyan-500/30"></span>
               </Link>
-              <Link href="/contact" className="relative px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-lg hover:from-cyan-400 hover:to-purple-500 transition-all shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/70 hover:scale-105">
-                Contact Us
+              <Link href="/contact" className="relative px-4 py-2 text-slate-700 hover:text-cyan-600 transition-all group">
+                <span className="relative z-10">Contact Us</span>
+                <span className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 rounded-lg transition-all border border-cyan-500/0 group-hover:border-cyan-500/30"></span>
               </Link>
             </nav>
           </div>

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Auto-deploy script for Veriton Tech Site
+# Auto-deploy script for Veriton Site
 # Place this in /opt/deploy-scripts/deploy-veriton.sh
 
 set -e  # Exit on error

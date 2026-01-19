@@ -1,5 +1,13 @@
+
 import React from "react";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://www.atveriton.com/services',
+  },
+};
 
 const services = [
   { name: "Android Development", icon: "🤖", desc: "Custom Android apps for business and consumers." },

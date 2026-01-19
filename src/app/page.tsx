@@ -82,7 +82,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How Veriton Tech Works - Futuristic Process */}
+      {/* How Veriton Works - Futuristic Process */}
       <section className="py-20 sm:py-32 relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-transparent to-purple-900/20"></div>

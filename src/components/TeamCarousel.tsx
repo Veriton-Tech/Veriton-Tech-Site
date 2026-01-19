@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const team = [
-  { name: "Kamran Basheer", role: "Founder & CEO", bio: "Visionary leader driving Veriton Tech to deliver innovative solutions.", avatar: "🧑‍💼", image: "/Kamran Basheer.jpeg", linkedin: "https://www.linkedin.com/in/kamran-basheer/" },
+  { name: "Kamran Basheer", role: "Founder & CEO", bio: "Visionary leader driving Veriton to deliver innovative solutions.", avatar: "🧑‍💼", image: "/Kamran Basheer.jpeg", linkedin: "https://www.linkedin.com/in/kamran-basheer/" },
   { name: "Faizan Basheer", role: "Android Developer", bio: "Builds performant and user-friendly Android applications with modern practices.", avatar: "🤖", image: "/Faizan Basheer.jpeg", linkedin: "https://www.linkedin.com/in/faizan-basheer-433026322/" },
 ];
 
