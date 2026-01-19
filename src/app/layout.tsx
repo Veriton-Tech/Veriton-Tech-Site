@@ -15,17 +15,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Veriton Tech — Android, Shopify, Web & Cloud Services",
-  description: "Veriton Tech provides expert Android, Shopify, web development, and cloud services for businesses and entrepreneurs.",
+  title: "Veriton — Expert Android, Shopify, Web & Cloud Development Services",
+  description: "Veriton provides expert Android, Shopify, web development, and cloud services for businesses and entrepreneurs. Leading tech solutions and development company.",
   metadataBase: new URL('https://atveriton.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: "Veriton Tech — Android, Shopify, Web & Cloud Services",
-    description: "Veriton Tech provides expert Android, Shopify, web development, and cloud services for businesses and entrepreneurs.",
+    title: "Veriton — Expert Android, Shopify, Web & Cloud Development Services",
+    description: "Veriton provides expert Android, Shopify, web development, and cloud services for businesses and entrepreneurs. Leading tech solutions and development company.",
     url: 'https://atveriton.com',
-    siteName: 'Veriton Tech',
+    siteName: 'Veriton',
     locale: 'en_US',
     type: 'website',
   },
@@ -52,7 +52,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <div className="flex items-center gap-3">
               <MobileMenu />
               <span className="text-3xl font-extrabold tracking-tight holographic-text relative">
-                Veriton Tech
+                Veriton
                 <span className="absolute -inset-1 bg-cyan-400/30 blur-xl opacity-50"></span>
               </span>
             </div>
