@@ -65,14 +65,14 @@ export default function MobileMenu() {
       <button
         aria-label={open ? "Close menu" : "Open menu"}
         onClick={() => setOpen((s) => !s)}
-        className="p-2 rounded-md hover:bg-blue-100 dark:hover:bg-cyan-900/30"
+        className="p-2 rounded-lg glassmorphism border border-cyan-500/30 hover:border-cyan-500/60 transition-all"
       >
         {open ? (
-          <svg className="w-6 h-6 text-blue-700 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         ) : (
-          <svg className="w-6 h-6 text-blue-700 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         )}
@@ -80,27 +80,67 @@ export default function MobileMenu() {
 
       {/* Off-canvas menu */}
       <div className={`fixed inset-0 z-[9999] transform ${open ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 md:hidden`}>
-        {/* Opaque backdrop so the previous screen isn't visible when menu is open */}
-        <div className="absolute inset-0 bg-black" onClick={() => setOpen(false)}></div>
-        <aside className="absolute inset-0 bg-gradient-to-r from-blue-50 via-cyan-100 to-blue-200 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-blue-800/60 backdrop-blur-xl p-6 z-[10000]">
+        {/* Futuristic backdrop */}
+        <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" onClick={() => setOpen(false)}></div>
+        <aside className="absolute inset-0 glassmorphism p-6 z-[10000] border-r-2 border-cyan-500/30">
           <div className="max-w-[320px] h-full flex flex-col justify-start">
-            <div className="flex items-center justify-between mb-6">
-              <div className="text-2xl font-extrabold text-blue-700 dark:text-cyan-400">Veriton Tech</div>
-              <button onClick={() => setOpen(false)} aria-label="Close menu" className="p-2 rounded-md hover:bg-blue-100 dark:hover:bg-cyan-900/30">
-                <svg className="w-5 h-5 text-blue-700 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <div className="flex items-center justify-between mb-8">
+              <div className="text-2xl font-extrabold holographic-text">Veriton Tech</div>
+              <button 
+                onClick={() => setOpen(false)} 
+                aria-label="Close menu" 
+                className="p-2 rounded-lg glassmorphism border border-cyan-500/30 hover:border-cyan-500/60 transition-all"
+              >
+                <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
               </button>
             </div>
 
-            <div className="rounded-2xl p-4 bg-gradient-to-r from-blue-50 via-cyan-100 to-blue-200 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-blue-800/60">
-              <nav className="flex flex-col gap-4">
-                <Link href="/" onClick={() => setOpen(false)} className="py-2 px-3 rounded-md hover:bg-blue-50 dark:hover:bg-cyan-900/20">Home</Link>
-                <Link href="/services" onClick={() => setOpen(false)} className="py-2 px-3 rounded-md hover:bg-blue-50 dark:hover:bg-cyan-900/20">Services</Link>
-                <Link href="/about" onClick={() => setOpen(false)} className="py-2 px-3 rounded-md hover:bg-blue-50 dark:hover:bg-cyan-900/20">About</Link>
-                <Link href="/careers" onClick={() => setOpen(false)} className="py-2 px-3 rounded-md hover:bg-blue-50 dark:hover:bg-cyan-900/20">Careers</Link>
-                <Link href="/faq" onClick={() => setOpen(false)} className="py-2 px-3 rounded-md hover:bg-blue-50 dark:hover:bg-cyan-900/20">FAQ</Link>
-                <Link href="/contact" onClick={() => setOpen(false)} className="py-2 px-3 rounded-md hover:bg-blue-50 dark:hover:bg-cyan-900/20">Contact Us</Link>
+            <div className="rounded-2xl p-6 glassmorphism border border-cyan-500/20">
+              <nav className="flex flex-col gap-3">
+                <Link 
+                  href="/" 
+                  onClick={() => setOpen(false)} 
+                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                >
+                  → Home
+                </Link>
+                <Link 
+                  href="/services" 
+                  onClick={() => setOpen(false)} 
+                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                >
+                  → Services
+                </Link>
+                <Link 
+                  href="/about" 
+                  onClick={() => setOpen(false)} 
+                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                >
+                  → About
+                </Link>
+                <Link 
+                  href="/careers" 
+                  onClick={() => setOpen(false)} 
+                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                >
+                  → Careers
+                </Link>
+                <Link 
+                  href="/faq" 
+                  onClick={() => setOpen(false)} 
+                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                >
+                  → FAQ
+                </Link>
+                <Link 
+                  href="/contact" 
+                  onClick={() => setOpen(false)} 
+                  className="py-3 px-4 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold border border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/50 transition-all hover:scale-105"
+                >
+                  Contact Us
+                </Link>
               </nav>
             </div>
           </div>

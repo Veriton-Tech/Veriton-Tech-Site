@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0f;
+  --foreground: #e0e0ff;
+  --neon-cyan: #00ffff;
+  --neon-purple: #bf00ff;
+  --neon-pink: #ff00ff;
+  --neon-blue: #00aaff;
 }
 
 @theme inline {
@@ -12,28 +16,61 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: #0a0a0f;
+  color: var(--foreground);
+  font-family: 'Geist', -apple-system, sans-serif;
+  overflow-x: hidden;
+  position: relative;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Futuristic Grid Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Animated Gradient Orb Background */
+body::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 20% 50%, rgba(191, 0, 255, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(0, 170, 255, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.05) 0%, transparent 50%);
+  animation: orbitOrbs 30s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes orbitOrbs {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
 }
 
 /* Animations */
 @keyframes floatY {
   0% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  50% { transform: translateY(-10px); }
   100% { transform: translateY(0); }
 }
 
 @keyframes fadeUp {
-  0% { opacity: 0; transform: translateY(12px); }
+  0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
@@ -43,16 +80,115 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+@keyframes neonGlow {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5),
+                0 0 20px rgba(0, 255, 255, 0.3),
+                inset 0 0 20px rgba(0, 255, 255, 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
+                0 0 40px rgba(0, 255, 255, 0.5),
+                inset 0 0 30px rgba(0, 255, 255, 0.2);
+  }
+}
+
+@keyframes holographicShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes scanLine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
 .animate-float {
   animation: floatY 6s ease-in-out infinite;
 }
 
 .animate-fade-up {
-  animation: fadeUp .7s ease-out both;
+  animation: fadeUp 0.7s ease-out both;
 }
 
 .bg-animated-gradient {
-  background-image: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(20,184,166,0.10), rgba(59,130,246,0.12));
+  background-image: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(191, 0, 255, 0.1), rgba(0, 170, 255, 0.1));
   background-size: 200% 200%;
-  animation: gradientShift 16s ease infinite;
+  animation: gradientShift 8s ease infinite;
+}
+
+.neon-glow {
+  animation: neonGlow 2s ease-in-out infinite;
+}
+
+.holographic-text {
+  background: linear-gradient(
+    90deg,
+    #00ffff 0%,
+    #bf00ff 25%,
+    #00aaff 50%,
+    #ff00ff 75%,
+    #00ffff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: holographicShift 3s linear infinite;
+}
+
+.glassmorphism {
+  background: rgba(15, 15, 30, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.cyber-border {
+  position: relative;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.cyber-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #00ffff, #bf00ff, #00aaff, #ff00ff);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
+  animation: holographicShift 4s linear infinite;
+  background-size: 400%;
+}
+
+.cyber-border:hover::before {
+  opacity: 0.3;
+}
+
+/* Scan line effect */
+.scan-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.8), transparent);
+  animation: scanLine 4s linear infinite;
+  pointer-events: none;
 }

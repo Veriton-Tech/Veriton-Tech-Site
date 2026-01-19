@@ -4,57 +4,98 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/f
 
 export default function Footer() {
   return (
-  <footer className="w-full bg-neutral-50 dark:bg-neutral-900 py-10 border-t border-black/10 dark:border-white/10 mt-10">
-      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-8">
+    <footer className="w-full relative py-16 border-t border-cyan-500/20 mt-20 overflow-hidden">
+      {/* Futuristic background */}
+      <div className="absolute inset-0 bg-gradient-to-t from-cyan-900/20 via-transparent to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50"></div>
+      
+      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
         {/* Logo, Description & Social Media */}
         <div className="flex flex-col items-start md:items-start">
-          <span className="text-3xl font-extrabold tracking-tight text-indigo-600 dark:text-indigo-400 mb-2">Veriton Tech</span>
-          <p className="text-sm text-black/70 dark:text-white/70 mb-4 max-w-xs">Android, Shopify, Web & Cloud Solutions for modern businesses. Empowering growth with reliable technology and expert support.</p>
-          <div className="flex gap-4 mt-2">
-            <a href="#" aria-label="Facebook" className="p-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition"><FaFacebookF /></a>
-            <a href="#" aria-label="Twitter" className="p-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition"><FaTwitter /></a>
-            <a href="https://www.linkedin.com/company/veriton-tech" target="_blank" rel="noreferrer noopener" aria-label="Veriton Tech on LinkedIn" className="p-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition"><FaLinkedinIn /></a>
-            <a href="#" aria-label="Instagram" className="p-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition"><FaInstagram /></a>
+          <span className="text-3xl font-extrabold tracking-tight holographic-text mb-3">Veriton Tech</span>
+          <p className="text-sm text-cyan-100/70 mb-6 max-w-xs leading-relaxed">
+            Android, Shopify, Web & Cloud Solutions for modern businesses. Empowering growth with reliable technology and expert support.
+          </p>
+          <div className="flex gap-3 mt-2">
+            <a 
+              href="#" 
+              aria-label="Facebook" 
+              className="p-3 rounded-lg glassmorphism border border-cyan-500/30 text-cyan-300 hover:text-cyan-100 hover:border-cyan-500/60 transition-all hover:shadow-lg hover:shadow-cyan-500/30 group"
+            >
+              <FaFacebookF className="group-hover:scale-110 transition-transform" />
+            </a>
+            <a 
+              href="#" 
+              aria-label="Twitter" 
+              className="p-3 rounded-lg glassmorphism border border-cyan-500/30 text-cyan-300 hover:text-cyan-100 hover:border-cyan-500/60 transition-all hover:shadow-lg hover:shadow-cyan-500/30 group"
+            >
+              <FaTwitter className="group-hover:scale-110 transition-transform" />
+            </a>
+            <a 
+              href="https://www.linkedin.com/company/veriton-tech" 
+              target="_blank" 
+              rel="noreferrer noopener" 
+              aria-label="Veriton Tech on LinkedIn" 
+              className="p-3 rounded-lg glassmorphism border border-cyan-500/30 text-cyan-300 hover:text-cyan-100 hover:border-cyan-500/60 transition-all hover:shadow-lg hover:shadow-cyan-500/30 group"
+            >
+              <FaLinkedinIn className="group-hover:scale-110 transition-transform" />
+            </a>
+            <a 
+              href="#" 
+              aria-label="Instagram" 
+              className="p-3 rounded-lg glassmorphism border border-cyan-500/30 text-cyan-300 hover:text-cyan-100 hover:border-cyan-500/60 transition-all hover:shadow-lg hover:shadow-cyan-500/30 group"
+            >
+              <FaInstagram className="group-hover:scale-110 transition-transform" />
+            </a>
           </div>
         </div>
-  {/* Spacer for separation (reduced) */}
-  <div className="hidden md:block md:w-4"></div>
+        
+        {/* Spacer for separation */}
+        <div className="hidden md:block md:w-4"></div>
+        
         {/* Quick Links */}
         <div>
-          <h3 className="text-lg font-bold mb-4 text-neutral-900 dark:text-white">Quick Links</h3>
-          <ul className="space-y-2">
-            <li><Link href="/" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Home</Link></li>
-            <li><Link href="/about" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">About</Link></li>
-            <li><Link href="/services" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Services</Link></li>
-            <li><Link href="/careers" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Careers</Link></li>
-            <li><Link href="/contact" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contact Us</Link></li>
+          <h3 className="text-lg font-bold mb-5 bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Quick Links</h3>
+          <ul className="space-y-3">
+            <li><Link href="/" className="text-cyan-100/70 hover:text-cyan-100 transition-all hover:translate-x-1 inline-block">→ Home</Link></li>
+            <li><Link href="/about" className="text-cyan-100/70 hover:text-cyan-100 transition-all hover:translate-x-1 inline-block">→ About</Link></li>
+            <li><Link href="/services" className="text-cyan-100/70 hover:text-cyan-100 transition-all hover:translate-x-1 inline-block">→ Services</Link></li>
+            <li><Link href="/careers" className="text-cyan-100/70 hover:text-cyan-100 transition-all hover:translate-x-1 inline-block">→ Careers</Link></li>
+            <li><Link href="/contact" className="text-cyan-100/70 hover:text-cyan-100 transition-all hover:translate-x-1 inline-block">→ Contact Us</Link></li>
           </ul>
         </div>
-        {/* Our Services - Elegant & Interactive */}
+        
+        {/* Our Services */}
         <div>
-          <h3 className="text-lg font-bold mb-4 text-neutral-900 dark:text-white">Our Services</h3>
-                    <ul className="space-y-2">
-            <li><a href="#backend" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Android Developement</a></li>
-            <li><a href="#chat" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Web Developement</a></li>
-            <li><a href="#cost" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Shopify Developement</a></li>
-            <li><a href="#outsourcing" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Cloud Services</a></li>
+          <h3 className="text-lg font-bold mb-5 bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Our Services</h3>
+          <ul className="space-y-3">
+            <li><a href="#backend" className="text-cyan-100/70 hover:text-cyan-100 transition-all hover:translate-x-1 inline-block">→ Android Development</a></li>
+            <li><a href="#chat" className="text-cyan-100/70 hover:text-cyan-100 transition-all hover:translate-x-1 inline-block">→ Web Development</a></li>
+            <li><a href="#cost" className="text-cyan-100/70 hover:text-cyan-100 transition-all hover:translate-x-1 inline-block">→ Shopify Development</a></li>
+            <li><a href="#outsourcing" className="text-cyan-100/70 hover:text-cyan-100 transition-all hover:translate-x-1 inline-block">→ Cloud Services</a></li>
           </ul>
-
         </div>
+        
         {/* Contact Info */}
         <div>
-          <h3 className="text-lg font-bold mb-4 text-neutral-900 dark:text-white">Contact Info</h3>
-          <ul className="space-y-2">
-            <li><a href="mailto:veritoninfo@gmail.com" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">veritoninfo@gmail.com</a></li>
+          <h3 className="text-lg font-bold mb-5 bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Contact Info</h3>
+          <ul className="space-y-3">
+            <li>
+              <a 
+                href="mailto:veritoninfo@gmail.com" 
+                className="text-cyan-100/70 hover:text-cyan-100 transition-all inline-flex items-center gap-2 hover:gap-3"
+              >
+                <span className="text-cyan-400">✉</span> veritoninfo@gmail.com
+              </a>
+            </li>
           </ul>
         </div>
-        {/* Copyright & Credits */}
-        <div className="flex flex-col justify-between h-full">
-          <div></div>
-        </div>
       </div>
-      <div className="text-center text-sm text-black/70 dark:text-white/70 mt-8">
-        Copyright © Veriton 2025. All rights reserved
+      
+      <div className="text-center text-sm text-cyan-100/60 mt-12 relative z-10">
+        <div className="inline-block px-6 py-2 rounded-full glassmorphism border border-cyan-500/20">
+          Copyright © Veriton 2025. All rights reserved
+        </div>
       </div>
     </footer>
   );

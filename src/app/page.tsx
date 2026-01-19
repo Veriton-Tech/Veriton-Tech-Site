@@ -5,9 +5,12 @@ import Link from "next/link";
 function SectionHeading({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
     <div className="text-center max-w-[800px] mx-auto">
-      <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">{title}</h2>
+      <h2 className="text-4xl sm:text-5xl font-bold tracking-tight holographic-text mb-4 relative">
+        {title}
+        <span className="absolute inset-0 blur-2xl bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 opacity-20"></span>
+      </h2>
       {subtitle ? (
-        <p className="text-[15px] sm:text-base text-black/60 dark:text-white/60 mt-2">{subtitle}</p>
+        <p className="text-base sm:text-lg text-cyan-50/90 mt-3 font-light">{subtitle}</p>
       ) : null}
     </div>
   );
@@ -19,14 +22,15 @@ export default function Home() {
       {/* Banner Section - Always show before Our Services */}
       <BannerCarousel />
 
-      {/* Our Services - Enhanced Theme */}
-      <section className="py-16 sm:py-24 bg-neutral-50 dark:bg-neutral-900">
-        <div className="max-w-[1100px] mx-auto px-6 sm:px-8">
+      {/* Our Services - Futuristic Cyber Theme */}
+      <section className="py-20 sm:py-32 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent"></div>
+        <div className="max-w-[1100px] mx-auto px-6 sm:px-8 relative z-10">
           <SectionHeading
             title="Our Services"
-            subtitle="Explore our expert solutions for your business growth"
+            subtitle="Explore cutting-edge solutions powered by next-gen technology"
           />
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { name: "Android Development", icon: "🤖", desc: "Custom Android apps for business and consumers." },
               { name: "Web Development", icon: "🌐", desc: "Modern, responsive websites and web apps." },
@@ -37,17 +41,27 @@ export default function Home() {
               return (
                 <div
                   key={s.name}
-                  className="group rounded-3xl border-0 bg-white dark:bg-cyan-900/40 p-10 shadow-xl hover:shadow-2xl transition-all text-center hover:scale-105 relative overflow-hidden ring-2 ring-blue-100 dark:ring-cyan-800 hover:ring-cyan-400 dark:hover:ring-blue-400"
-                  style={{ position: 'relative' }}
+                  className="group relative rounded-2xl glassmorphism p-8 hover:scale-105 transition-all duration-500 cyber-border scan-line overflow-hidden"
                 >
-                  <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 rounded-t-3xl opacity-20"></div>
-                  <div className="flex flex-col items-center justify-center">
-                    <div className="text-5xl mb-3 animate-bounce group-hover:animate-none text-blue-500 dark:text-cyan-400 drop-shadow-lg">{s.icon}</div>
-                    <div className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-cyan-500 to-blue-400 text-2xl mb-2 group-hover:scale-110 transition-transform">{s.name}</div>
-                    <div className="text-base text-black/70 dark:text-white/70 mb-4 max-w-[180px] mx-auto">{s.desc}</div>
-                    <Link href={`/services/${slug}`} className="inline-block mt-2 px-5 py-2 rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-sm font-bold shadow hover:from-blue-700 hover:to-cyan-700 transition">Learn More</Link>
+                  {/* Glow effect on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-cyan-500/10 group-hover:via-purple-500/10 group-hover:to-blue-500/10 transition-all duration-500 rounded-2xl"></div>
+                  
+                  <div className="relative z-10 flex flex-col items-center text-center">
+                    <div className="text-6xl mb-4 filter drop-shadow-[0_0_15px_rgba(0,255,255,0.6)] animate-float">{s.icon}</div>
+                    <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-200 to-blue-300 bg-clip-text text-transparent mb-3">{s.name}</h3>
+                    <p className="text-sm text-cyan-50/80 mb-6 leading-relaxed">{s.desc}</p>
+                    <Link 
+                      href={`/services/${slug}`} 
+                      className="relative px-6 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-sm font-semibold overflow-hidden group/btn transition-all hover:shadow-lg hover:shadow-cyan-500/50"
+                    >
+                      <span className="relative z-10">Learn More</span>
+                      <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 opacity-0 group-hover/btn:opacity-100 transition-opacity"></span>
+                    </Link>
                   </div>
-                  <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 rounded-b-3xl opacity-10"></div>
+                  
+                  {/* Corner accents */}
+                  <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-cyan-500/50"></div>
+                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-purple-500/50"></div>
                 </div>
               );
             })}
@@ -55,11 +69,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How Veriton Tech Works - Enhanced Theme */}
-      <section className="py-16 sm:py-24 bg-gradient-to-br from-cyan-50 via-blue-50 to-cyan-100 dark:from-cyan-900/20 dark:via-blue-900/10 dark:to-cyan-800/20 border-y border-blue-100 dark:border-cyan-800">
-        <div className="max-w-[1100px] mx-auto px-6 sm:px-8">
+      {/* How Veriton Tech Works - Futuristic Process */}
+      <section className="py-20 sm:py-32 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-transparent to-purple-900/20"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/5 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-[1100px] mx-auto px-6 sm:px-8 relative z-10">
           <SectionHeading title="How Veriton Tech works" />
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 step: "1",
@@ -79,24 +97,47 @@ export default function Home() {
                 desc: "Schedule the job. Pay directly to the provider on completion.",
                 icon: "✅"
               },
-            ].map((s) => (
-              <div key={s.step} className="rounded-3xl bg-white dark:bg-neutral-900/50 shadow-sm p-10 flex flex-col items-center text-center border border-black/5 dark:border-white/10 hover:shadow-md transition-all hover:scale-[1.02]">
-                <div className="text-4xl mb-3 drop-shadow-lg animate-bounce group-hover:animate-none">{s.icon}</div>
-                <div className="size-8 rounded-full bg-indigo-600 text-white flex items-center justify-center text-sm font-bold mb-2 shadow">{s.step}</div>
-                <h3 className="mt-2 font-extrabold text-lg text-neutral-900 dark:text-white">{s.title}</h3>
-                <p className="text-base text-black/70 dark:text-white/70 mt-2">{s.desc}</p>
+            ].map((s, idx) => (
+              <div 
+                key={s.step} 
+                className="relative rounded-2xl glassmorphism p-8 flex flex-col items-center text-center group hover:scale-105 transition-all duration-500 scan-line"
+                style={{ animationDelay: `${idx * 0.2}s` }}
+              >
+                {/* Step connector line */}
+                {idx < 2 && (
+                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-cyan-500 to-transparent"></div>
+                )}
+                
+                {/* Glowing step number */}
+                <div className="relative mb-6">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center text-2xl font-bold text-white shadow-lg shadow-cyan-500/50 relative z-10">
+                    {s.step}
+                  </div>
+                  <div className="absolute inset-0 bg-cyan-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
+                </div>
+                
+                <div className="text-5xl mb-4 filter drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]">{s.icon}</div>
+                <h3 className="text-xl font-bold text-cyan-50 mb-3">{s.title}</h3>
+                <p className="text-sm text-cyan-50/80 leading-relaxed">{s.desc}</p>
+                
+                {/* Border glow on hover */}
+                <div className="absolute inset-0 rounded-2xl border border-cyan-500/0 group-hover:border-cyan-500/50 transition-all duration-500"></div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Team - Interactive and Elegant */}
-  <section className="py-16 sm:py-24 bg-neutral-50 dark:bg-neutral-900">
-        <div className="max-w-[1100px] mx-auto px-6 sm:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 dark:text-white mb-2">Our Team</h2>
-            <p className="text-base text-black/60 dark:text-white/60">Meet the experts building products and services at Veriton Tech.</p>
+      {/* Our Team - Interactive and Futuristic */}
+      <section className="py-20 sm:py-32 relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-purple-900/10 via-transparent to-cyan-900/10"></div>
+        <div className="max-w-[1100px] mx-auto px-6 sm:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold holographic-text mb-4 relative">
+              Our Team
+              <span className="absolute inset-0 blur-2xl bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 opacity-20"></span>
+            </h2>
+            <p className="text-base sm:text-lg text-cyan-50/90 font-light">Meet the visionaries building the future at Veriton Tech</p>
           </div>
 
           <div>
