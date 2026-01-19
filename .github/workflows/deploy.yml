@@ -19,7 +19,7 @@ jobs:
           script: |
             cd /root/atveriton/Veriton-Tech-Site
             git pull origin main
-            export CADDY_NETWORK_NAME=hojaega_net
+            export CADDY_NETWORK_NAME=hojaega-backend_hojaega_net
             # Stop and remove the old container
             docker compose -f docker-compose.frontend.yml down
             # Build without cache to ensure fresh build

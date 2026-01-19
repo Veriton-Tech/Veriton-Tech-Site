@@ -16,4 +16,4 @@ networks:
   # Example to discover it on server: `docker network ls | grep hojaega`.
   caddy_net:
     external: true
-    name: ${CADDY_NETWORK_NAME:-hojaega_net}
+    name: ${CADDY_NETWORK_NAME:-hojaega-backend_hojaega_net}
