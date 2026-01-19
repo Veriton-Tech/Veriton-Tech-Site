@@ -89,7 +89,7 @@ export default function Home() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/5 rounded-full blur-3xl"></div>
         
         <div className="max-w-[1100px] mx-auto px-6 sm:px-8 relative z-10">
-          <SectionHeading title="How Veriton Tech works" />
+          <SectionHeading title="How Veriton works" />
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
@@ -150,7 +150,7 @@ export default function Home() {
               Our Team
               <span className="absolute inset-0 blur-2xl bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 opacity-20"></span>
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 font-light">Meet the visionaries building the future at Veriton Tech</p>
+            <p className="text-base sm:text-lg text-slate-600 font-light">Meet the visionaries building the future at Veriton</p>
           </div>
 
           <div>
