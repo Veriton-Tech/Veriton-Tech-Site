@@ -1,6 +1,7 @@
 import BannerCarousel from "./BannerCarousel";
 import TeamCarousel from "../components/TeamCarousel";
 import Link from "next/link";
+import Image from "next/image";
 
 function SectionHeading({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
@@ -10,7 +11,7 @@ function SectionHeading({ title, subtitle }: { title: string; subtitle?: string 
         <span className="absolute inset-0 blur-2xl bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 opacity-20"></span>
       </h2>
       {subtitle ? (
-        <p className="text-base sm:text-lg text-cyan-50/90 mt-3 font-light">{subtitle}</p>
+        <p className="text-base sm:text-lg text-slate-600 mt-3 font-light">{subtitle}</p>
       ) : null}
     </div>
   );
@@ -32,24 +33,36 @@ export default function Home() {
           />
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { name: "Android Development", icon: "🤖", desc: "Custom Android apps for business and consumers." },
-              { name: "Web Development", icon: "🌐", desc: "Modern, responsive websites and web apps." },
-              { name: "Shopify Development", icon: "🛒", desc: "E-commerce solutions built on Shopify." },
-              { name: "Cloud Services", icon: "☁️", desc: "Scalable cloud infrastructure and support." },
+              { name: "Android Development", icon: "🤖", desc: "Custom Android apps for business and consumers.", image: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=400&h=300&fit=crop" },
+              { name: "Web Development", icon: "🌐", desc: "Modern, responsive websites and web apps.", image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop" },
+              { name: "Shopify Development", icon: "🛒", desc: "E-commerce solutions built on Shopify.", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop" },
+              { name: "Cloud Services", icon: "☁️", desc: "Scalable cloud infrastructure and support.", image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=300&fit=crop" },
             ].map((s) => {
               const slug = s.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
               return (
                 <div
                   key={s.name}
-                  className="group relative rounded-2xl glassmorphism p-8 hover:scale-105 transition-all duration-500 cyber-border scan-line overflow-hidden"
+                  className="group relative rounded-2xl glassmorphism hover:scale-105 transition-all duration-500 cyber-border scan-line overflow-hidden"
                 >
+                  {/* Service Image */}
+                  <div className="relative h-48 w-full overflow-hidden">
+                    <Image 
+                      src={s.image} 
+                      alt={s.name} 
+                      fill 
+                      className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-500" 
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    <div className="absolute top-4 right-4 text-4xl filter drop-shadow-[0_0_15px_rgba(0,255,255,0.6)] animate-float">{s.icon}</div>
+                  </div>
+                  
                   {/* Glow effect on hover */}
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-cyan-500/10 group-hover:via-purple-500/10 group-hover:to-blue-500/10 transition-all duration-500 rounded-2xl"></div>
                   
-                  <div className="relative z-10 flex flex-col items-center text-center">
-                    <div className="text-6xl mb-4 filter drop-shadow-[0_0_15px_rgba(0,255,255,0.6)] animate-float">{s.icon}</div>
-                    <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-200 to-blue-300 bg-clip-text text-transparent mb-3">{s.name}</h3>
-                    <p className="text-sm text-cyan-50/80 mb-6 leading-relaxed">{s.desc}</p>
+                  <div className="relative z-10 flex flex-col items-center text-center p-8">
+                    <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent mb-3">{s.name}</h3>
+                    <p className="text-sm text-slate-600 mb-6 leading-relaxed">{s.desc}</p>
                     <Link 
                       href={`/services/${slug}`} 
                       className="relative px-6 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-sm font-semibold overflow-hidden group/btn transition-all hover:shadow-lg hover:shadow-cyan-500/50"
@@ -117,8 +130,8 @@ export default function Home() {
                 </div>
                 
                 <div className="text-5xl mb-4 filter drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]">{s.icon}</div>
-                <h3 className="text-xl font-bold text-cyan-50 mb-3">{s.title}</h3>
-                <p className="text-sm text-cyan-50/80 leading-relaxed">{s.desc}</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-3">{s.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{s.desc}</p>
                 
                 {/* Border glow on hover */}
                 <div className="absolute inset-0 rounded-2xl border border-cyan-500/0 group-hover:border-cyan-500/50 transition-all duration-500"></div>
@@ -132,12 +145,12 @@ export default function Home() {
       <section className="py-20 sm:py-32 relative">
         <div className="absolute inset-0 bg-gradient-to-t from-purple-900/10 via-transparent to-cyan-900/10"></div>
         <div className="max-w-[1100px] mx-auto px-6 sm:px-8 relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-1">
             <h2 className="text-4xl sm:text-5xl font-bold holographic-text mb-4 relative">
               Our Team
               <span className="absolute inset-0 blur-2xl bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 opacity-20"></span>
             </h2>
-            <p className="text-base sm:text-lg text-cyan-50/90 font-light">Meet the visionaries building the future at Veriton Tech</p>
+            <p className="text-base sm:text-lg text-slate-600 font-light">Meet the visionaries building the future at Veriton Tech</p>
           </div>
 
           <div>

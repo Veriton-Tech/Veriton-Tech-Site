@@ -1,0 +1,7 @@
+# robots.txt for atveriton.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://atveriton.com/sitemap.xml
