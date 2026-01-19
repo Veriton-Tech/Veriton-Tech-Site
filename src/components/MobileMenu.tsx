@@ -85,7 +85,7 @@ export default function MobileMenu() {
         <aside className="absolute inset-0 glassmorphism p-6 z-[10000] border-r-2 border-cyan-500/30">
           <div className="max-w-[320px] h-full flex flex-col justify-start">
             <div className="flex items-center justify-between mb-8">
-              <div className="text-2xl font-extrabold holographic-text">Veriton Tech</div>
+              <div className="text-2xl font-extrabold holographic-text">Veriton</div>
               <button 
                 onClick={() => setOpen(false)} 
                 aria-label="Close menu" 
