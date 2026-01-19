@@ -12,9 +12,9 @@ export default function Footer() {
       <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
         {/* Logo, Description & Social Media */}
         <div className="flex flex-col items-start md:items-start">
-          <span className="text-3xl font-extrabold tracking-tight holographic-text mb-3">Veriton Tech</span>
+          <span className="text-3xl font-extrabold tracking-tight holographic-text mb-3">Veriton</span>
           <p className="text-sm text-slate-600 mb-6 max-w-xs leading-relaxed">
-            Android, Shopify, Web & Cloud Solutions for modern businesses. Empowering growth with reliable technology and expert support.
+            Veriton delivers Android, Shopify, web & cloud solutions for modern businesses. Empowering growth with reliable technology and expert support.
           </p>
           <div className="flex gap-3 mt-2">
             <a 
@@ -35,7 +35,7 @@ export default function Footer() {
               href="https://www.linkedin.com/company/veriton-tech" 
               target="_blank" 
               rel="noreferrer noopener" 
-              aria-label="Veriton Tech on LinkedIn" 
+              aria-label="Veriton on LinkedIn" 
               className="p-3 rounded-lg glassmorphism border border-cyan-500/30 text-cyan-300 hover:text-cyan-100 hover:border-cyan-500/60 transition-all hover:shadow-lg hover:shadow-cyan-500/30 group"
             >
               <FaLinkedinIn className="group-hover:scale-110 transition-transform" />
