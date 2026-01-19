@@ -21,12 +21,12 @@ const banners = [
             <span className="relative z-10">Contact Us</span>
             <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </Link>
-          <a 
-            href="#readmore" 
+          <Link 
+            href="/services" 
             className="relative px-10 py-4 rounded-full glassmorphism text-slate-700 font-semibold text-lg border border-cyan-400/40 hover:border-cyan-400/70 transition-all hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/30"
           >
-            Read More
-          </a>
+            Learn More
+          </Link>
         </div>
       </>
     ),
@@ -49,12 +49,12 @@ const banners = [
             <span className="relative z-10">Contact Us</span>
             <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </Link>
-          <a 
-            href="#readmore" 
+          <Link 
+            href="/services" 
             className="relative px-10 py-4 rounded-full glassmorphism text-slate-700 font-semibold text-lg border border-cyan-400/40 hover:border-cyan-400/70 transition-all hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/30"
           >
-            Read More
-          </a>
+            Learn More
+          </Link>
         </div>
       </>
     ),
@@ -77,12 +77,12 @@ const banners = [
             <span className="relative z-10">Contact Us</span>
             <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </Link>
-          <a 
-            href="#readmore" 
+          <Link 
+            href="/services" 
             className="relative px-10 py-4 rounded-full glassmorphism text-slate-700 font-semibold text-lg border border-cyan-400/40 hover:border-cyan-400/70 transition-all hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/30"
           >
-            Read More
-          </a>
+            Learn More
+          </Link>
         </div>
       </>
     ),
