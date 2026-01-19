@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   keywords: [
     "About Veriton",
-    "Veriton Technologies",
+    "Veriton",
     "Tech Company",
     "Android Development",
     "Shopify Development",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: 'https://atveriton.com/public/og-about.jpg',
         width: 1200,
         height: 630,
-        alt: 'About Veriton Technologies',
+        alt: 'About Veriton',
       },
     ],
   },
