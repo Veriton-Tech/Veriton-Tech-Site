@@ -3,11 +3,11 @@ import React, { useState } from "react";
 
 const faqs = [
   {
-    question: "What services does Veriton Tech offer?",
+    question: "What services does Veriton offer?",
     answer: "We provide Android development, web development, Shopify e-commerce solutions, and cloud services tailored for businesses and entrepreneurs.",
   },
   {
-    question: "How can I contact Veriton Tech?",
+    question: "How can I contact Veriton?",
     answer: "You can reach us via the Contact Us page or email us at veritoninfo@gmail.com.",
   },
   {
