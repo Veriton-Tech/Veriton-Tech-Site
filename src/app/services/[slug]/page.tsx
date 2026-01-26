@@ -1,9 +1,13 @@
 
 import React from "react";
-import Link from "next/link";
 import ServiceAccordion from "@/components/ServiceAccordion";
 import EstimateWidget from "@/components/EstimateWidget";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+// Pre-render the known service pages and disallow unknown slugs from being generated at runtime.
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export const metadata: Metadata = {
   alternates: {
@@ -85,18 +89,9 @@ export function generateStaticParams() {
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const s = SERVICES[slug];
-  if (!s) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="max-w-md text-center">
-          <h2 className="text-2xl font-bold mb-4">Service not found</h2>
-          <p className="mb-6">We couldn&apos;t find that service. Please choose from our services page.</p>
-          <Link href="/" className="inline-block px-4 py-2 bg-indigo-600 text-white rounded">Go home</Link>
-        </div>
-      </div>
-    );
-  }
+  const key = decodeURIComponent(slug);
+  const s = SERVICES[key];
+  if (!s) return notFound();
 
   return (
     <main className="min-h-screen py-16 bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 dark:from-neutral-900">
