@@ -13,7 +13,7 @@ export default function ServiceAccordion({ items }: { items: { q: string; a: str
             className="w-full text-left px-4 py-3 bg-white dark:bg-neutral-900 flex items-center justify-between"
             aria-expanded={openIndex === i}
           >
-            <span className="font-semibold">{it.q}</span>
+            <span className="font-semibold text-slate-900 dark:text-white">{it.q}</span>
             <span className="text-neutral-500">{openIndex === i ? "\u2212" : "+"}</span>
           </button>
           {openIndex === i ? (

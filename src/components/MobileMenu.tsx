@@ -82,7 +82,7 @@ export default function MobileMenu() {
       <div className={`fixed inset-0 z-[9999] transform ${open ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 md:hidden`}>
         {/* Futuristic backdrop */}
         <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" onClick={() => setOpen(false)}></div>
-        <aside className="absolute inset-0 glassmorphism p-6 z-[10000] border-r-2 border-cyan-500/30">
+        <aside className="absolute inset-0 p-6 z-[10000] border-r-2 border-cyan-500/30" style={{ background: 'linear-gradient(120deg, #0a0a0a 0%, #0f172a 60%, #1e293b 100%)' }}>
           <div className="max-w-[320px] h-full flex flex-col justify-start">
             <div className="flex items-center justify-between mb-8">
               <div className="text-2xl font-extrabold holographic-text">Veriton</div>
@@ -97,47 +97,47 @@ export default function MobileMenu() {
               </button>
             </div>
 
-            <div className="rounded-2xl p-6 glassmorphism border border-cyan-500/20">
+            <div className="rounded-2xl p-6 border border-cyan-500/20" style={{ background: 'rgba(30,40,60,0.92)' }}>
               <nav className="flex flex-col gap-3">
                 <Link 
                   href="/" 
                   onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-slate-700 hover:text-cyan-600 glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
                 >
                   → Home
                 </Link>
                 <Link 
                   href="/services" 
                   onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-slate-700 hover:text-cyan-600 glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
                 >
                   → Services
                 </Link>
                 <Link 
                   href="/about" 
                   onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-slate-700 hover:text-cyan-600 glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
                 >
                   → About
                 </Link>
                 <Link 
                   href="/careers" 
                   onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-slate-700 hover:text-cyan-600 glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
                 >
                   → Careers
                 </Link>
                 <Link 
                   href="/faq" 
                   onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-slate-700 hover:text-cyan-600 glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
+                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
                 >
                   → FAQ
                 </Link>
                 <Link 
                   href="/contact" 
                   onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-slate-700 hover:text-cyan-600 glassmorphism border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2 font-semibold"
+                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2 font-semibold"
                 >
                   Contact Us
                 </Link>

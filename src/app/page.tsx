@@ -24,8 +24,10 @@ export default function Home() {
       <BannerCarousel />
 
       {/* Our Services - Futuristic Cyber Theme */}
-      <section className="py-20 sm:py-32 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent"></div>
+      <section className="py-20 sm:py-32 relative overflow-hidden bg-gradient-to-br from-blue-100 via-cyan-100 to-pink-100 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-pink-900/40">
+        {/* Animated gradient accent (matching all themed pages) */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none z-0 opacity-70 blur-2xl animate-gradient-x"
+          style={{background: "linear-gradient(90deg, #a7f3d0 0%, #bae6fd 40%, #fbcfe8 100%)"}} />
         <div className="max-w-[1100px] mx-auto px-6 sm:px-8 relative z-10">
           <SectionHeading
             title="Our Services"
@@ -85,10 +87,10 @@ export default function Home() {
       </section>
 
       {/* How Veriton Works - Futuristic Process */}
-      <section className="py-20 sm:py-32 relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-transparent to-purple-900/20"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/5 rounded-full blur-3xl"></div>
+      <section className="py-20 sm:py-32 relative overflow-hidden bg-gradient-to-br from-blue-100 via-cyan-100 to-pink-100 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-pink-900/40">
+        {/* Animated gradient accent (matching all themed pages) */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none z-0 opacity-70 blur-2xl animate-gradient-x"
+          style={{background: "linear-gradient(90deg, #a7f3d0 0%, #bae6fd 40%, #fbcfe8 100%)"}} />
         
         <div className="max-w-[1100px] mx-auto px-6 sm:px-8 relative z-10">
           <SectionHeading title="How Veriton works" />
@@ -144,8 +146,20 @@ export default function Home() {
       </section>
 
       {/* Our Team - Interactive and Futuristic */}
-      <section className="py-20 sm:py-32 relative">
-        <div className="absolute inset-0 bg-gradient-to-t from-purple-900/10 via-transparent to-cyan-900/10"></div>
+      <section className="py-20 sm:py-32 relative overflow-hidden bg-gradient-to-br from-blue-100 via-cyan-100 to-pink-100 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-pink-900/40">
+        {/* Animated gradient accent (matching all themed pages) */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none z-0 opacity-70 blur-2xl animate-gradient-x"
+          style={{background: "linear-gradient(90deg, #a7f3d0 0%, #bae6fd 40%, #fbcfe8 100%)"}} />
+              {/* Keyframes for animated accent (matching all themed pages) */}
+              <style>{`
+                @keyframes gradient-x {
+                  0%, 100% { transform: translateX(-50%) scale(1); }
+                  50% { transform: translateX(-55%) scale(1.04); }
+                }
+                .animate-gradient-x {
+                  animation: gradient-x 8s ease-in-out infinite alternate;
+                }
+              `}</style>
         <div className="max-w-[1100px] mx-auto px-6 sm:px-8 relative z-10">
           <div className="text-center mb-1">
             <h2 className="text-4xl sm:text-5xl font-bold holographic-text mb-4 relative">

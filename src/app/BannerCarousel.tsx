@@ -101,13 +101,20 @@ export default function BannerCarousel() {
   }, []);
 
   return (
-    <section className="w-full relative py-24 sm:py-32 overflow-hidden">
-      {/* Futuristic animated background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/30 via-purple-900/20 to-blue-900/30"></div>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      </div>
+    <section className="w-full relative py-6 sm:py-10 overflow-hidden bg-gradient-to-br from-blue-100 via-cyan-100 to-pink-100 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-pink-900/40">
+      {/* Animated gradient accent (matching all themed pages) */}
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none z-0 opacity-70 blur-2xl animate-gradient-x"
+        style={{background: "linear-gradient(90deg, #a7f3d0 0%, #bae6fd 40%, #fbcfe8 100%)"}} />
+            {/* Keyframes for animated accent (matching all themed pages) */}
+            <style>{`
+              @keyframes gradient-x {
+                0%, 100% { transform: translateX(-50%) scale(1); }
+                50% { transform: translateX(-55%) scale(1.04); }
+              }
+              .animate-gradient-x {
+                animation: gradient-x 8s ease-in-out infinite alternate;
+              }
+            `}</style>
       
       <div className="relative z-10 max-w-[1000px] mx-auto px-6">
         <div className="relative overflow-hidden rounded-3xl glassmorphism p-12 sm:p-16 scan-line">
