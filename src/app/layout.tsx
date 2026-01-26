@@ -46,9 +46,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* Futuristic Header with Glassmorphism */}
-        <header className="sticky top-0 z-50 border-b border-cyan-500/20" style={{ background: 'linear-gradient(120deg, #0a0a0a 0%, #0f172a 60%, #1e293b 100%)' }}>
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(120deg, #0a0a0a 0%, #0f172a 60%, #1e293b 100%)' }}></div>
-          <div className="w-full px-4 sm:px-6 h-20 flex items-center justify-between relative z-10">
+        <header className="sticky top-0 z-50 border-b border-cyan-500/20 w-full bg-gradient-to-r from-blue-900 via-cyan-900 to-pink-900">
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-900 via-cyan-900 to-pink-900"></div>
+          <div className="w-full px-2 xs:px-3 sm:px-6 h-20 flex items-center justify-between relative z-10 max-w-none">
             <div className="flex items-center gap-3">
               <MobileMenu />
               <span className="text-3xl font-extrabold tracking-tight holographic-text relative">

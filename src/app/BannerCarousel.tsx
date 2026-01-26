@@ -101,7 +101,7 @@ export default function BannerCarousel() {
   }, []);
 
   return (
-    <section className="w-full relative py-6 sm:py-10 overflow-hidden bg-gradient-to-br from-blue-100 via-cyan-100 to-pink-100 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-pink-900/40">
+    <section className="w-full relative pt-0 pb-6 sm:pb-10 overflow-hidden bg-gradient-to-br from-blue-100 via-cyan-100 to-pink-100 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-pink-900/40 px-0">
       {/* Animated gradient accent (matching all themed pages) */}
       <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none z-0 opacity-70 blur-2xl animate-gradient-x"
         style={{background: "linear-gradient(90deg, #a7f3d0 0%, #bae6fd 40%, #fbcfe8 100%)"}} />
@@ -116,8 +116,8 @@ export default function BannerCarousel() {
               }
             `}</style>
       
-      <div className="relative z-10 max-w-[1000px] mx-auto px-6">
-        <div className="relative overflow-hidden rounded-3xl glassmorphism p-12 sm:p-16 scan-line">
+      <div className="relative z-10 w-full px-0">
+        <div className="relative overflow-hidden rounded-none glassmorphism p-3 xs:p-4 sm:p-8 md:p-12 lg:p-16 scan-line w-full">
           {/* Corner tech accents */}
           <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-cyan-500/50"></div>
           <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-purple-500/50"></div>
@@ -126,16 +126,25 @@ export default function BannerCarousel() {
           
           <div className="w-full">
             <div className="text-center">
-              {banners[active].interactive}
+              <span className="block text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight sm:leading-tight md:leading-tight">
+                {/* Responsive font size for banner headline */}
+                {banners[active].interactive.props.children[0]}
+              </span>
+              <div className="text-base xs:text-lg sm:text-xl text-slate-600 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
+                {banners[active].interactive.props.children[2]}
+              </div>
+              <div className="flex flex-col xs:flex-row justify-center gap-4 xs:gap-6">
+                {banners[active].interactive.props.children[4]}
+              </div>
             </div>
-            <div className="flex justify-center mt-12 gap-3">
+            <div className="flex justify-center mt-8 sm:mt-12 gap-2 sm:gap-3">
               {banners.map((_, idx) => (
                 <button
                   key={idx}
                   type="button"
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                     active === idx 
-                      ? "bg-cyan-500 shadow-lg shadow-cyan-500/50 w-8" 
+                      ? "bg-cyan-500 shadow-lg shadow-cyan-500/50 w-6 sm:w-8" 
                       : "bg-cyan-500/30 hover:bg-cyan-500/50"
                   }`}
                   aria-label={`Show banner ${idx + 1}`}

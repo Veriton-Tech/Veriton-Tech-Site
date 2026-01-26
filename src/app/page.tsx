@@ -24,16 +24,16 @@ export default function Home() {
       <BannerCarousel />
 
       {/* Our Services - Futuristic Cyber Theme */}
-      <section className="py-20 sm:py-32 relative overflow-hidden bg-gradient-to-br from-blue-100 via-cyan-100 to-pink-100 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-pink-900/40">
+      <section className="pt-0 pb-12 sm:pb-20 relative overflow-hidden bg-gradient-to-br from-blue-100 via-cyan-100 to-pink-100 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-pink-900/40">
         {/* Animated gradient accent (matching all themed pages) */}
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none z-0 opacity-70 blur-2xl animate-gradient-x"
           style={{background: "linear-gradient(90deg, #a7f3d0 0%, #bae6fd 40%, #fbcfe8 100%)"}} />
-        <div className="max-w-[1100px] mx-auto px-6 sm:px-8 relative z-10">
+        <div className="max-w-[1100px] mx-auto px-3 sm:px-6 md:px-8 relative z-10">
           <SectionHeading
             title="Our Services"
             subtitle="Explore cutting-edge solutions powered by next-gen technology"
           />
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="mt-10 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {[
               { name: "Android Development", icon: "🤖", desc: "Custom Android apps for business and consumers.", image: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=400&h=300&fit=crop" },
               { name: "Web Development", icon: "🌐", desc: "Modern, responsive websites and web apps.", image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop" },
@@ -44,10 +44,10 @@ export default function Home() {
               return (
                 <div
                   key={s.name}
-                  className="group relative rounded-2xl glassmorphism hover:scale-105 transition-all duration-500 cyber-border scan-line overflow-hidden"
+                  className="group relative rounded-2xl glassmorphism hover:scale-105 transition-all duration-500 cyber-border scan-line overflow-hidden min-h-[340px] flex flex-col"
                 >
                   {/* Service Image */}
-                  <div className="relative h-48 w-full overflow-hidden">
+                  <div className="relative h-40 xs:h-44 sm:h-48 w-full overflow-hidden">
                     <Image 
                       src={s.image} 
                       alt={s.name} 
@@ -63,7 +63,7 @@ export default function Home() {
                   {/* Glow effect on hover */}
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-cyan-500/10 group-hover:via-purple-500/10 group-hover:to-blue-500/10 transition-all duration-500 rounded-2xl"></div>
                   
-                  <div className="relative z-10 flex flex-col items-center text-center p-8">
+                  <div className="relative z-10 flex flex-col items-center text-center p-4 sm:p-6 md:p-8">
                     <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent mb-3">{s.name}</h3>
                     <p className="text-sm text-slate-600 mb-6 leading-relaxed">{s.desc}</p>
                     <Link 
@@ -87,14 +87,14 @@ export default function Home() {
       </section>
 
       {/* How Veriton Works - Futuristic Process */}
-      <section className="py-20 sm:py-32 relative overflow-hidden bg-gradient-to-br from-blue-100 via-cyan-100 to-pink-100 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-pink-900/40">
+      <section className="py-12 sm:py-20 relative overflow-hidden bg-gradient-to-br from-blue-100 via-cyan-100 to-pink-100 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-pink-900/40">
         {/* Animated gradient accent (matching all themed pages) */}
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none z-0 opacity-70 blur-2xl animate-gradient-x"
           style={{background: "linear-gradient(90deg, #a7f3d0 0%, #bae6fd 40%, #fbcfe8 100%)"}} />
         
-        <div className="max-w-[1100px] mx-auto px-6 sm:px-8 relative z-10">
+        <div className="max-w-[1100px] mx-auto px-3 sm:px-6 md:px-8 relative z-10">
           <SectionHeading title="How Veriton works" />
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
                 step: "1",
@@ -117,7 +117,7 @@ export default function Home() {
             ].map((s, idx) => (
               <div 
                 key={s.step} 
-                className="relative rounded-2xl glassmorphism p-8 flex flex-col items-center text-center group hover:scale-105 transition-all duration-500 scan-line"
+                className="relative rounded-2xl glassmorphism p-4 sm:p-6 md:p-8 flex flex-col items-center text-center group hover:scale-105 transition-all duration-500 scan-line"
                 style={{ animationDelay: `${idx * 0.2}s` }}
               >
                 {/* Step connector line */}
@@ -146,7 +146,7 @@ export default function Home() {
       </section>
 
       {/* Our Team - Interactive and Futuristic */}
-      <section className="py-20 sm:py-32 relative overflow-hidden bg-gradient-to-br from-blue-100 via-cyan-100 to-pink-100 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-pink-900/40">
+      <section className="py-12 sm:py-20 relative overflow-hidden bg-gradient-to-br from-blue-100 via-cyan-100 to-pink-100 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-pink-900/40">
         {/* Animated gradient accent (matching all themed pages) */}
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none z-0 opacity-70 blur-2xl animate-gradient-x"
           style={{background: "linear-gradient(90deg, #a7f3d0 0%, #bae6fd 40%, #fbcfe8 100%)"}} />
@@ -160,7 +160,7 @@ export default function Home() {
                   animation: gradient-x 8s ease-in-out infinite alternate;
                 }
               `}</style>
-        <div className="max-w-[1100px] mx-auto px-6 sm:px-8 relative z-10">
+        <div className="max-w-[1100px] mx-auto px-3 sm:px-6 md:px-8 relative z-10">
           <div className="text-center mb-1">
             <h2 className="text-4xl sm:text-5xl font-bold holographic-text mb-4 relative">
               Our Team
