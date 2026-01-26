@@ -65,6 +65,7 @@ export default function Home() {
                     <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent mb-3">{s.name}</h3>
                     <p className="text-sm text-slate-600 mb-6 leading-relaxed">{s.desc}</p>
                     <Link 
+                      prefetch={false}
                       href={`/services/${slug}`} 
                       className="relative px-6 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-sm font-semibold overflow-hidden group/btn transition-all hover:shadow-lg hover:shadow-cyan-500/50"
                     >

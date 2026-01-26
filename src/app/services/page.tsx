@@ -38,7 +38,7 @@ export default function ServicesPage() {
                   <div className="text-5xl mb-3 animate-bounce group-hover:animate-none text-blue-500 dark:text-cyan-400 drop-shadow-lg">{s.icon}</div>
                   <div className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-cyan-500 to-blue-400 text-2xl mb-2 group-hover:scale-110 transition-transform">{s.name}</div>
                   <div className="text-base text-black/70 dark:text-white/70 mb-4 max-w-[180px] mx-auto">{s.desc}</div>
-                  <Link href={`/services/${slug}`} className="inline-block mt-2 px-5 py-2 rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-sm font-bold shadow hover:from-blue-700 hover:to-cyan-700 transition">Learn More</Link>
+                  <Link prefetch={false} href={`/services/${slug}`} className="inline-block mt-2 px-5 py-2 rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-sm font-bold shadow hover:from-blue-700 hover:to-cyan-700 transition">Learn More</Link>
                 </div>
                 <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 rounded-b-3xl opacity-10"></div>
               </div>
