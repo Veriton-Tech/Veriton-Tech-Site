@@ -5,10 +5,6 @@ import EstimateWidget from "@/components/EstimateWidget";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// Pre-render the known service pages and disallow unknown slugs from being generated at runtime.
-export const dynamic = "force-static";
-export const dynamicParams = false;
-
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.atveriton.com/services', // Consider dynamic canonical if needed
