@@ -20,5 +20,5 @@ jobs:
             cd /root/atveriton/Veriton-Tech-Site
             git pull origin main
             export CADDY_NETWORK_NAME=hojaega-backend_hojaega_net
-            docker compose -f docker-compose.frontend.yml up -d --build
+            docker compose -f docker-compose.frontend.yml up -d --build --no-cache
             docker image prune -f
