@@ -19,7 +19,7 @@ jobs:
           script: |
             set -e
             cd /root/atveriton/Veriton-Tech-Site
-            git pull origin main || { echo "Git pull failed - merge conflict or network issue"; exit 1; }
+            git pull origin main --rebase || { echo "Git pull failed - merge conflict or network issue"; exit 1; }
             export CADDY_NETWORK_NAME=hojaega-backend_hojaega_net
             docker compose -f docker-compose.frontend.yml up -d --build || { echo "Docker build/deploy failed"; exit 1; }
             docker image prune -f
