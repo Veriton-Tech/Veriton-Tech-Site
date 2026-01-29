@@ -83,7 +83,7 @@ export default function ContactPage() {
       <div className="relative z-10 max-w-[700px] mx-auto px-6 sm:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-2">Contact Us</h2>
-          <p className="text-base text-slate-600">We'd love to hear from you! Reach out for a free consultation or any questions.</p>
+          <p className="text-base text-slate-600">We&apos;d love to hear from you! Reach out for a free consultation or any questions.</p>
         </div>
         <div className="bg-white/70 backdrop-blur-md border border-slate-200 rounded-3xl shadow-lg p-8 sm:p-12 text-lg text-slate-900">
           <form className="space-y-6" onSubmit={handleSubmit} aria-describedby="contact-status">
