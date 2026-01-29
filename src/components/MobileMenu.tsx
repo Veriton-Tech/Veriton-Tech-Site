@@ -65,14 +65,14 @@ export default function MobileMenu() {
       <button
         aria-label={open ? "Close menu" : "Open menu"}
         onClick={() => setOpen((s) => !s)}
-        className="p-2 rounded-lg glassmorphism border border-cyan-500/30 hover:border-cyan-500/60 transition-all"
+        className="p-2 rounded-lg border border-cyan-500/40 hover:border-cyan-500/70 bg-slate-800/50 transition-all"
       >
         {open ? (
-          <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         ) : (
-          <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         )}
@@ -80,69 +80,67 @@ export default function MobileMenu() {
 
       {/* Off-canvas menu */}
       <div className={`fixed inset-0 z-[9999] transform ${open ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 md:hidden`}>
-        {/* Futuristic backdrop */}
-        <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" onClick={() => setOpen(false)}></div>
-        <aside className="absolute inset-0 p-6 z-[10000] border-r-2 border-cyan-500/30" style={{ background: 'linear-gradient(120deg, #0a0a0a 0%, #0f172a 60%, #1e293b 100%)' }}>
+        {/* Backdrop */}
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setOpen(false)}></div>
+        <aside className="absolute inset-0 p-6 z-[10000] border-r border-cyan-500/30 bg-gradient-to-br from-slate-900 to-slate-800">
           <div className="max-w-[320px] h-full flex flex-col justify-start">
             <div className="flex items-center justify-between mb-8">
-              <div className="text-2xl font-extrabold holographic-text">Veriton</div>
+              <div className="text-2xl font-extrabold text-cyan-400">Veriton</div>
               <button 
                 onClick={() => setOpen(false)} 
                 aria-label="Close menu" 
-                className="p-2 rounded-lg glassmorphism border border-cyan-500/30 hover:border-cyan-500/60 transition-all"
+                className="p-2 rounded-lg border border-cyan-500/40 hover:border-cyan-500/70 bg-slate-800/50 transition-all"
               >
-                <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
               </button>
             </div>
 
-            <div className="rounded-2xl p-6 border border-cyan-500/20" style={{ background: 'rgba(30,40,60,0.92)' }}>
-              <nav className="flex flex-col gap-3">
-                <Link 
-                  href="/" 
-                  onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
-                >
-                  → Home
-                </Link>
-                <Link 
-                  href="/services" 
-                  onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
-                >
-                  → Services
-                </Link>
-                <Link 
-                  href="/about" 
-                  onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
-                >
-                  → About
-                </Link>
-                <Link 
-                  href="/careers" 
-                  onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
-                >
-                  → Careers
-                </Link>
-                <Link 
-                  href="/faq" 
-                  onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2"
-                >
-                  → FAQ
-                </Link>
-                <Link 
-                  href="/contact" 
-                  onClick={() => setOpen(false)} 
-                  className="py-3 px-4 rounded-lg text-cyan-100 hover:text-white border border-cyan-500/20 hover:border-cyan-500/50 transition-all hover:translate-x-2 font-semibold"
-                >
-                  Contact Us
-                </Link>
-              </nav>
-            </div>
+            <nav className="flex flex-col gap-3">
+              <Link 
+                href="/" 
+                onClick={() => setOpen(false)} 
+                className="py-3 px-4 rounded-lg text-gray-300 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-500/60 bg-slate-800/50 transition-all hover:bg-cyan-500/10"
+              >
+                → Home
+              </Link>
+              <Link 
+                href="/services" 
+                onClick={() => setOpen(false)} 
+                className="py-3 px-4 rounded-lg text-gray-300 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-500/60 bg-slate-800/50 transition-all hover:bg-cyan-500/10"
+              >
+                → Services
+              </Link>
+              <Link 
+                href="/about" 
+                onClick={() => setOpen(false)} 
+                className="py-3 px-4 rounded-lg text-gray-300 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-500/60 bg-slate-800/50 transition-all hover:bg-cyan-500/10"
+              >
+                → About
+              </Link>
+              <Link 
+                href="/careers" 
+                onClick={() => setOpen(false)} 
+                className="py-3 px-4 rounded-lg text-gray-300 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-500/60 bg-slate-800/50 transition-all hover:bg-cyan-500/10"
+              >
+                → Careers
+              </Link>
+              <Link 
+                href="/faq" 
+                onClick={() => setOpen(false)} 
+                className="py-3 px-4 rounded-lg text-gray-300 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-500/60 bg-slate-800/50 transition-all hover:bg-cyan-500/10"
+              >
+                → FAQ
+              </Link>
+              <Link 
+                href="/contact" 
+                onClick={() => setOpen(false)} 
+                className="py-3 px-4 rounded-lg text-white bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-700 hover:to-cyan-600 transition-all font-semibold"
+              >
+                Contact Us
+              </Link>
+            </nav>
           </div>
         </aside>
       </div>

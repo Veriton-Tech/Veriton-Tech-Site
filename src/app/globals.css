@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #1e293b;
-  --neon-cyan: #06b6d4;
-  --neon-purple: #a855f7;
-  --neon-pink: #ec4899;
-  --neon-blue: #3b82f6;
+  --background: #0f1a2e;
+  --foreground: #ffffff;
+  --footer-cyan: #06b6d4;
+  --footer-purple: #a855f7;
+  --footer-navy: #0f172a;
+  --accent-light: #e0e7ff;
 }
 
 @theme inline {
@@ -17,7 +17,7 @@
 }
 
 body {
-  background: linear-gradient(to bottom, #f8fafc 0%, #e0f2fe 50%, #f8fafc 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
   color: var(--foreground);
   font-family: 'Geist', -apple-system, sans-serif;
   overflow-x: hidden;
@@ -25,7 +25,7 @@ body {
   min-height: 100vh;
 }
 
-/* Futuristic Grid Background */
+/* Subtle Grid Background */
 body::before {
   content: '';
   position: fixed;
@@ -34,28 +34,28 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(rgba(6, 182, 212, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(6, 182, 212, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(6, 182, 212, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.02) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Animated Gradient Orb Background */
-body::after {
+/* Soft Animated Orb Background - Removed in favor of BackgroundBlobs component */
+/* body::after {
   content: '';
   position: fixed;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
-              radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
-              radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.10) 0%, transparent 50%);
+  background: radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.04) 0%, transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(168, 85, 247, 0.04) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.03) 0%, transparent 50%);
   animation: orbitOrbs 30s linear infinite;
   pointer-events: none;
   z-index: 0;
-}
+} */
 
 @keyframes orbitOrbs {
   0% { transform: rotate(0deg) scale(1); }
@@ -83,14 +83,14 @@ body::after {
 
 @keyframes neonGlow {
   0%, 100% { 
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5),
-                0 0 20px rgba(0, 255, 255, 0.3),
-                inset 0 0 20px rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 5px rgba(6, 182, 212, 0.4),
+                0 0 20px rgba(6, 182, 212, 0.2),
+                inset 0 0 20px rgba(6, 182, 212, 0.08);
   }
   50% { 
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
-                0 0 40px rgba(0, 255, 255, 0.5),
-                inset 0 0 30px rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.6),
+                0 0 40px rgba(6, 182, 212, 0.3),
+                inset 0 0 30px rgba(6, 182, 212, 0.12);
   }
 }
 
@@ -133,8 +133,8 @@ body::after {
     90deg,
     #06b6d4 0%,
     #a855f7 25%,
-    #3b82f6 50%,
-    #ec4899 75%,
+    #06b6d4 50%,
+    #a855f7 75%,
     #06b6d4 100%
   );
   background-size: 200% auto;
@@ -145,16 +145,16 @@ body::after {
 }
 
 .glassmorphism {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(30, 41, 59, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(6, 182, 212, 0.3);
-  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.3), 0 4px 8px -2px rgba(0, 0, 0, 0.2);
 }
 
 .cyber-border {
   position: relative;
-  border: 1px solid rgba(6, 182, 212, 0.4);
+  border: 1px solid rgba(6, 182, 212, 0.3);
 }
 
 .cyber-border::before {
@@ -164,7 +164,7 @@ body::after {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, #00ffff, #bf00ff, #00aaff, #ff00ff);
+  background: linear-gradient(45deg, #06b6d4, #a855f7, #06b6d4, #a855f7);
   border-radius: inherit;
   opacity: 0;
   transition: opacity 0.3s;
@@ -174,7 +174,7 @@ body::after {
 }
 
 .cyber-border:hover::before {
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 /* Scan line effect */
@@ -190,7 +190,30 @@ body::after {
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.4), transparent);
   animation: scanLine 4s linear infinite;
   pointer-events: none;
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
 }

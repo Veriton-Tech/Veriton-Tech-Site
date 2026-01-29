@@ -75,46 +75,46 @@ export default function ContactPage() {
   const using = FORM_SUBMIT_ENDPOINT ? "FormSubmit.co" : FORMSPREE ? "Formspree" : "Local API";
 
   return (
-    <main className="font-sans min-h-screen flex flex-col py-16 sm:py-24 relative overflow-hidden bg-gradient-to-br from-blue-100 via-cyan-100 to-pink-100 dark:from-blue-900/60 dark:via-cyan-900/40 dark:to-pink-900/40">
-      {/* Animated gradient accent */}
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none z-0 opacity-70 blur-2xl animate-gradient-x"
-        style={{background: "linear-gradient(90deg, #a7f3d0 0%, #bae6fd 40%, #fbcfe8 100%)"}} />
-
+    <main className="font-sans min-h-screen flex flex-col py-16 sm:py-24 relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-white">
+      {/* Floating gradient accent */}
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none z-0 opacity-15 blur-3xl animate-float" style={{background: "linear-gradient(90deg, #e2e8f0 0%, #f1f5f9 40%, #f8fafc 100%)"}} />
+      <div className="absolute -bottom-32 right-1/4 w-[600px] h-[400px] pointer-events-none z-0 opacity-12 blur-3xl animate-float" style={{background: "linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 50%, transparent 100%)", animationDelay: "1.5s"}} />
+      
       <div className="relative z-10 max-w-[700px] mx-auto px-6 sm:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-cyan-600 via-blue-600 to-pink-500 bg-clip-text text-transparent dark:from-cyan-300 dark:via-blue-300 dark:to-pink-300 mb-2 drop-shadow">Contact Us</h2>
-          <p className="text-base text-slate-700 dark:text-slate-200/80">We&apos;d love to hear from you! Reach out for a free consultation or any questions.</p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-2">Contact Us</h2>
+          <p className="text-base text-slate-600">We'd love to hear from you! Reach out for a free consultation or any questions.</p>
         </div>
-        <div className="backdrop-blur-xl bg-white/80 dark:bg-slate-900/70 border border-white/40 dark:border-cyan-900/40 rounded-3xl shadow-2xl p-8 sm:p-12 text-lg text-slate-900 dark:text-white/90">
+        <div className="bg-white/70 backdrop-blur-md border border-slate-200 rounded-3xl shadow-lg p-8 sm:p-12 text-lg text-slate-900">
           <form className="space-y-6" onSubmit={handleSubmit} aria-describedby="contact-status">
             <div>
-              <label className="block text-sm font-semibold mb-2 text-slate-800 dark:text-cyan-200">Name</label>
+              <label className="block text-sm font-semibold mb-2 text-slate-800">Name</label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-cyan-200 dark:border-cyan-700 bg-cyan-50/60 dark:bg-cyan-900/30 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-cyan-200/60"
+                className="w-full px-4 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-cyan-400 text-slate-900 placeholder:text-slate-400"
                 placeholder="Your Name"
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold mb-2 text-slate-800 dark:text-cyan-200">Email</label>
+              <label className="block text-sm font-semibold mb-2 text-slate-800">Email</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-cyan-200 dark:border-cyan-700 bg-cyan-50/60 dark:bg-cyan-900/30 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-cyan-200/60"
+                className="w-full px-4 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-cyan-400 text-slate-900 placeholder:text-slate-400"
                 placeholder="you@email.com"
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold mb-2 text-slate-800 dark:text-cyan-200">Message</label>
+              <label className="block text-sm font-semibold mb-2 text-slate-800">Message</label>
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-cyan-200 dark:border-cyan-700 bg-cyan-50/60 dark:bg-cyan-900/30 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-cyan-200/60"
+                className="w-full px-4 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-cyan-400 text-slate-900 placeholder:text-slate-400"
                 rows={5}
                 placeholder="How can we help you?"
                 required
@@ -131,31 +131,21 @@ export default function ContactPage() {
 
           <div id="contact-status" className="mt-4 text-center text-sm" role="status">
             {status === "success" ? (
-              <div className="text-green-600 dark:text-green-400">Thanks — your message was sent via {using}. We will get back to you shortly.</div>
+              <div className="text-green-600">Thanks — your message was sent via {using}. We will get back to you shortly.</div>
             ) : status === "error" ? (
-              <div className="text-red-600 dark:text-red-400">{errorMessage || "Failed to send message."}</div>
+              <div className="text-red-600">{errorMessage || "Failed to send message."}</div>
             ) : errorMessage ? (
-              <div className="text-red-600 dark:text-red-400">{errorMessage}</div>
+              <div className="text-red-600">{errorMessage}</div>
             ) : null}
           </div>
 
-          <div className="mt-8 text-center text-sm text-slate-600 dark:text-slate-300/80">
-            Or email us at <a href="mailto:veritoninfo@gmail.com" className="text-cyan-700 dark:text-cyan-300 underline font-semibold">veritoninfo@gmail.com</a>
+          <div className="mt-8 text-center text-sm text-slate-600">
+            Or email us at <a href="mailto:veritoninfo@gmail.com" className="text-cyan-700 underline font-semibold">veritoninfo@gmail.com</a>
           </div>
 
-          <div className="mt-4 text-xs text-neutral-500 dark:text-neutral-400">Using: <strong>{using}</strong>{FORM_SUBMIT_ENDPOINT ? <span className="block break-all">Endpoint: <code>{FORM_SUBMIT_ENDPOINT}</code></span> : null}</div>
+          <div className="mt-4 text-xs text-neutral-500">Using: <strong>{using}</strong>{FORM_SUBMIT_ENDPOINT ? <span className="block break-all">Endpoint: <code>{FORM_SUBMIT_ENDPOINT}</code></span> : null}</div>
         </div>
       </div>
-      {/* Keyframes for animated accent */}
-      <style>{`
-        @keyframes gradient-x {
-          0%, 100% { transform: translateX(-50%) scale(1); }
-          50% { transform: translateX(-55%) scale(1.04); }
-        }
-        .animate-gradient-x {
-          animation: gradient-x 8s ease-in-out infinite alternate;
-        }
-      `}</style>
     </main>
   );
 }

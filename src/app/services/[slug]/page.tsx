@@ -91,29 +91,24 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   if (!s) return notFound();
 
   return (
-    <main className="min-h-screen py-16 relative" style={{ background: 'linear-gradient(135deg, #f5f7fa 0%, #e0e7ff 40%, #fbeaff 70%, #e0f2fe 100%)' }}>
-      {/* Elegant animated accent for Service detail page */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-tr from-cyan-200/40 via-purple-200/30 to-pink-200/30 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-gradient-to-br from-purple-300/40 via-pink-200/30 to-cyan-100/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '1.2s' }}></div>
-      </div>
-      <div className="max-w-[900px] mx-auto px-6">
-        <div className="rounded-3xl shadow-2xl p-8 sm:p-12 border border-cyan-100/60 dark:border-neutral-800 bg-white dark:bg-neutral-900" style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.10)' }}>
+    <main className="min-h-screen py-16 relative bg-white/60 backdrop-blur-3xl">
+      <div className="max-w-[900px] mx-auto px-6 relative z-10">
+        <div className="rounded-3xl shadow-lg p-8 sm:p-12 border border-slate-200 bg-white">
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="flex-1">
-              <h1 className="text-3xl font-extrabold mb-2 bg-gradient-to-r from-cyan-600 via-blue-700 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">{s.title}</h1>
-              <p className="text-slate-900 dark:text-white mb-6 font-medium" style={{ letterSpacing: '0.01em' }}>{s.subtitle}</p>
+              <h1 className="text-3xl font-extrabold mb-2 text-slate-800">{s.title}</h1>
+              <p className="text-slate-600 mb-6 font-medium" style={{ letterSpacing: '0.01em' }}>{s.subtitle}</p>
 
-              <h3 className="font-bold mb-3 text-cyan-700/90 tracking-wide uppercase">What we do</h3>
+              <h3 className="font-bold mb-3 text-slate-800 tracking-wide uppercase text-sm">What we do</h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                 {s.features.map((f, i) => (
-                  <li key={i} className="rounded-md bg-slate-50 dark:bg-neutral-800 p-3 border border-cyan-100/60 dark:border-neutral-800 text-slate-900 dark:text-white font-semibold shadow-sm">{f}</li>
+                  <li key={i} className="rounded-md bg-slate-50 p-3 border border-slate-200 text-slate-900 font-semibold shadow-sm">{f}</li>
                 ))}
               </ul>
 
               <div className="mb-6">
-                <h3 className="font-bold mb-3 text-cyan-800 dark:text-cyan-300 tracking-wide uppercase">Frequently asked questions</h3>
-                <div className="[&_.faq-q]:text-slate-900 [&_.faq-q]:dark:text-white [&_.faq-a]:text-slate-800 [&_.faq-a]:dark:text-slate-200">
+                <h3 className="font-bold mb-3 text-slate-800 tracking-wide uppercase text-sm">Frequently asked questions</h3>
+                <div className="[&_.faq-q]:text-slate-900 [&_.faq-a]:text-slate-700">
                   <ServiceAccordion items={s.faqs} />
                 </div>
               </div>
@@ -124,8 +119,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
 
             <aside className="w-full lg:w-72">
-              <div className="rounded-xl bg-gradient-to-br from-cyan-50 via-purple-50 to-pink-50 dark:bg-neutral-800 p-4 shadow-md">
-                <h4 className="font-bold mb-3 text-cyan-700">Estimate calculator</h4>
+              <div className="rounded-xl bg-white border border-slate-200 p-4 shadow-md">
+                <h4 className="font-bold mb-3 text-slate-800">Estimate calculator</h4>
                 <EstimateWidget />
               </div>
             </aside>
