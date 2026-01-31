@@ -25,11 +25,12 @@ const SERVICES: Record<string, Service> = {
     title: "Android Development",
     subtitle: "Custom, performant Android apps built with modern architecture.",
     features: [
-      "Kotlin & Jetpack Compose",
-      "Clean Architecture & Test Coverage",
-      "Play Store release & CI/CD",
-      "Performance optimization & profiling",
-    ],
+  "Flutter with Material & Cupertino widgets",
+  "Clean Architecture with modular code & testing",
+  "Play Store & App Store release with CI/CD",
+  "High-performance UI, optimization & profiling",
+],
+
     faqs: [
       { q: "How long does an app take to build?", a: "Typical timelines are 8–16 weeks for a production-ready app depending on complexity." },
       { q: "Do you provide post-launch support?", a: "Yes — we offer maintenance, monitoring, and feature roadmaps after launch." },

@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { useSectionInView } from "../hooks/useSectionInView";
 import Image from "next/image";
 
 const team = [
@@ -26,7 +27,9 @@ const team = [
   },
 ];
 
-export default function TeamCarousel() {
+export default function TeamCarousel({ animateOnView = false }: { animateOnView?: boolean }) {
+    // Animation on section in view
+    const [sectionRef, inView] = useSectionInView(0.3);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -107,7 +110,7 @@ export default function TeamCarousel() {
   };
 
   return (
-    <div className="w-full py-1 flex flex-col items-center">
+    <div className="w-full py-1 flex flex-col items-center" ref={animateOnView ? sectionRef : undefined}>
       {/* WRAPPER */}
       <div
         ref={wrapperRef}
@@ -128,40 +131,51 @@ export default function TeamCarousel() {
               : "transform 450ms cubic-bezier(.2,.9,.2,1)",
           }}
         >
-          {team.map((m, i) => (
-            <div
-              key={i}
-              ref={i === 0 ? cardRef : null}
-              className="flex-shrink-0 w-full sm:w-[320px] md:w-[360px] h-[380px] md:h-[420px] rounded-3xl overflow-hidden bg-white border border-white-400 transition-transform sm:hover:scale-99 cursor-pointer"
-              onClick={() =>
-                m.linkedin &&
-                window.open(m.linkedin, "_blank", "noopener,noreferrer")
-              }
-            >
-              <div className="flex flex-col h-full">
-                <div className="relative w-full h-[100%]">
-                  <Image
-                    src={m.image}
-                    alt={m.name}
-                    fill
-                    className={`${i == 2 ? "object-cover" : "object-top object-cover"} bg-slate-100`}
-                    sizes="(max-width: 640px) 100vw, 360px"
-                    unoptimized
-                  />
-                </div>
+          {team.map((m, i) => {
+            const animate = animateOnView && inView;
+            return (
+              <div
+                key={i}
+                ref={i === 0 ? cardRef : null}
+                className={
+                  `flex-shrink-0 w-full sm:w-[320px] md:w-[360px] h-[380px] md:h-[420px] rounded-3xl overflow-hidden bg-white border border-white-400 transition-transform sm:hover:scale-99 cursor-pointer ` +
+                  (animate
+                    ? `animate-fade-in-up opacity-100 delay-${i * 100}`
+                    : animateOnView
+                    ? 'opacity-0'
+                    : '')
+                }
+                style={{ transitionDelay: animate ? `${i * 120}ms` : undefined }}
+                onClick={() =>
+                  m.linkedin &&
+                  window.open(m.linkedin, "_blank", "noopener,noreferrer")
+                }
+              >
+                <div className="flex flex-col h-full">
+                  <div className="relative w-full h-[100%]">
+                    <Image
+                      src={m.image}
+                      alt={m.name}
+                      fill
+                      className={`${i == 2 ? "object-cover" : "object-top object-cover"} bg-slate-100`}
+                      sizes="(max-width: 640px) 100vw, 360px"
+                      unoptimized
+                    />
+                  </div>
 
-                <div className="p-6 border-t border-blue-300/50">
-                  <h3 className="font-extrabold text-lg text-slate-800">
-                    {m.name}
-                  </h3>
-                  <p className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-                    {m.role}
-                  </p>
-                  <p className="text-sm text-slate-600">{m.bio}</p>
+                  <div className="p-6 border-t border-blue-300/50">
+                    <h3 className="font-extrabold text-lg text-slate-800">
+                      {m.name}
+                    </h3>
+                    <p className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                      {m.role}
+                    </p>
+                    <p className="text-sm text-slate-600">{m.bio}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

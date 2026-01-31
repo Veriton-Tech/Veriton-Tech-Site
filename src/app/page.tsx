@@ -196,8 +196,9 @@ export default function Home() {
             />
         </div>
 
-          <TeamCarousel />
+          <TeamCarousel animateOnView />
         </div>
+
       </section>
     </div>
   );

@@ -65,7 +65,7 @@ export default function Footer() {
                 target="_blank" 
                 rel="noreferrer noopener" 
                 aria-label="Veriton on LinkedIn" 
-                className="pl-2 pr-4 py-2 mt-1 ml-[-8px] rounded-xl bg-gradient-to-r from-cyan-700/30 via-blue-700/30 to-cyan-800/30 border border-cyan-400/40 text-cyan-100 hover:text-white hover:border-cyan-200/80 transition-all hover:shadow-lg hover:shadow-cyan-500/30 group inline-flex items-center gap-2"
+                className="text-cyan-100 hover:text-white transition-all inline-flex items-center gap-2 group"
               >
                 <FaLinkedinIn className="group-hover:scale-110 transition-transform" />
                 <span>LinkedIn</span>

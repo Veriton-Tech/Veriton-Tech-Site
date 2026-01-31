@@ -72,7 +72,7 @@ export default function ContactPage() {
     }
   };
 
-  const using = FORM_SUBMIT_ENDPOINT ? "FormSubmit.co" : FORMSPREE ? "Formspree" : "Local API";
+  const using = FORM_SUBMIT_ENDPOINT ? "FormSubmit.co" : FORMSPREE ? "Formspree" : null;
 
   return (
     <main className="font-sans min-h-screen flex flex-col py-16 sm:py-24 relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-white">
@@ -143,7 +143,9 @@ export default function ContactPage() {
             Or email us at <a href="mailto:veritoninfo@gmail.com" className="text-cyan-700 underline font-semibold">veritoninfo@gmail.com</a>
           </div>
 
-          <div className="mt-4 text-xs text-neutral-500">Using: <strong>{using}</strong>{FORM_SUBMIT_ENDPOINT ? <span className="block break-all">Endpoint: <code>{FORM_SUBMIT_ENDPOINT}</code></span> : null}</div>
+          {using && (
+            <div className="mt-4 text-xs text-neutral-500">Using: <strong>{using}</strong>{FORM_SUBMIT_ENDPOINT ? <span className="block break-all">Endpoint: <code>{FORM_SUBMIT_ENDPOINT}</code></span> : null}</div>
+          )}
         </div>
       </div>
     </main>

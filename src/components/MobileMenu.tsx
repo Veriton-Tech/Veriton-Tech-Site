@@ -11,35 +11,9 @@ export default function MobileMenu() {
     const mainEl = typeof document !== 'undefined' ? document.querySelector('main') : null;
     const footerEl = typeof document !== 'undefined' ? document.querySelector('footer') : null;
     if (open) {
-      // prevent background scroll
       document.body.style.overflow = 'hidden';
-      if (banner) {
-        banner.style.display = 'none';
-        banner.setAttribute('aria-hidden', 'true');
-      }
-      if (mainEl) {
-        // hide main content so sections (including homepage sections) are not visible
-        (mainEl as HTMLElement).style.display = 'none';
-        (mainEl as HTMLElement).setAttribute('aria-hidden', 'true');
-      }
-      if (footerEl) {
-        (footerEl as HTMLElement).style.display = 'none';
-        (footerEl as HTMLElement).setAttribute('aria-hidden', 'true');
-      }
     } else {
       document.body.style.overflow = '';
-      if (banner) {
-        banner.style.display = '';
-        banner.removeAttribute('aria-hidden');
-      }
-      if (mainEl) {
-        (mainEl as HTMLElement).style.display = '';
-        (mainEl as HTMLElement).removeAttribute('aria-hidden');
-      }
-      if (footerEl) {
-        (footerEl as HTMLElement).style.display = '';
-        (footerEl as HTMLElement).removeAttribute('aria-hidden');
-      }
     }
 
     return () => {
@@ -79,13 +53,13 @@ export default function MobileMenu() {
       </button>
 
       {/* Off-canvas menu */}
-      <div className={`fixed inset-0 z-[9999] transform ${open ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 md:hidden`}>
-        {/* Backdrop */}
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setOpen(false)}></div>
-        <aside className="absolute inset-0 p-6 z-[10000] border-r border-cyan-500/30 bg-gradient-to-br from-slate-900 to-slate-800">
-          <div className="max-w-[320px] h-full flex flex-col justify-start">
+      <div className={`fixed inset-0 z-[9999] pointer-events-none md:hidden`}>
+        {/* Sidebar Backdrop */}
+        <div className={`fixed inset-0 bg-transparent transition-opacity duration-300 ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} onClick={() => setOpen(false)}></div>
+        <aside className={`fixed top-0 left-0 h-full w-[80vw] max-w-xs p-6 z-[10000] border-r border-cyan-500/30 bg-gradient-to-br from-slate-900 to-slate-800 shadow-xl transition-transform duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} pointer-events-auto`}>
+          <div className="h-full flex flex-col justify-start">
             <div className="flex items-center justify-between mb-8">
-              <div className="text-2xl font-extrabold text-cyan-400">Veriton</div>
+              <div className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-300 via-blue-400 to-pink-400 bg-clip-text text-transparent drop-shadow-lg">Veriton</div>
               <button 
                 onClick={() => setOpen(false)} 
                 aria-label="Close menu" 
@@ -101,44 +75,44 @@ export default function MobileMenu() {
               <Link 
                 href="/" 
                 onClick={() => setOpen(false)} 
-                className="py-3 px-4 rounded-lg text-gray-300 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-500/60 bg-slate-800/50 transition-all hover:bg-cyan-500/10"
+                className="py-3 px-5 rounded-xl text-cyan-100 hover:text-white font-semibold border border-cyan-400/30 hover:border-pink-400/60 bg-cyan-900/40 hover:bg-cyan-700/40 transition-all shadow-sm"
               >
-                → Home
+                <span className="mr-2">🏠</span> Home
               </Link>
               <Link 
                 href="/services" 
                 onClick={() => setOpen(false)} 
-                className="py-3 px-4 rounded-lg text-gray-300 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-500/60 bg-slate-800/50 transition-all hover:bg-cyan-500/10"
+                className="py-3 px-5 rounded-xl text-cyan-100 hover:text-white font-semibold border border-cyan-400/30 hover:border-pink-400/60 bg-cyan-900/40 hover:bg-cyan-700/40 transition-all shadow-sm"
               >
-                → Services
+                <span className="mr-2">💡</span> Services
               </Link>
               <Link 
                 href="/about" 
                 onClick={() => setOpen(false)} 
-                className="py-3 px-4 rounded-lg text-gray-300 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-500/60 bg-slate-800/50 transition-all hover:bg-cyan-500/10"
+                className="py-3 px-5 rounded-xl text-cyan-100 hover:text-white font-semibold border border-cyan-400/30 hover:border-pink-400/60 bg-cyan-900/40 hover:bg-cyan-700/40 transition-all shadow-sm"
               >
-                → About
+                <span className="mr-2">👤</span> About
               </Link>
               <Link 
                 href="/careers" 
                 onClick={() => setOpen(false)} 
-                className="py-3 px-4 rounded-lg text-gray-300 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-500/60 bg-slate-800/50 transition-all hover:bg-cyan-500/10"
+                className="py-3 px-5 rounded-xl text-cyan-100 hover:text-white font-semibold border border-cyan-400/30 hover:border-pink-400/60 bg-cyan-900/40 hover:bg-cyan-700/40 transition-all shadow-sm"
               >
-                → Careers
+                <span className="mr-2">🚀</span> Careers
               </Link>
               <Link 
                 href="/faq" 
                 onClick={() => setOpen(false)} 
-                className="py-3 px-4 rounded-lg text-gray-300 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-500/60 bg-slate-800/50 transition-all hover:bg-cyan-500/10"
+                className="py-3 px-5 rounded-xl text-cyan-100 hover:text-white font-semibold border border-cyan-400/30 hover:border-pink-400/60 bg-cyan-900/40 hover:bg-cyan-700/40 transition-all shadow-sm"
               >
-                → FAQ
+                <span className="mr-2">❓</span> FAQ
               </Link>
               <Link 
                 href="/contact" 
                 onClick={() => setOpen(false)} 
-                className="py-3 px-4 rounded-lg text-white bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-700 hover:to-cyan-600 transition-all font-semibold"
+                className="py-3 px-5 rounded-xl text-white font-bold bg-gradient-to-r from-pink-500 via-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-pink-500 shadow-lg transition-all border-0"
               >
-                Contact Us
+                <span className="mr-2">✉️</span> Contact Us
               </Link>
             </nav>
           </div>
