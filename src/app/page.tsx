@@ -15,8 +15,8 @@ function SectionHeading({
   return (
     <div className="text-center max-w-[800px] mx-auto mb-12">
       <h2
-        className={`text-3xl xs:text-4xl sm:text-5xl font-bold tracking-tight holographic-text ${
-          isDark ? "text-white" : "text-slate-800"
+        className={`text-3xl xs:text-4xl sm:text-5xl font-bold tracking-tight  ${
+          isDark ? "text-white" : "holographic-text"
         } mb-4`}
       >
         {title}
@@ -107,9 +107,9 @@ export default function Home() {
       {/* ===================== OUR SERVICES (LIGHT) ===================== */}
       <section className="py-12 sm:py-20 relative overflow-hidden bg-white">
         {/* FLOATING GRADIENT BLOBS */}
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-400/30 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-purple-400/30 rounded-full blur-3xl" />
-        <div className="absolute -bottom-32 left-1/4 w-[26rem] h-[26rem] bg-blue-400/20 rounded-full blur-3xl" />
+        <div className="absolute -top-32 -right-32 w-96 h-96 bg-cyan-400/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 -left-32 w-[28rem] h-[28rem] bg-purple-400/15 rounded-full blur-3xl" />
+        <div className="absolute -bottom-32 right-1/4 w-[26rem] h-[26rem] bg-blue-400/10 rounded-full blur-3xl" />
 
         <div className="max-w-[1100px] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 relative z-10">
           <SectionHeading
@@ -251,9 +251,9 @@ export default function Home() {
       {/* ===================== OUR TEAM (LIGHT) ===================== */}
       <section className="py-12 sm:py-20 relative overflow-hidden bg-white">
         {/* FLOATING GRADIENT BLOBS */}
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-400/30 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-purple-400/30 rounded-full blur-3xl" />
-        <div className="absolute -bottom-32 left-1/4 w-[26rem] h-[26rem] bg-blue-400/20 rounded-full blur-3xl" />
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-400/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-purple-400/15 rounded-full blur-3xl" />
+        <div className="absolute -bottom-32 left-1/4 w-[26rem] h-[26rem] bg-blue-400/10 rounded-full blur-3xl" />
 
       <div className="max-w-[1100px] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 relative z-10">
         <div className="text-center mb-4">
