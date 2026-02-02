@@ -44,15 +44,16 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="font-sans min-h-screen flex flex-col py-16 sm:py-24 relative overflow-hidden bg-white/60 backdrop-blur-3xl">
-      {/* Animated gradient accent background */}
-      <div className="absolute -top-40 left-1/3 w-[500px] h-[400px] bg-gradient-to-br from-slate-300/5 via-slate-400/4 to-transparent rounded-full blur-3xl pointer-events-none z-0 animate-float"></div>
-      <div className="absolute -bottom-40 right-1/4 w-[600px] h-[500px] bg-gradient-to-tl from-slate-400/4 via-slate-300/5 to-transparent rounded-full blur-3xl pointer-events-none z-0 animate-float" style={{ animationDelay: "1.5s" }}></div>
+    <main className="relative w-full overflow-hidden py-16 sm:py-20 bg-white">
+      {/* FLOATING GRADIENT BLOBS */}
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-400/30 rounded-full blur-3xl" />
+      <div className="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-purple-400/30 rounded-full blur-3xl" />
+      <div className="absolute -bottom-32 left-1/4 w-[26rem] h-[26rem] bg-blue-400/20 rounded-full blur-3xl" />
       
       <div className="relative z-10 max-w-[900px] mx-auto px-6 sm:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-slate-800 via-slate-800 to-slate-700 bg-clip-text text-transparent mb-4">About Veriton</h2>
-          <p className="text-base sm:text-lg text-slate-600 mb-2" style={{ letterSpacing: '0.01em' }}>Empowering businesses with innovative technology solutions</p>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-800 mb-2 holographic-text">About Veriton</h2>
+          <p className="text-base sm:text-xl text-slate-600 mb-2" style={{ letterSpacing: '0.01em' }}>Empowering businesses with innovative technology solutions</p>
         </div>
         
         <div className="bg-gradient-to-br from-white via-blue-50/30 to-white border border-cyan-300/30 rounded-3xl shadow-xl p-8 sm:p-12 text-lg text-slate-900 relative overflow-hidden">

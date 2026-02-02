@@ -56,7 +56,7 @@ export default function MobileMenu() {
       <div className={`fixed inset-0 z-[9999] pointer-events-none md:hidden`}>
         {/* Sidebar Backdrop */}
         <div className={`fixed inset-0 bg-transparent transition-opacity duration-300 ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} onClick={() => setOpen(false)}></div>
-        <aside className={`fixed top-0 left-0 h-full w-[80vw] max-w-xs p-6 z-[10000] border-r border-cyan-500/30 bg-gradient-to-br from-slate-900 to-slate-800 shadow-xl transition-transform duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} pointer-events-auto`}>
+        <aside className={`fixed top-0 left-0 h-[100vh] w-[80vw] max-w-xs p-6 z-[10000] border-r border-cyan-500/30 bg-gradient-to-br from-slate-900 to-slate-800 shadow-xl transition-transform duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} pointer-events-auto`}>
           <div className="h-full flex flex-col justify-start">
             <div className="flex items-center justify-between mb-8">
               <div className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-300 via-blue-400 to-pink-400 bg-clip-text text-transparent drop-shadow-lg">Veriton</div>

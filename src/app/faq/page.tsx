@@ -28,12 +28,16 @@ export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <main className="font-sans min-h-screen flex flex-col py-16 sm:py-24 relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-white">
+    <main className="relative w-full overflow-hidden py-16 sm:py-20 bg-white">
+      {/* FLOATING GRADIENT BLOBS */}
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-400/30 rounded-full blur-3xl" />
+      <div className="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-purple-400/30 rounded-full blur-3xl" />
+      <div className="absolute -bottom-32 left-1/4 w-[26rem] h-[26rem] bg-blue-400/20 rounded-full blur-3xl" />
       
       <div className="relative z-10 max-w-[700px] mx-auto px-6 sm:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-2">Frequently Asked Questions</h2>
-          <p className="text-base text-slate-600 mb-2" style={{ letterSpacing: '0.01em' }}>Find answers to common questions about our services and process.</p>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-800 mb-2 holographic-text">Frequently Asked Questions</h2>
+          <p className="text-base sm:text-xl text-slate-600 mb-2" style={{ letterSpacing: '0.01em' }}>Find answers to common questions about our services and process.</p>
         </div>
         <div className="bg-white/70 backdrop-blur-md border border-slate-200 rounded-3xl shadow-lg p-8 sm:p-12 text-lg text-slate-900">
           {faqs.map((faq, idx) => (

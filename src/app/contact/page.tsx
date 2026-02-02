@@ -75,15 +75,16 @@ export default function ContactPage() {
   const using = FORM_SUBMIT_ENDPOINT ? "FormSubmit.co" : FORMSPREE ? "Formspree" : null;
 
   return (
-    <main className="font-sans min-h-screen flex flex-col py-16 sm:py-24 relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-white">
-      {/* Floating gradient accent */}
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none z-0 opacity-15 blur-3xl animate-float" style={{background: "linear-gradient(90deg, #e2e8f0 0%, #f1f5f9 40%, #f8fafc 100%)"}} />
-      <div className="absolute -bottom-32 right-1/4 w-[600px] h-[400px] pointer-events-none z-0 opacity-12 blur-3xl animate-float" style={{background: "linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 50%, transparent 100%)", animationDelay: "1.5s"}} />
+    <main className="relative w-full overflow-hidden py-16 sm:py-20 bg-white">
+      {/* FLOATING GRADIENT BLOBS */}
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-400/30 rounded-full blur-3xl" />
+      <div className="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-purple-400/30 rounded-full blur-3xl" />
+      <div className="absolute -bottom-32 left-1/4 w-[26rem] h-[26rem] bg-blue-400/20 rounded-full blur-3xl" />
       
-      <div className="relative z-10 max-w-[700px] mx-auto px-6 sm:px-8">
+      <div className="relative z-10 max-w-[600px] mx-auto px-6 sm:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-2">Contact Us</h2>
-          <p className="text-base text-slate-600">We&apos;d love to hear from you! Reach out for a free consultation or any questions.</p>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-800 mb-2 holographic-text">Contact Us</h2>
+          <p className="text-base sm:text-xl text-slate-600">We&apos;d love to hear from you! Reach out for a free consultation or any questions.</p>
         </div>
         <div className="bg-white/70 backdrop-blur-md border border-slate-200 rounded-3xl shadow-lg p-8 sm:p-12 text-lg text-slate-900">
           <form className="space-y-6" onSubmit={handleSubmit} aria-describedby="contact-status">
@@ -123,7 +124,7 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full py-3 rounded-lg bg-gradient-to-r from-cyan-500 via-blue-500 to-pink-400 text-white font-bold text-lg shadow-lg hover:from-blue-600 hover:to-pink-500 transition disabled:opacity-60"
+              className="w-full py-3 rounded-lg bg-gradient-to-r from-cyan-500 via-blue-500 to-pink-400 text-white font-bold text-lg shadow-lg hover:from-blue-600 hover:to-pink-500 transition disabled:opacity-60 cursor-pointer"
             >
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>
