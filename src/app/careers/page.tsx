@@ -151,7 +151,7 @@ export default function CareersPage() {
         <div className="bg-white/70 backdrop-blur-md border border-slate-200 rounded-3xl shadow-lg p-8 sm:p-12 text-center">
           <h3 className="text-2xl font-bold text-slate-800 mb-4">Ready to Make an Impact?</h3>
           <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
-            Send us your resume and a brief introduction. We'd love to hear about your skills and ambitions!
+            Send us your resume and a brief introduction. We&apos;d love to hear about your skills and ambitions!
           </p>
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=veritoninfo@gmail.com&body=Hi%20Veriton%20Team,%0A%0AI%27m%20interested%20in%20joining%20your%20team."
