@@ -97,9 +97,7 @@ export default function CareersPage() {
                 </div>
                 <h4 className="text-lg font-bold text-slate-800 mb-2">{position.title}</h4>
                 <p className="text-sm text-slate-600 mb-4">{position.description}</p>
-                <button className="text-cyan-700 font-semibold text-sm hover:text-cyan-800 transition">
-                  Learn More →
-                </button>
+                {/* Removed Learn More button */}
               </div>
             ))}
           </div>
