@@ -13,8 +13,12 @@ echo "[$(date)] Starting deployment..." | tee -a "$LOG_FILE"
 
 cd "$APP_DIR"
 
-# Pull latest changes
-git pull origin main 2>&1 | tee -a "$LOG_FILE"
+# Pull latest changes with rebase strategy to handle divergent branches
+git pull --rebase origin main 2>&1 | tee -a "$LOG_FILE" || {
+  echo "[$(date)] Git pull failed - attempting hard reset to origin/main..." | tee -a "$LOG_FILE"
+  git fetch origin main
+  git reset --hard origin/main 2>&1 | tee -a "$LOG_FILE"
+}
 
 # Build and deploy
 export CADDY_NETWORK_NAME="$CADDY_NETWORK_NAME"
