@@ -13,8 +13,12 @@ echo "[$(date)] Starting deployment..." | tee -a "$LOG_FILE"
 
 cd "$APP_DIR"
 
-# Pull latest changes
-git pull origin main 2>&1 | tee -a "$LOG_FILE"
+# Fetch latest changes and reset to match remote
+git fetch origin main 2>&1 | tee -a "$LOG_FILE"
+git reset --hard origin/main 2>&1 | tee -a "$LOG_FILE" || {
+  echo "[$(date)] Git reset failed!" | tee -a "$LOG_FILE"
+  exit 1
+}
 
 # Build and deploy
 export CADDY_NETWORK_NAME="$CADDY_NETWORK_NAME"
