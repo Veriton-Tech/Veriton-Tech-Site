@@ -1,11 +1,14 @@
 import React from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "About Us — Veriton",
-  description: "Learn about Veriton's mission to empower businesses with innovative Android, Shopify, web development, and cloud solutions.",
+  description:
+    "Learn about Veriton's mission to empower businesses with innovative Android, Shopify, web development, and AI solutions.",
   alternates: {
-    canonical: '/about',
+    canonical: "/about",
   },
   keywords: [
     "About Veriton",
@@ -14,86 +17,138 @@ export const metadata: Metadata = {
     "Android Development",
     "Shopify Development",
     "Web Development",
-    "Cloud Solutions",
+    "AI Development",
     "Business Technology",
     "IT Services",
-    "Company Mission"
+    "Company Mission",
   ],
   openGraph: {
     title: "About Us — Veriton",
-    description: "Learn about Veriton's mission to empower businesses with innovative technology solutions, including Android, Shopify, web, and cloud services.",
-    url: 'https://atveriton.com/about',
-    type: 'website',
-    siteName: 'Veriton',
-    images: [
-      {
-        url: 'https://atveriton.com/public/og-about.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'About Veriton',
-      },
-    ],
+    description:
+      "Learn about Veriton's mission to empower businesses with innovative technology solutions, including Android, Shopify, web, and AI services.",
+    url: "https://atveriton.com/about",
+    type: "website",
+    siteName: "Veriton",
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: "About Us — Veriton",
-    description: "Learn about Veriton's mission to empower businesses with innovative technology solutions, including Android, Shopify, web, and cloud services.",
-    images: ['https://atveriton.com/public/og-about.jpg'],
+    description:
+      "Learn about Veriton's mission to empower businesses with innovative technology solutions, including Android, Shopify, web, and AI services.",
   },
 };
 
+const values = [
+  {
+    title: "Android & Web",
+    desc: "Crafted with modern stacks and disciplined engineering.",
+  },
+  {
+    title: "Shopify Commerce",
+    desc: "Stores built for conversion, clarity, and growth.",
+  },
+  {
+    title: "AI Development",
+    desc: "Intelligent features shaped to your product — useful, not noisy.",
+  },
+  {
+    title: "Partnership",
+    desc: "Clear communication and support that lasts beyond launch.",
+  },
+];
+
 export default function AboutPage() {
   return (
-    <main className="relative w-full overflow-hidden py-16 sm:py-20 bg-white">
-      {/* FLOATING GRADIENT BLOBS */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-400/30 rounded-full blur-3xl" />
-      <div className="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-purple-400/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-32 left-1/4 w-[26rem] h-[26rem] bg-blue-400/20 rounded-full blur-3xl" />
-      
-      <div className="relative z-10 max-w-[900px] mx-auto px-6 sm:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-800 mb-2 holographic-text">About Veriton</h2>
-          <p className="text-base sm:text-xl text-slate-600 mb-2" style={{ letterSpacing: '0.01em' }}>Empowering businesses with innovative technology solutions</p>
+    <main className="w-full bg-[#f7f6f3]">
+      <section className="relative overflow-hidden bg-[#0c1826] text-white">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(44,74,110,0.35),transparent_55%)]" />
+        <div className="relative z-10 mx-auto max-w-[1120px] px-5 py-16 sm:px-8 sm:py-20">
+          <p className="mb-3 text-[0.9rem] text-[#9eacbc]">About</p>
+          <h1 className="font-display max-w-2xl text-[2.75rem] sm:text-[3.75rem] leading-[1.05] tracking-[-0.03em]">
+            About Veriton
+          </h1>
+          <div className="mt-5 mb-5 h-px w-14 bg-white/35" />
+          <p className="max-w-xl text-[1.08rem] leading-relaxed text-[#b8c0ca]">
+            Thoughtful technology for businesses that want work that holds up —
+            not just looks finished.
+          </p>
         </div>
-        
-        <div className="bg-gradient-to-br from-white via-blue-50/30 to-white border border-cyan-300/30 rounded-3xl shadow-xl p-8 sm:p-12 text-lg text-slate-900 relative overflow-hidden">
-          {/* Decorative corner accents */}
-          <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-cyan-500/10 to-transparent rounded-br-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-purple-500/10 to-transparent rounded-tl-3xl"></div>
-          
-          <div className="relative z-10">
-            <p className="mb-6 leading-relaxed">Veriton is a leading provider of <span className="font-semibold text-cyan-700">Android</span>, <span className="font-semibold text-pink-600">Shopify</span>, <span className="font-semibold text-blue-700">web development</span>, and <span className="font-semibold text-purple-700">cloud services</span>. Our mission is to help businesses and entrepreneurs harness the power of technology to achieve their goals.</p>
-            
-            <p className="mb-6 leading-relaxed">With a team of experienced professionals, we deliver modern, scalable, and secure solutions tailored to your unique needs. From custom mobile apps to robust e-commerce platforms and cloud infrastructure, we ensure your digital success.</p>
-            
-            <p className="mb-8 leading-relaxed">We believe in <span className="text-cyan-700 font-semibold">innovation</span>, <span className="text-pink-600 font-semibold">transparency</span>, and <span className="text-purple-700 font-semibold">long-term partnerships</span>. Our commitment to quality and customer satisfaction sets us apart in the industry.</p>
-            
-            {/* Values List with icons and gradient backgrounds */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              <div className="p-4 rounded-xl bg-gradient-to-br from-cyan-50/60 to-blue-50/40 border border-cyan-200/50 hover:border-cyan-300 transition-colors">
-                <div className="text-cyan-600 font-semibold mb-2">🎯 Expert Android & Web Development</div>
-                <p className="text-sm text-slate-600">Crafted with cutting-edge technology and best practices</p>
-              </div>
-              <div className="p-4 rounded-xl bg-gradient-to-br from-pink-50/60 to-orange-50/40 border border-pink-200/50 hover:border-pink-300 transition-colors">
-                <div className="text-pink-600 font-semibold mb-2">🛒 Shopify E-commerce Solutions</div>
-                <p className="text-sm text-slate-600">Scalable stores built for conversion and growth</p>
-              </div>
-              <div className="p-4 rounded-xl bg-gradient-to-br from-purple-50/60 to-blue-50/40 border border-purple-200/50 hover:border-purple-300 transition-colors">
-                <div className="text-purple-600 font-semibold mb-2">☁️ Cloud Infrastructure & Support</div>
-                <p className="text-sm text-slate-600">Reliable, secure, and highly available systems</p>
-              </div>
-              <div className="p-4 rounded-xl bg-gradient-to-br from-blue-50/60 to-cyan-50/40 border border-blue-200/50 hover:border-blue-300 transition-colors">
-                <div className="text-blue-600 font-semibold mb-2">🤝 Dedicated Customer Service</div>
-                <p className="text-sm text-slate-600">Always available to support your success</p>
+      </section>
+
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto max-w-[800px] px-5 sm:px-8">
+          <Reveal>
+            <div className="space-y-6 text-[1.05rem] sm:text-[1.1rem] leading-relaxed text-[#5e6670]">
+              <p>
+                Veriton provides{" "}
+                <span className="font-medium text-[#14181f]">Android</span>,{" "}
+                <span className="font-medium text-[#14181f]">Shopify</span>,{" "}
+                <span className="font-medium text-[#14181f]">web development</span>
+                , and{" "}
+                <span className="font-medium text-[#14181f]">AI development</span>.
+                Our mission is to help businesses harness technology with clarity
+                and craft.
+              </p>
+              <p>
+                With a team of experienced professionals, we deliver modern,
+                scalable, and secure solutions — from mobile apps to e-commerce
+                platforms and intelligent product features.
+              </p>
+              <p>
+                We believe in innovation, transparency, and long-term
+                partnerships. Quality and customer satisfaction are not extras —
+                they are the standard.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <div className="mt-14">
+              <p className="section-label mb-3">Focus</p>
+              <h2 className="font-display text-[1.9rem] sm:text-[2.25rem] tracking-[-0.02em] text-[#14181f] mb-6">
+                What guides our work
+              </h2>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {values.map((v, i) => (
+                  <div
+                    key={v.title}
+                    className="border border-[#d9dde3] bg-white p-6 transition-colors hover:border-[#c5ccd6]"
+                  >
+                    <span className="mb-2 block text-[0.75rem] text-[#7d8b9a]">
+                      0{i + 1}
+                    </span>
+                    <h3 className="font-display text-[1.35rem] tracking-[-0.02em] text-[#14181f] mb-2">
+                      {v.title}
+                    </h3>
+                    <p className="text-[0.92rem] leading-relaxed text-[#5e6670]">
+                      {v.desc}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-            
-            <div className="pt-6 border-t border-slate-200/50">
-              <p className="text-center sm:text-left">Ready to transform your business? <a href="/contact" className="inline-flex items-center gap-2 text-cyan-700 hover:text-cyan-800 font-semibold hover:underline transition-colors">Contact us today <span>→</span></a></p>
-            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="project-band py-14 sm:py-16">
+        <div className="project-band__ornament" aria-hidden />
+        <div className="project-band__inner mx-auto max-w-[1120px] px-5 sm:px-8">
+          <div>
+            <p className="section-label mb-3">Next step</p>
+            <h2 className="font-display text-[2rem] sm:text-[2.5rem] leading-[1.12] tracking-[-0.03em] text-[#14181f]">
+              Ready to work together?
+            </h2>
+            <p className="mt-3 max-w-md text-[1rem] leading-relaxed text-[#5e6670]">
+              Tell us what you&apos;re building — we&apos;ll reply with a clear
+              path forward.
+            </p>
           </div>
+          <Link href="/contact" className="btn-primary self-start sm:self-end">
+            Contact us
+          </Link>
         </div>
-      </div>
+      </section>
     </main>
   );
 }

@@ -2,82 +2,104 @@ import React from "react";
 import Link from "next/link";
 import { FaLinkedinIn } from "react-icons/fa";
 
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/careers", label: "Careers" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
+];
+
+const services = [
+  { href: "/services/android-development", label: "Android" },
+  { href: "/services/web-development", label: "Web" },
+  { href: "/services/shopify-development", label: "Shopify" },
+  { href: "/services/ai-development", label: "AI" },
+];
+
 export default function Footer() {
   return (
-    <footer className="w-full relative py-16 border-t border-cyan-500/20 overflow-hidden text-white">
-      {/* Interactive animated background */}
-      <div className="absolute inset-0 z-0" style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #0f172a 100%)' }}></div>
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50 z-10"></div>
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      </div>
-      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-8 relative z-20">
-        {/* Logo & Description */}
-        <div className="flex flex-col items-start md:items-start">
-          <span className="text-3xl font-extrabold tracking-tight holographic-text mb-3">Veriton</span>
-          <p className="text-sm text-cyan-100 mb-6 max-w-xs leading-relaxed">
-            Veriton delivers Android, Shopify, web & cloud solutions for modern businesses. Empowering growth with reliable technology and expert support.
-          </p>
-        </div>
-        
-        {/* Spacer for separation */}
-        <div className="hidden md:block md:w-4"></div>
-        
-        {/* Quick Links */}
-        <div>
-          <h3 className="text-lg font-bold mb-5 bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Quick Links</h3>
-          <ul className="space-y-3">
-            <li><Link href="/" className="text-cyan-100 hover:text-white transition-all hover:translate-x-1 inline-block">→ Home</Link></li>
-            <li><Link href="/about" className="text-cyan-100 hover:text-white transition-all hover:translate-x-1 inline-block">→ About</Link></li>
-            <li><Link href="/services" className="text-cyan-100 hover:text-white transition-all hover:translate-x-1 inline-block">→ Services</Link></li>
-            <li><Link href="/careers" className="text-cyan-100 hover:text-white transition-all hover:translate-x-1 inline-block">→ Careers</Link></li>
-            <li><Link href="/contact" className="text-cyan-100 hover:text-white transition-all hover:translate-x-1 inline-block">→ Contact Us</Link></li>
-          </ul>
-        </div>
-        
-        {/* Our Services */}
-        <div>
-          <h3 className="text-lg font-bold mb-5 bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Our Services</h3>
-          <ul className="space-y-3">
-            <li><a href="#backend" className="text-cyan-100 hover:text-white transition-all hover:translate-x-1 inline-block">→ Android Development</a></li>
-            <li><a href="#chat" className="text-cyan-100 hover:text-white transition-all hover:translate-x-1 inline-block">→ Web Development</a></li>
-            <li><a href="#cost" className="text-cyan-100 hover:text-white transition-all hover:translate-x-1 inline-block">→ Shopify Development</a></li>
-            <li><a href="#outsourcing" className="text-cyan-100 hover:text-white transition-all hover:translate-x-1 inline-block">→ Cloud Services</a></li>
-          </ul>
-        </div>
-        
-        {/* Contact Info */}
-        <div>
-          <h3 className="text-lg font-bold mb-5 bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Contact Info</h3>
-          <ul className="space-y-3">
-            <li>
-              <a 
-                href="mailto:veritoninfo@gmail.com" 
-                className="text-cyan-100 hover:text-white transition-all inline-flex items-center gap-2 hover:gap-3"
+    <footer className="w-full border-t border-[#d9dde3] bg-[#f7f6f3] text-[#14181f]">
+      <div className="mx-auto max-w-[1120px] px-5 pt-14 pb-10 sm:px-8 sm:pt-16">
+        {/* Top: brand + CTA */}
+        <div className="flex flex-col gap-8 border-b border-[#d9dde3] pb-12 md:flex-row md:items-end md:justify-between">
+          <div>
+            <Link
+              href="/"
+              className="font-display text-[3rem] sm:text-[3.75rem] leading-none tracking-[-0.035em] text-[#14181f] transition-opacity hover:opacity-70"
+            >
+              Veriton
+            </Link>
+            <p className="mt-4 max-w-sm text-[0.98rem] leading-relaxed text-[#5e6670]">
+              Product & engineering studio — Android, web, Shopify, and AI.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-3 sm:items-end">
+            <a
+              href="mailto:veritoninfo@gmail.com"
+              className="font-display text-[1.35rem] sm:text-[1.55rem] tracking-[-0.02em] text-[#14181f] underline decoration-[#d9dde3] underline-offset-4 transition-colors hover:decoration-[#14181f]"
+            >
+              veritoninfo@gmail.com
+            </a>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/contact"
+                className="text-[0.9rem] text-[#2c4a6e] transition-opacity hover:opacity-70"
               >
-                <span className="text-cyan-300">✉</span> veritoninfo@gmail.com
-              </a>
-            </li>
-            <li>
-              <a 
-                href="https://www.linkedin.com/company/veriton-tech" 
-                target="_blank" 
-                rel="noreferrer noopener" 
-                aria-label="Veriton on LinkedIn" 
-                className="text-cyan-100 hover:text-white transition-all inline-flex items-center gap-2 group"
+                Start a project →
+              </Link>
+              <a
+                href="https://www.linkedin.com/company/veriton-tech"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Veriton on LinkedIn"
+                className="inline-flex h-9 w-9 items-center justify-center border border-[#d9dde3] text-[#5e6670] transition-colors hover:border-[#14181f] hover:text-[#14181f]"
               >
-                <FaLinkedinIn className="group-hover:scale-110 transition-transform" />
-                <span>LinkedIn</span>
+                <FaLinkedinIn size={13} />
               </a>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
-      </div>
-      
-      <div className="text-center text-sm text-cyan-100 mt-8 relative z-20">
-        <div className="inline-block px-6 py-2">
-          Copyright © Veriton 2026. All rights reserved
+
+        {/* Middle: horizontal link groups */}
+        <div className="grid grid-cols-1 gap-10 py-10 sm:grid-cols-2">
+          <div>
+            <p className="mb-4 text-[0.78rem] text-[#7d8b9a]">Navigate</p>
+            <nav className="flex flex-wrap gap-x-5 gap-y-3">
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-[0.95rem] text-[#14181f] transition-opacity hover:opacity-55"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div>
+            <p className="mb-4 text-[0.78rem] text-[#7d8b9a]">Services</p>
+            <nav className="flex flex-wrap gap-x-5 gap-y-3">
+              {services.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-[0.95rem] text-[#14181f] transition-opacity hover:opacity-55"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </div>
+
+        {/* Bottom meta */}
+        <div className="flex flex-col gap-2 border-t border-[#d9dde3] pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[0.8rem] text-[#7d8b9a]">© Veriton 2026</p>
+          <p className="text-[0.8rem] text-[#9aa3ad]">Built with care</p>
         </div>
       </div>
     </footer>

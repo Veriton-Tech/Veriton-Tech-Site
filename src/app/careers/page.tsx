@@ -1,172 +1,201 @@
-
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
+  title: "Careers — Veriton",
   alternates: {
-    canonical: 'https://www.atveriton.com/careers',
+    canonical: "https://www.atveriton.com/careers",
   },
 };
 
 const positions = [
   {
     title: "Android Developers",
-    icon: "🤖",
-    color: "from-cyan-600 to-cyan-500",
-    description: "Build cutting-edge mobile applications",
+    description: "Build polished, high-performance mobile applications.",
   },
   {
     title: "Web Developers",
-    icon: "🌐",
-    color: "from-blue-600 to-blue-500",
-    description: "Create modern, responsive web experiences",
+    description: "Create modern, responsive web experiences that last.",
   },
   {
     title: "Shopify Experts",
-    icon: "🛒",
-    color: "from-green-600 to-green-500",
-    description: "Develop powerful e-commerce solutions",
+    description: "Shape commerce platforms built for conversion and growth.",
   },
   {
-    title: "Cloud Engineers",
-    icon: "☁️",
-    color: "from-purple-600 to-purple-500",
-    description: "Scale and optimize cloud infrastructure",
+    title: "AI Engineers",
+    description: "Build intelligent product features and practical AI workflows.",
   },
   {
     title: "UI/UX Designers",
-    icon: "🎨",
-    color: "from-pink-600 to-pink-500",
-    description: "Design beautiful user experiences",
+    description: "Design clear, elegant experiences people enjoy using.",
   },
   {
     title: "Project Managers",
-    icon: "📊",
-    color: "from-orange-600 to-orange-500",
-    description: "Lead projects and drive success",
+    description: "Lead delivery with clarity, calm, and sharp communication.",
   },
 ];
 
 const values = [
-  { label: "Innovation", emoji: "💡", desc: "We push boundaries and embrace new ideas" },
-  { label: "Collaboration", emoji: "🤝", desc: "Teamwork makes the dream work" },
-  { label: "Excellence", emoji: "⭐", desc: "Quality is our standard, not an exception" },
+  {
+    label: "Innovation",
+    desc: "We push thoughtfully — new ideas when they earn their place.",
+  },
+  {
+    label: "Collaboration",
+    desc: "Strong work comes from people who build together.",
+  },
+  {
+    label: "Excellence",
+    desc: "Quality is our standard, not an exception.",
+  },
+];
+
+const reasons = [
+  {
+    title: "Growth opportunities",
+    desc: "Advance with challenging projects and continuous learning.",
+  },
+  {
+    title: "Flexible work",
+    desc: "Remote or office — arrangements that respect how you work best.",
+  },
+  {
+    title: "Strong culture",
+    desc: "Collaborate with people who care about craft and each other.",
+  },
+  {
+    title: "Meaningful impact",
+    desc: "Build solutions that make a real difference for businesses.",
+  },
 ];
 
 export default function CareersPage() {
   return (
-    <main className="relative w-full overflow-hidden py-16 sm:py-20 bg-white">
-      {/* FLOATING GRADIENT BLOBS */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-400/30 rounded-full blur-3xl" />
-      <div className="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-purple-400/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-32 left-1/4 w-[26rem] h-[26rem] bg-blue-400/20 rounded-full blur-3xl" />
-      
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 sm:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-800 mb-4 holographic-text">Careers at Veriton</h2>
-          <p className="text-base sm:text-xl text-slate-600" style={{ letterSpacing: '0.01em' }}>Join our team and help shape the future of technology!</p>
+    <main className="w-full bg-[#f7f6f3]">
+      <section className="relative overflow-hidden bg-[#0c1826] text-white">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(44,74,110,0.35),transparent_55%)]" />
+        <div className="relative z-10 mx-auto max-w-[1120px] px-5 py-16 sm:px-8 sm:py-20">
+          <p className="mb-3 text-[0.9rem] text-[#9eacbc]">Careers</p>
+          <h1 className="font-display max-w-2xl text-[2.75rem] sm:text-[3.75rem] leading-[1.05] tracking-[-0.03em]">
+            Careers at Veriton
+          </h1>
+          <div className="mt-5 mb-5 h-px w-14 bg-white/35" />
+          <p className="max-w-xl text-[1.08rem] leading-relaxed text-[#b8c0ca]">
+            Join a small team shaping careful, reliable technology for real
+            businesses.
+          </p>
         </div>
+      </section>
 
-        {/* Values Section */}
-        <div className="bg-white/70 backdrop-blur-md border border-slate-200 rounded-3xl shadow-lg p-8 sm:p-12 mb-12">
-          <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-8 text-center">Our Values</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {values.map((value, idx) => (
-              <div key={idx} className="text-center p-6 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-50 border border-slate-200 hover:shadow-lg transition-shadow">
-                <div className="text-5xl mb-3">{value.emoji}</div>
-                <h4 className="text-xl font-bold text-slate-800 mb-2">{value.label}</h4>
-                <p className="text-slate-600 text-sm">{value.desc}</p>
-              </div>
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto max-w-[1120px] px-5 sm:px-8">
+          <Reveal>
+            <p className="section-label mb-3">Culture</p>
+            <h2 className="font-display text-[1.9rem] sm:text-[2.35rem] tracking-[-0.02em] text-[#14181f] mb-6">
+              Our values
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+            {values.map((value, i) => (
+              <Reveal key={value.label} delay={i * 70}>
+                <div className="h-full border border-[#d9dde3] bg-white p-7 transition-colors hover:border-[#c5ccd6]">
+                  <span className="mb-2 block text-[0.75rem] text-[#7d8b9a]">
+                    0{i + 1}
+                  </span>
+                  <h3 className="font-display text-[1.4rem] tracking-[-0.02em] text-[#14181f] mb-2">
+                    {value.label}
+                  </h3>
+                  <p className="text-[0.92rem] leading-relaxed text-[#5e6670]">
+                    {value.desc}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
-        </div>
 
-        {/* Open Positions */}
-        <div className="bg-white/70 backdrop-blur-md border border-slate-200 rounded-3xl shadow-lg p-8 sm:p-12 mb-12">
-          <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-8 text-center">Open Positions</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {positions.map((position, idx) => (
-              <div
-                key={idx}
-                className="group rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 p-6 hover:shadow-xl transition-all hover:-translate-y-1"
-              >
-                <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${position.color} text-white mb-4 text-2xl group-hover:scale-110 transition-transform`}>
-                  {position.icon}
-                </div>
-                <h4 className="text-lg font-bold text-slate-800 mb-2">{position.title}</h4>
-                <p className="text-sm text-slate-600 mb-4">{position.description}</p>
-                {/* Removed Learn More button */}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Why Join Us */}
-        <div className="relative overflow-hidden rounded-3xl shadow-lg p-8 sm:p-12 mb-12 text-white">
-          <div className="absolute inset-0 z-0" style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #0f172a 100%)' }}></div>
-          <div className="absolute inset-0 pointer-events-none z-0">
-            <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-          </div>
-          <div className="relative z-10">
-            <h3 className="text-2xl sm:text-3xl font-bold mb-8 text-center bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Why Join Veriton?</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="flex gap-4">
-                <span className="text-3xl">🚀</span>
-                <div>
-                  <h4 className="font-bold mb-1 text-cyan-100">Growth Opportunities</h4>
-                  <p className="text-cyan-100/80 text-sm">Advance your career with challenging projects and continuous learning</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <span className="text-3xl">💼</span>
-                <div>
-                  <h4 className="font-bold mb-1 text-cyan-100">Flexible Work</h4>
-                  <p className="text-cyan-100/80 text-sm">Work remotely or from our modern office - flexibility matters</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <span className="text-3xl">👥</span>
-                <div>
-                  <h4 className="font-bold mb-1 text-cyan-100">Great Team Culture</h4>
-                  <p className="text-cyan-100/80 text-sm">Collaborate with talented professionals who are passionate about tech</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <span className="text-3xl">🎯</span>
-                <div>
-                  <h4 className="font-bold mb-1 text-cyan-100">Impact-Driven Work</h4>
-                  <p className="text-cyan-100/80 text-sm">Build solutions that make a real difference for businesses worldwide</p>
-                </div>
-              </div>
+          <div className="mt-16 sm:mt-20">
+            <Reveal>
+              <p className="section-label mb-3">Open roles</p>
+              <h2 className="font-display text-[1.9rem] sm:text-[2.35rem] tracking-[-0.02em] text-[#14181f] mb-6">
+                Positions we&apos;re hiring for
+              </h2>
+            </Reveal>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {positions.map((position, i) => (
+                <Reveal key={position.title} delay={(i % 3) * 60}>
+                  <div className="h-full border border-[#d9dde3] bg-white p-6 transition-colors hover:border-[#c5ccd6]">
+                    <h3 className="font-display text-[1.3rem] tracking-[-0.02em] text-[#14181f] mb-2">
+                      {position.title}
+                    </h3>
+                    <p className="text-[0.92rem] leading-relaxed text-[#5e6670]">
+                      {position.description}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
             </div>
           </div>
         </div>
+      </section>
 
-        {/* CTA Section */}
-        <div className="bg-white/70 backdrop-blur-md border border-slate-200 rounded-3xl shadow-lg p-8 sm:p-12 text-center">
-          <h3 className="text-2xl font-bold text-slate-800 mb-4">Ready to Make an Impact?</h3>
-          <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
-            Send us your resume and a brief introduction. We&apos;d love to hear about your skills and ambitions!
-          </p>
-          <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=veritoninfo@gmail.com&body=Hi%20Veriton%20Team,%0A%0AI%27m%20interested%20in%20joining%20your%20team."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-10 py-4 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold text-lg hover:from-cyan-700 hover:to-blue-700 transition-all shadow-lg shadow-cyan-500/30"
-          >
-            Apply Now
-          </a>
-          <p className="text-slate-600 text-sm mt-6">
-            Or reach out to us at{" "}
-            <a href="mailto:veritoninfo@gmail.com" className="text-cyan-700 font-semibold hover:underline">
-              veritoninfo@gmail.com
-            </a>
-          </p>
+      <section className="bg-[#0c1826] py-14 sm:py-16 text-white">
+        <div className="mx-auto max-w-[1120px] px-5 sm:px-8">
+          <Reveal>
+            <p className="mb-3 text-[0.9rem] text-[#9eacbc]">Why Veriton</p>
+            <h2 className="font-display text-[1.9rem] sm:text-[2.35rem] tracking-[-0.02em] mb-10">
+              Why people join us
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-1 gap-8 border-t border-white/10 pt-10 md:grid-cols-2 md:gap-10">
+            {reasons.map((r, i) => (
+              <Reveal key={r.title} delay={i * 70}>
+                <div>
+                  <h3 className="mb-2 text-[0.95rem] font-medium text-white">
+                    {r.title}
+                  </h3>
+                  <p className="text-[0.92rem] leading-relaxed text-[#9eacbc]">
+                    {r.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section className="project-band py-14 sm:py-16">
+        <div className="project-band__ornament" aria-hidden />
+        <div className="project-band__inner mx-auto max-w-[1120px] px-5 sm:px-8">
+          <div>
+            <p className="section-label mb-3">Apply</p>
+            <h2 className="font-display text-[2rem] sm:text-[2.5rem] leading-[1.12] tracking-[-0.03em] text-[#14181f]">
+              Ready to make an impact?
+            </h2>
+            <p className="mt-3 max-w-md text-[1rem] leading-relaxed text-[#5e6670]">
+              Send your resume and a short introduction. We&apos;d love to hear
+              about your skills and ambitions.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:items-end">
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=veritoninfo@gmail.com&body=Hi%20Veriton%20Team,%0A%0AI%27m%20interested%20in%20joining%20your%20team."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              Apply now
+            </a>
+            <a
+              href="mailto:veritoninfo@gmail.com"
+              className="text-[0.9rem] text-[#2c4a6e] underline-offset-4 hover:underline"
+            >
+              or email veritoninfo@gmail.com
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

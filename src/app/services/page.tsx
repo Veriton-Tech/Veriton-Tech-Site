@@ -1,52 +1,97 @@
-
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
+  title: "Services — Veriton",
   alternates: {
-    canonical: 'https://www.atveriton.com/services',
+    canonical: "https://www.atveriton.com/services",
   },
 };
 
 const services = [
-  { name: "Android Development", icon: "🤖", desc: "Custom Android apps for business and consumers." },
-  { name: "Web Development", icon: "🌐", desc: "Modern, responsive websites and web apps." },
-  { name: "Shopify Development", icon: "🛒", desc: "E-commerce solutions built on Shopify." },
-  { name: "Cloud Services", icon: "☁️", desc: "Scalable cloud infrastructure and support." },
+  {
+    name: "Android Development",
+    desc: "Mobile products that feel native — fast, polished, and ready for the store.",
+    detail: "Flutter, clean architecture, release pipelines, and ongoing care.",
+    image:
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=900&h=560&q=80",
+  },
+  {
+    name: "Web Development",
+    desc: "Sites and apps with solid architecture, sharp UI, and room to grow.",
+    detail: "React, Next.js, SEO, APIs, and maintainable frontends.",
+    image:
+      "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=900&h=560&q=80",
+  },
+  {
+    name: "Shopify Development",
+    desc: "Stores that convert — clear UX, dependable checkout, room to expand.",
+    detail: "Themes, apps, headless storefronts, and migrations.",
+    image:
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&h=560&q=80",
+  },
+  {
+    name: "AI Development",
+    desc: "Intelligent features and workflows — assistants, automation, and models that fit your product.",
+    detail: "LLMs, agents, RAG, integrations, and production-ready AI UX.",
+    image:
+      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=900&h=560&q=80",
+  },
 ];
 
 export default function ServicesPage() {
   return (
-    <main className="relative w-full overflow-hidden py-16 sm:py-20 bg-white">
-      {/* FLOATING GRADIENT BLOBS */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-400/30 rounded-full blur-3xl" />
-      <div className="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-purple-400/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-32 left-1/4 w-[26rem] h-[26rem] bg-blue-400/20 rounded-full blur-3xl" />
+    <main className="w-full bg-[#f7f6f3] py-20 sm:py-28">
+      <div className="mx-auto max-w-[1120px] px-5 sm:px-8">
+        <Reveal>
+          <p className="section-label mb-3">Services</p>
+          <h1 className="font-display text-[2.75rem] sm:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#14181f]">
+            Our services
+          </h1>
+          <div className="accent-rule mt-5 mb-5" />
+          <p className="mb-14 max-w-lg text-[1.05rem] leading-relaxed text-[#5e6670]">
+            Clear scope, careful build, and delivery you can rely on — across
+            mobile, web, commerce, and AI.
+          </p>
+        </Reveal>
 
-      <div className="max-w-[1100px] mx-auto px-6 sm:px-8 relative z-10 w-full">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-800 mb-2 holographic-text">Our Services</h2>
-          <p className="text-base sm:text-xl text-slate-600 mb-2" style={{ letterSpacing: '0.01em' }}>Explore our expert solutions for your business growth</p>
-        </div>
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-          {services.map((s) => {
-            const slug = s.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
+        <div className="service-showcase">
+          {services.map((s, idx) => {
+            const slug = s.name
+              .toLowerCase()
+              .replace(/\s+/g, "-")
+              .replace(/[^a-z0-9\-]/g, "");
             return (
-              <div
-                key={s.name}
-                className="group rounded-3xl border-0 backdrop-blur-xl bg-white p-10 shadow-lg hover:shadow-xl transition-all text-center hover:scale-105 relative overflow-hidden ring-2 ring-slate-200 hover:ring-cyan-400 text-slate-900"
-                style={{ position: 'relative' }}
-              >
-                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 rounded-t-3xl opacity-20"></div>
-                <div className="flex flex-col items-center justify-center">
-                  <div className="text-5xl mb-3 animate-bounce group-hover:animate-none text-black drop-shadow-lg">{s.icon}</div>
-                  <div className="font-extrabold text-slate-800 text-2xl mb-2 group-hover:scale-110 transition-transform drop-shadow-sm">{s.name}</div>
-                  <div className="text-base text-slate-600 mb-4 max-w-[200px] mx-auto" style={{ letterSpacing: '0.01em' }}>{s.desc}</div>
-                  <Link prefetch={false} href={`/services/${slug}`} className="inline-block mt-2 px-5 py-2 rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-sm font-bold shadow hover:from-blue-700 hover:to-cyan-700 transition">Learn More</Link>
-                </div>
-                <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 rounded-b-3xl opacity-10"></div>
-              </div>
+              <Reveal key={s.name} delay={idx * 80} className="h-full">
+                <Link
+                  prefetch={false}
+                  href={`/services/${slug}`}
+                  className="service-tile group"
+                >
+                  <div className="service-tile__media">
+                    <Image
+                      src={s.image}
+                      alt={s.name}
+                      fill
+                      unoptimized
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                    />
+                  </div>
+                  <div className="service-tile__body">
+                    <span className="service-tile__index">0{idx + 1}</span>
+                    <h2 className="service-tile__title">{s.name}</h2>
+                    <p className="service-tile__desc">{s.desc}</p>
+                    <p className="mt-2 text-[0.8rem] text-[#7d8b9a]">{s.detail}</p>
+                    <span className="service-tile__cta">
+                      Learn more <span aria-hidden>→</span>
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
             );
           })}
         </div>

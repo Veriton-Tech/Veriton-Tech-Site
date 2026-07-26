@@ -1,19 +1,22 @@
 "use client";
 import React, { useState } from "react";
-
-// Supports posting to FormSubmit.co when configured via environment:
-// - NEXT_PUBLIC_FORMSUBMIT_ENDPOINT (full endpoint, e.g. https://formsubmit.co/ajax/youremail)
-// - NEXT_PUBLIC_FORMSUBMIT_EMAIL (email address; will post to https://formsubmit.co/ajax/{email})
-// Falls back to NEXT_PUBLIC_FORMSPREE_ENDPOINT if set, then to local /api/contact.
+import Link from "next/link";
+import { FaLinkedinIn } from "react-icons/fa";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
+    "idle"
+  );
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const FORM_SUBMIT_ENDPOINT = process.env.NEXT_PUBLIC_FORMSUBMIT_ENDPOINT || (process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL ? `https://formsubmit.co/ajax/${process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL}` : null);
+  const FORM_SUBMIT_ENDPOINT =
+    process.env.NEXT_PUBLIC_FORMSUBMIT_ENDPOINT ||
+    (process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL
+      ? `https://formsubmit.co/ajax/${process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL}`
+      : null);
   const FORMSPREE = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || null;
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,25 +30,21 @@ export default function ContactPage() {
 
     setStatus("sending");
 
-    // Choose endpoint precedence: FormSubmit > Formspree > local API
     let endpoint: string;
     if (FORM_SUBMIT_ENDPOINT) endpoint = FORM_SUBMIT_ENDPOINT;
     else if (FORMSPREE) endpoint = FORMSPREE;
     else endpoint = "/api/contact";
 
     try {
-      // Use FormData for FormSubmit.co AJAX endpoint compatibility
       const formData = new FormData();
       formData.append("name", name.trim());
       formData.append("email", email.trim());
       formData.append("message", message.trim());
 
-      // For FormSubmit.co AJAX endpoint, they expect a normal POST (FormData) and return JSON
       const res = await fetch(endpoint, {
         method: "POST",
         body: formData,
         headers: {
-          // If hitting Formspree or local API which expect JSON, they will still accept FormData on many setups.
           Accept: "application/json",
         } as HeadersInit,
       });
@@ -56,13 +55,14 @@ export default function ContactPage() {
         setEmail("");
         setMessage("");
       } else {
-        // Try to parse JSON error message if provided
         let text = await res.text();
         try {
           const obj = JSON.parse(text);
           text = obj.message || JSON.stringify(obj);
         } catch {}
-        setErrorMessage(text || "Failed to send message. Please try again later.");
+        setErrorMessage(
+          text || "Failed to send message. Please try again later."
+        );
         setStatus("error");
       }
     } catch (err: unknown) {
@@ -72,83 +72,146 @@ export default function ContactPage() {
     }
   };
 
-  const using = FORM_SUBMIT_ENDPOINT ? "FormSubmit.co" : FORMSPREE ? "Formspree" : null;
+  const inputClass =
+    "w-full border border-[#d9dde3] bg-[#f7f6f3] px-4 py-3 text-[#14181f] placeholder:text-[#9aa8b8] transition-colors focus:border-[#12263a] focus:bg-white focus:outline-none";
 
   return (
-    <main className="relative w-full overflow-hidden py-16 sm:py-20 bg-white">
-      {/* FLOATING GRADIENT BLOBS */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-400/30 rounded-full blur-3xl" />
-      <div className="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-purple-400/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-32 left-1/4 w-[26rem] h-[26rem] bg-blue-400/20 rounded-full blur-3xl" />
-      
-      <div className="relative z-10 max-w-[600px] mx-auto px-6 sm:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-800 mb-2 holographic-text">Contact Us</h2>
-          <p className="text-base sm:text-xl text-slate-600">We&apos;d love to hear from you! Reach out for a free consultation or any questions.</p>
+    <main className="w-full bg-[#f7f6f3]">
+      <section className="relative overflow-hidden bg-[#0c1826] text-white">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(44,74,110,0.35),transparent_55%)]" />
+        <div className="relative z-10 mx-auto max-w-[1120px] px-5 py-16 sm:px-8 sm:py-20">
+          <p className="mb-3 text-[0.9rem] text-[#9eacbc]">Contact</p>
+          <h1 className="font-display max-w-2xl text-[2.75rem] sm:text-[3.75rem] leading-[1.05] tracking-[-0.03em]">
+            Let&apos;s talk
+          </h1>
+          <div className="mt-5 mb-5 h-px w-14 bg-white/35" />
+          <p className="max-w-xl text-[1.08rem] leading-relaxed text-[#b8c0ca]">
+            Share a few details about your project. We&apos;ll get back with a
+            clear next step.
+          </p>
         </div>
-        <div className="bg-white/70 backdrop-blur-md border border-slate-200 rounded-3xl shadow-lg p-8 sm:p-12 text-lg text-slate-900">
-          <form className="space-y-6" onSubmit={handleSubmit} aria-describedby="contact-status">
-            <div>
-              <label className="block text-sm font-semibold mb-2 text-slate-800">Name</label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-cyan-400 text-slate-900 placeholder:text-slate-400"
-                placeholder="Your Name"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold mb-2 text-slate-800">Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-cyan-400 text-slate-900 placeholder:text-slate-400"
-                placeholder="you@email.com"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold mb-2 text-slate-800">Message</label>
-              <textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-cyan-400 text-slate-900 placeholder:text-slate-400"
-                rows={5}
-                placeholder="How can we help you?"
-                required
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={status === "sending"}
-              className="w-full py-3 rounded-lg bg-gradient-to-r from-cyan-500 via-blue-500 to-pink-400 text-white font-bold text-lg shadow-lg hover:from-blue-600 hover:to-pink-500 transition disabled:opacity-60 cursor-pointer"
-            >
-              {status === "sending" ? "Sending..." : "Send Message"}
-            </button>
-          </form>
+      </section>
 
-          <div id="contact-status" className="mt-4 text-center text-sm" role="status">
-            {status === "success" ? (
-              <div className="text-green-600">Thanks — your message was sent via {using}. We will get back to you shortly.</div>
-            ) : status === "error" ? (
-              <div className="text-red-600">{errorMessage || "Failed to send message."}</div>
-            ) : errorMessage ? (
-              <div className="text-red-600">{errorMessage}</div>
-            ) : null}
+      <section className="py-14 sm:py-20">
+        <div className="mx-auto grid max-w-[1120px] grid-cols-1 gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:gap-14">
+          <aside className="lg:col-span-4">
+            <p className="section-label mb-3">Reach us</p>
+            <h2 className="font-display text-[1.75rem] tracking-[-0.02em] text-[#14181f] mb-6">
+              Direct channels
+            </h2>
+
+            <div className="space-y-5">
+              <div className="border border-[#d9dde3] bg-white p-5">
+                <p className="mb-1 text-[0.8rem] text-[#7d8b9a]">Email</p>
+                <a
+                  href="mailto:veritoninfo@gmail.com"
+                  className="text-[0.98rem] text-[#14181f] transition-opacity hover:opacity-70 break-all"
+                >
+                  veritoninfo@gmail.com
+                </a>
+              </div>
+              <div className="border border-[#d9dde3] bg-white p-5">
+                <p className="mb-1 text-[0.8rem] text-[#7d8b9a]">LinkedIn</p>
+                <a
+                  href="https://www.linkedin.com/company/veriton-tech"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 text-[0.98rem] text-[#14181f] transition-opacity hover:opacity-70"
+                >
+                  <FaLinkedinIn size={14} />
+                  Veriton Tech
+                </a>
+              </div>
+              <div className="border border-[#d9dde3] bg-white p-5">
+                <p className="mb-1 text-[0.8rem] text-[#7d8b9a]">Services</p>
+                <Link
+                  href="/services"
+                  className="text-[0.98rem] text-[#14181f] transition-opacity hover:opacity-70"
+                >
+                  Browse what we build →
+                </Link>
+              </div>
+            </div>
+          </aside>
+
+          <div className="lg:col-span-8">
+            <div className="border border-[#d9dde3] bg-white p-6 sm:p-8">
+              <p className="section-label mb-2">Message</p>
+              <h2 className="font-display text-[1.75rem] tracking-[-0.02em] text-[#14181f] mb-6">
+                Send a note
+              </h2>
+
+              <form
+                className="space-y-5"
+                onSubmit={handleSubmit}
+                aria-describedby="contact-status"
+              >
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  <div>
+                    <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className={inputClass}
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className={inputClass}
+                      placeholder="you@email.com"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">
+                    Message
+                  </label>
+                  <textarea
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    className={inputClass}
+                    rows={6}
+                    placeholder="Tell us about your project..."
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="btn-primary disabled:opacity-60"
+                >
+                  {status === "sending" ? "Sending..." : "Send message"}
+                </button>
+              </form>
+
+              <div id="contact-status" className="mt-4 text-sm" role="status">
+                {status === "success" ? (
+                  <p className="text-[#2c4a6e]">
+                    Thanks — your message was sent. We&apos;ll get back to you
+                    shortly.
+                  </p>
+                ) : status === "error" || errorMessage ? (
+                  <p className="text-red-700">
+                    {errorMessage || "Failed to send message."}
+                  </p>
+                ) : null}
+              </div>
+            </div>
           </div>
-
-          <div className="mt-8 text-center text-sm text-slate-600">
-            Or email us at <a href="mailto:veritoninfo@gmail.com" className="text-cyan-700 underline font-semibold">veritoninfo@gmail.com</a>
-          </div>
-
-          {using && (
-            <div className="mt-4 text-xs text-neutral-500">Using: <strong>{using}</strong>{FORM_SUBMIT_ENDPOINT ? <span className="block break-all">Endpoint: <code>{FORM_SUBMIT_ENDPOINT}</code></span> : null}</div>
-          )}
         </div>
-      </div>
+      </section>
     </main>
   );
 }

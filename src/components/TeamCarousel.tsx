@@ -27,9 +27,12 @@ const team = [
   },
 ];
 
-export default function TeamCarousel({ animateOnView = false }: { animateOnView?: boolean }) {
-    // Animation on section in view
-    const [sectionRef, inView] = useSectionInView(0.3);
+export default function TeamCarousel({
+  animateOnView = false,
+}: {
+  animateOnView?: boolean;
+}) {
+  const [sectionRef, inView] = useSectionInView(0.3);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -42,7 +45,6 @@ export default function TeamCarousel({ animateOnView = false }: { animateOnView?
   const startX = useRef(0);
   const startOffset = useRef(0);
 
-  /* ---------- CORE POSITION LOGIC ---------- */
   const updatePosition = (i: number) => {
     if (!wrapperRef.current || !cardRef.current || !trackRef.current) return;
 
@@ -59,7 +61,6 @@ export default function TeamCarousel({ animateOnView = false }: { animateOnView?
     setOffset(centerOffset - i * stride.current);
   };
 
-  /* ---------- INITIAL + RESIZE ---------- */
   useEffect(() => {
     updatePosition(index);
     const onResize = () => updatePosition(index);
@@ -67,7 +68,6 @@ export default function TeamCarousel({ animateOnView = false }: { animateOnView?
     return () => window.removeEventListener("resize", onResize);
   }, [index]);
 
-  /* ---------- AUTOPLAY ---------- */
   useEffect(() => {
     const id = setInterval(() => {
       if (isDragging.current) return;
@@ -78,7 +78,6 @@ export default function TeamCarousel({ animateOnView = false }: { animateOnView?
     return () => clearInterval(id);
   }, [index]);
 
-  /* ---------- DRAG ---------- */
   const onPointerDown = (e: React.PointerEvent) => {
     isDragging.current = true;
     startX.current = e.clientX;
@@ -97,9 +96,7 @@ export default function TeamCarousel({ animateOnView = false }: { animateOnView?
     (e.target as HTMLElement).releasePointerCapture(e.pointerId);
 
     const newIndex = Math.round(
-      ((wrapperRef.current!.offsetWidth -
-        cardRef.current!.offsetWidth) /
-        2 -
+      ((wrapperRef.current!.offsetWidth - cardRef.current!.offsetWidth) / 2 -
         offset) /
         stride.current
     );
@@ -110,20 +107,21 @@ export default function TeamCarousel({ animateOnView = false }: { animateOnView?
   };
 
   return (
-    <div className="w-full py-1 flex flex-col items-center" ref={animateOnView ? sectionRef : undefined}>
-      {/* WRAPPER */}
+    <div
+      className="flex w-full flex-col items-center py-1"
+      ref={animateOnView ? sectionRef : undefined}
+    >
       <div
         ref={wrapperRef}
-        className="relative w-full max-w-[360px] sm:max-w-[320px] md:max-w-[360px] overflow-hidden"
+        className="relative w-full max-w-[360px] overflow-hidden sm:max-w-[320px] md:max-w-[360px]"
       >
-        {/* TRACK */}
         <div
           ref={trackRef}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
-          className="flex gap-4 cursor-grab active:cursor-grabbing"
+          className="flex cursor-grab gap-4 active:cursor-grabbing"
           style={{
             transform: `translateX(${offset}px)`,
             transition: isDragging.current
@@ -138,39 +136,41 @@ export default function TeamCarousel({ animateOnView = false }: { animateOnView?
                 key={i}
                 ref={i === 0 ? cardRef : null}
                 className={
-                  `flex-shrink-0 w-full sm:w-[320px] md:w-[360px] h-[380px] md:h-[420px] rounded-3xl overflow-hidden bg-white border border-white-400 transition-transform sm:hover:scale-99 cursor-pointer ` +
+                  `h-[380px] w-full flex-shrink-0 cursor-pointer overflow-hidden border border-[#d8dee8] bg-white transition-shadow hover:shadow-lg hover:shadow-[#12263a]/10 sm:w-[320px] md:h-[420px] md:w-[360px] ` +
                   (animate
-                    ? `animate-fade-in-up opacity-100 delay-${i * 100}`
+                    ? `animate-fade-in-up opacity-100`
                     : animateOnView
-                    ? 'opacity-0'
-                    : '')
+                      ? "opacity-0"
+                      : "")
                 }
-                style={{ transitionDelay: animate ? `${i * 120}ms` : undefined }}
+                style={{
+                  transitionDelay: animate ? `${i * 120}ms` : undefined,
+                }}
                 onClick={() =>
                   m.linkedin &&
                   window.open(m.linkedin, "_blank", "noopener,noreferrer")
                 }
               >
-                <div className="flex flex-col h-full">
-                  <div className="relative w-full h-[100%]">
+                <div className="flex h-full flex-col">
+                  <div className="relative h-full w-full">
                     <Image
                       src={m.image}
                       alt={m.name}
                       fill
-                      className={`${i == 2 ? "object-cover" : "object-top object-cover"} bg-slate-100`}
+                      className={`${i == 2 ? "object-cover" : "object-top object-cover"} bg-neutral-100 grayscale-[30%]`}
                       sizes="(max-width: 640px) 100vw, 360px"
                       unoptimized
                     />
                   </div>
 
-                  <div className="p-6 border-t border-blue-300/50">
-                    <h3 className="font-extrabold text-lg text-slate-800">
+                  <div className="border-t border-[#d9dde3] p-6">
+                    <h3 className="font-display text-[1.2rem] tracking-[-0.02em] text-[#14181f]">
                       {m.name}
                     </h3>
-                    <p className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                    <p className="mb-2 text-[0.9rem] text-[#2c4a6e]">
                       {m.role}
                     </p>
-                    <p className="text-sm text-slate-600">{m.bio}</p>
+                    <p className="text-[0.92rem] leading-relaxed text-[#5e6670]">{m.bio}</p>
                   </div>
                 </div>
               </div>
@@ -179,8 +179,7 @@ export default function TeamCarousel({ animateOnView = false }: { animateOnView?
         </div>
       </div>
 
-      {/* DOTS */}
-      <div className="mt-6 flex gap-3">
+      <div className="mt-6 flex gap-2">
         {team.map((_, i) => (
           <button
             key={i}
@@ -188,10 +187,11 @@ export default function TeamCarousel({ animateOnView = false }: { animateOnView?
               setIndex(i);
               updatePosition(i);
             }}
-            className={`rounded-full transition-all ${
+            aria-label={`Show team member ${i + 1}`}
+            className={`h-px transition-all duration-300 ${
               i === index
-                ? "w-6 h-3 bg-cyan-500 shadow-lg shadow-cyan-500/50"
-                : "w-3 h-3 bg-cyan-300/60 hover:bg-cyan-400"
+                ? "w-8 bg-[#12263a]"
+                : "w-4 bg-[#b8c0ca] hover:bg-[#7d8b9a]"
             }`}
           />
         ))}
