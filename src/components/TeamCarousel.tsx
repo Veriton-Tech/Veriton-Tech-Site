@@ -13,9 +13,9 @@ const team = [
   },
   {
     name: "Faizan Basheer",
-    role: "Android Developer",
-    bio: "Builds performant and user-friendly Android applications with modern practices.",
-    image: "/Faizan Basheer.jpeg",
+    role: "Full Stack Developer",
+    bio: "Develops end-to-end web applications using modern full stack technologies, delivering secure, scalable, and user-centric solutions",
+    image: "/Faizan Basheer.png",
     linkedin: "https://www.linkedin.com/in/faizan-basheer-433026322/",
   },
   {
