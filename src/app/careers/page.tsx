@@ -12,28 +12,15 @@ export const metadata: Metadata = {
 
 const positions = [
   {
-    title: "Android Developers",
-    description: "Build polished, high-performance mobile applications.",
-  },
-  {
-    title: "Web Developers",
-    description: "Create modern, responsive web experiences that last.",
-  },
-  {
-    title: "Shopify Experts",
-    description: "Shape commerce platforms built for conversion and growth.",
-  },
-  {
-    title: "AI Engineers",
-    description: "Build intelligent product features and practical AI workflows.",
-  },
-  {
-    title: "UI/UX Designers",
-    description: "Design clear, elegant experiences people enjoy using.",
-  },
-  {
-    title: "Project Managers",
-    description: "Lead delivery with clarity, calm, and sharp communication.",
+    title: "AI Engineer",
+    description:
+      "Design and ship practical AI features into real products — from LLM-powered assistants and automation to RAG systems and model integrations. You’ll work closely with product and engineering to turn ideas into reliable, production-ready experiences.",
+    responsibilities: [
+      "Build and integrate LLM apps, agents, and AI workflows",
+      "Implement RAG pipelines with private or product data",
+      "Evaluate model quality, cost, latency, and safety",
+      "Collaborate on APIs, UX, and deployment for production use",
+    ],
   },
 ];
 
@@ -117,25 +104,43 @@ export default function CareersPage() {
 
           <div className="mt-16 sm:mt-20">
             <Reveal>
-              <p className="section-label mb-3">Open roles</p>
+              <p className="section-label mb-3">Open role</p>
               <h2 className="font-display text-[1.9rem] sm:text-[2.35rem] tracking-[-0.02em] text-[#14181f] mb-6">
-                Positions we&apos;re hiring for
+                Position we&apos;re hiring for
               </h2>
             </Reveal>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {positions.map((position, i) => (
-                <Reveal key={position.title} delay={(i % 3) * 60}>
-                  <div className="h-full border border-[#d9dde3] bg-white p-6 transition-colors hover:border-[#c5ccd6]">
-                    <h3 className="font-display text-[1.3rem] tracking-[-0.02em] text-[#14181f] mb-2">
-                      {position.title}
-                    </h3>
-                    <p className="text-[0.92rem] leading-relaxed text-[#5e6670]">
-                      {position.description}
-                    </p>
-                  </div>
-                </Reveal>
+            <Reveal>
+              {positions.map((position) => (
+                <div
+                  key={position.title}
+                  className="border border-[#d9dde3] bg-white p-7 sm:p-9"
+                >
+                  <p className="mb-2 text-[0.8rem] text-[#7d8b9a]">Full-time · Remote-friendly</p>
+                  <h3 className="font-display text-[1.75rem] sm:text-[2rem] tracking-[-0.02em] text-[#14181f]">
+                    {position.title}
+                  </h3>
+                  <p className="mt-3 max-w-2xl text-[1rem] leading-relaxed text-[#5e6670]">
+                    {position.description}
+                  </p>
+                  <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    {position.responsibilities.map((item) => (
+                      <li
+                        key={item}
+                        className="border border-[#e8ecf1] bg-[#f7f6f3] px-4 py-3 text-[0.9rem] leading-snug text-[#14181f]"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href="mailto:veritoninfo@gmail.com?subject=Application%20-%20AI%20Engineer"
+                    className="btn-primary mt-8 inline-flex"
+                  >
+                    Apply for this role
+                  </a>
+                </div>
               ))}
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
