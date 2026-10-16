@@ -21,6 +21,9 @@ jobs:
             cd /root/atveriton/Veriton-Tech-Site
             git fetch origin main
             git reset --hard origin/main || { echo "Git reset failed"; exit 1; }
+            # Block known postcss.config.mjs malware before any build/install runs it
+            node scripts/guard-postcss.mjs --heal
+            node scripts/guard-postcss.mjs --check
             export CADDY_NETWORK_NAME=hojaega-backend_hojaega_net
             docker compose -f docker-compose.frontend.yml up -d --build || { echo "Docker build/deploy failed"; exit 1; }
             docker image prune -f

@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/guard-postcss.mjs",
     "dev": "next dev --turbopack",
+    "prebuild": "node scripts/guard-postcss.mjs",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "guard:postcss": "node scripts/guard-postcss.mjs --check"
   },
   "dependencies": {
     "next": "^15.5.10",
