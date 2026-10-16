@@ -23,7 +23,7 @@ export const faqs: FaqItem[] = [
   {
     question: "How do I contact Veriton?",
     answer:
-      "Email veritoninfo@gmail.com or use the contact form at https://atveriton.com/contact. LinkedIn: https://www.linkedin.com/company/veriton-tech.",
+      "Email veritoninfo@gmail.com or use the contact form at https://www.veriton.si/contact. LinkedIn: https://www.linkedin.com/company/veriton-tech.",
   },
   {
     question: "Does Veriton build custom software?",

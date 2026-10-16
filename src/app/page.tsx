@@ -1,8 +1,16 @@
+"use client";
+
 import BannerCarousel from "./BannerCarousel";
 import TeamCarousel from "../components/TeamCarousel";
 import Reveal from "../components/Reveal";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import VelocityMarquee from "@/components/motion/VelocityMarquee";
+import TiltCard from "@/components/motion/TiltCard";
+import ProcessTimeline from "@/components/motion/ProcessTimeline";
+import { WordReveal } from "@/components/motion/LetterReveal";
+import Magnetic from "@/components/motion/Magnetic";
 
 const tickerItems = [
   "Android",
@@ -40,13 +48,33 @@ const services = [
   },
 ];
 
+const processSteps = [
+  {
+    step: "1",
+    title: "Discover",
+    desc: "We learn the goals, constraints, and what success actually looks like for you.",
+  },
+  {
+    step: "2",
+    title: "Design & build",
+    desc: "We shape the product together — with clear checkpoints and no black boxes.",
+  },
+  {
+    step: "3",
+    title: "Launch & refine",
+    desc: "Ship with confidence, then keep improving with support after go-live.",
+  },
+];
+
 export default function Home() {
   return (
     <div>
       <BannerCarousel />
 
-      {/* Entity / answer-friendly intro for AEO & GEO */}
-      <section className="border-b border-[#d9dde3] bg-white py-12 sm:py-16">
+      <section
+        id="about-veriton"
+        className="border-b border-[#d9dde3] bg-white py-12 sm:py-16"
+      >
         <div className="mx-auto max-w-[1120px] px-5 sm:px-8">
           <Reveal>
             <p className="section-label mb-3">About Veriton</p>
@@ -69,23 +97,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Animated ticker */}
       <section className="ticker" aria-label="Capabilities">
-        <div className="ticker-track">
-          {[0, 1].map((copy) => (
-            <div key={copy} className="flex" aria-hidden={copy === 1}>
-              {tickerItems.map((item) => (
-                <span key={`${copy}-${item}`} className="ticker-item">
-                  {item}
-                  <span className="ticker-sep">/</span>
-                </span>
-              ))}
-            </div>
+        <VelocityMarquee className="ticker-track-motion" baseSpeed={42}>
+          {tickerItems.map((item) => (
+            <span key={item} className="ticker-item">
+              {item}
+              <span className="ticker-sep">/</span>
+            </span>
           ))}
-        </div>
+        </VelocityMarquee>
       </section>
 
-      {/* What we build */}
       <section className="bg-[#f7f6f3] py-20 sm:py-28">
         <div className="mx-auto max-w-[1120px] px-5 sm:px-8">
           <Reveal>
@@ -109,7 +131,7 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <div className="service-showcase mt-12 sm:mt-14">
+          <div className="service-showcase mt-12 sm:mt-14" style={{ perspective: 1200 }}>
             {services.map((s, idx) => {
               const slug = s.name
                 .toLowerCase()
@@ -118,30 +140,32 @@ export default function Home() {
 
               return (
                 <Reveal key={s.name} delay={idx * 90} variant="up" className="h-full">
-                  <Link
-                    prefetch={false}
-                    href={`/services/${slug}`}
-                    className="service-tile group"
-                  >
-                    <div className="service-tile__media">
-                      <Image
-                        src={s.image}
-                        alt={s.name}
-                        fill
-                        unoptimized
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, 50vw"
-                      />
-                    </div>
-                    <div className="service-tile__body">
-                      <span className="service-tile__index">0{idx + 1}</span>
-                      <h3 className="service-tile__title">{s.name}</h3>
-                      <p className="service-tile__desc">{s.desc}</p>
-                      <span className="service-tile__cta">
-                        Explore <span aria-hidden>→</span>
-                      </span>
-                    </div>
-                  </Link>
+                  <TiltCard className="h-full">
+                    <Link
+                      prefetch={false}
+                      href={`/services/${slug}`}
+                      className="service-tile group"
+                    >
+                      <div className="service-tile__media">
+                        <Image
+                          src={s.image}
+                          alt={s.name}
+                          fill
+                          unoptimized
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                        />
+                      </div>
+                      <div className="service-tile__body">
+                        <span className="service-tile__index">0{idx + 1}</span>
+                        <h3 className="service-tile__title">{s.name}</h3>
+                        <p className="service-tile__desc">{s.desc}</p>
+                        <span className="service-tile__cta">
+                          Explore <span aria-hidden>→</span>
+                        </span>
+                      </div>
+                    </Link>
+                  </TiltCard>
                 </Reveal>
               );
             })}
@@ -149,7 +173,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Process */}
       <section className="relative bg-[#0c1826] py-20 sm:py-28 text-white">
         <div className="mx-auto max-w-[1120px] px-5 sm:px-8">
           <Reveal>
@@ -159,43 +182,10 @@ export default function Home() {
             </h2>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-1 gap-10 border-t border-white/10 pt-12 md:grid-cols-3 md:gap-12">
-            {[
-              {
-                step: "1",
-                title: "Discover",
-                desc: "We learn the goals, constraints, and what success actually looks like for you.",
-              },
-              {
-                step: "2",
-                title: "Design & build",
-                desc: "We shape the product together — with clear checkpoints and no black boxes.",
-              },
-              {
-                step: "3",
-                title: "Launch & refine",
-                desc: "Ship with confidence, then keep improving with support after go-live.",
-              },
-            ].map((s, idx) => (
-              <Reveal key={s.step} delay={idx * 100} variant="up">
-                <div className="process-step">
-                  <span className="process-num font-display text-[2.75rem] leading-none text-white/25">
-                    {s.step}
-                  </span>
-                  <h3 className="mt-4 font-display text-[1.55rem] tracking-[-0.02em]">
-                    {s.title}
-                  </h3>
-                  <p className="mt-3 text-[0.98rem] leading-relaxed text-[#9eacbc]">
-                    {s.desc}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <ProcessTimeline steps={processSteps} />
         </div>
       </section>
 
-      {/* Team */}
       <section className="bg-white py-20 sm:py-28">
         <div className="mx-auto max-w-[1120px] px-5 sm:px-8">
           <Reveal className="mx-auto mb-10 max-w-lg text-center" variant="fade">
@@ -213,15 +203,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mid-page CTA — light, distinct from footer */}
-      <section className="project-band py-16 sm:py-20">
-        <div className="project-band__ornament" aria-hidden />
-        <div className="project-band__inner mx-auto max-w-[1120px] px-5 sm:px-8">
+      <section className="project-band py-16 sm:py-20 relative overflow-hidden">
+        <motion.div
+          className="project-band__ornament"
+          aria-hidden
+          animate={{ opacity: [0.55, 1, 0.55], scale: [1, 1.08, 1] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <div className="project-band__inner mx-auto max-w-[1120px] px-5 sm:px-8 relative z-10">
           <Reveal>
             <div>
               <p className="section-label mb-3">Next step</p>
               <h2 className="font-display text-[2.2rem] sm:text-[2.85rem] leading-[1.12] tracking-[-0.03em] text-[#14181f] max-w-xl">
-                Have a project in mind?
+                <WordReveal text="Have a project in mind?" />
               </h2>
               <p className="mt-4 max-w-md text-[1.02rem] leading-relaxed text-[#5e6670]">
                 Share a few details about what you&apos;re building. We&apos;ll
@@ -231,9 +225,20 @@ export default function Home() {
           </Reveal>
           <Reveal delay={100}>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link href="/contact" className="btn-primary">
-                Start a conversation
-              </Link>
+              <Magnetic strength={8}>
+                <Link
+                  href="/contact"
+                  className="btn-primary magnetic-sheen magnetic-ripple"
+                  onClick={(e) => {
+                    const el = e.currentTarget;
+                    el.classList.remove("is-rippling");
+                    void el.offsetWidth;
+                    el.classList.add("is-rippling");
+                  }}
+                >
+                  Start a conversation
+                </Link>
+              </Magnetic>
               <a
                 href="mailto:veritoninfo@gmail.com"
                 className="text-[0.95rem] text-[#2c4a6e] underline-offset-4 hover:underline"

@@ -25,7 +25,7 @@ Overview
 
 4) Add vhost to Caddyfile
 
-   atveriton.com, www.atveriton.com {
+   veriton.si, www.veriton.si {
        encode zstd gzip
        reverse_proxy atveriton-frontend:3000
    }
@@ -36,7 +36,7 @@ Overview
 
 5) Verify
 
-- DNS A record for atveriton.com and www.atveriton.com points to the server IP.
+- DNS A record for veriton.si and www.veriton.si points to the server IP.
 - HTTPS is auto-provisioned by Caddy; first request may take a few seconds.
 
 Notes

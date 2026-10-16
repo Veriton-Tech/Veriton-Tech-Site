@@ -1,6 +1,10 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { FaLinkedinIn } from "react-icons/fa";
+import Reveal, { RevealItem, RevealStagger } from "@/components/motion/Reveal";
+import LetterReveal from "@/components/motion/LetterReveal";
 
 const links = [
   { href: "/", label: "Home" },
@@ -22,21 +26,22 @@ export default function Footer() {
   return (
     <footer className="w-full border-t border-[#d9dde3] bg-[#f7f6f3] text-[#14181f]">
       <div className="mx-auto max-w-[1120px] px-5 pt-14 pb-10 sm:px-8 sm:pt-16">
-        {/* Top: brand + CTA */}
         <div className="flex flex-col gap-8 border-b border-[#d9dde3] pb-12 md:flex-row md:items-end md:justify-between">
           <div>
             <Link
               href="/"
               className="font-display text-[3rem] sm:text-[3.75rem] leading-none tracking-[-0.035em] text-[#14181f] transition-opacity hover:opacity-70"
             >
-              Veriton
+              <LetterReveal text="Veriton" delay={0.05} onceOnView />
             </Link>
-            <p className="mt-4 max-w-sm text-[0.98rem] leading-relaxed text-[#5e6670]">
-              Product & engineering studio — Android, web, Shopify, and AI.
-            </p>
+            <Reveal delay={0.15}>
+              <p className="mt-4 max-w-sm text-[0.98rem] leading-relaxed text-[#5e6670]">
+                Product & engineering studio — Android, web, Shopify, and AI.
+              </p>
+            </Reveal>
           </div>
 
-          <div className="flex flex-col gap-3 sm:items-end">
+          <Reveal delay={0.2} className="flex flex-col gap-3 sm:items-end">
             <a
               href="mailto:veritoninfo@gmail.com"
               className="font-display text-[1.35rem] sm:text-[1.55rem] tracking-[-0.02em] text-[#14181f] underline decoration-[#d9dde3] underline-offset-4 transition-colors hover:decoration-[#14181f]"
@@ -60,12 +65,11 @@ export default function Footer() {
                 <FaLinkedinIn size={13} />
               </a>
             </div>
-          </div>
+          </Reveal>
         </div>
 
-        {/* Middle: horizontal link groups */}
-        <div className="grid grid-cols-1 gap-10 py-10 sm:grid-cols-2">
-          <div>
+        <RevealStagger className="grid grid-cols-1 gap-10 py-10 sm:grid-cols-2">
+          <RevealItem>
             <p className="mb-4 text-[0.78rem] text-[#7d8b9a]">Navigate</p>
             <nav className="flex flex-wrap gap-x-5 gap-y-3">
               {links.map((link) => (
@@ -78,9 +82,9 @@ export default function Footer() {
                 </Link>
               ))}
             </nav>
-          </div>
+          </RevealItem>
 
-          <div>
+          <RevealItem>
             <p className="mb-4 text-[0.78rem] text-[#7d8b9a]">Services</p>
             <nav className="flex flex-wrap gap-x-5 gap-y-3">
               {services.map((link) => (
@@ -93,10 +97,9 @@ export default function Footer() {
                 </Link>
               ))}
             </nav>
-          </div>
-        </div>
+          </RevealItem>
+        </RevealStagger>
 
-        {/* Bottom meta */}
         <div className="border-t border-[#d9dde3] pt-6">
           <p className="text-[0.8rem] text-[#7d8b9a]">© Veriton 2026</p>
         </div>

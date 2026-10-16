@@ -12,6 +12,8 @@
     "guard:postcss": "node scripts/guard-postcss.mjs --check"
   },
   "dependencies": {
+    "framer-motion": "^14.3.0",
+    "lenis": "^1.3.27",
     "next": "^15.5.10",
     "react": "19.1.0",
     "react-dom": "19.1.0",

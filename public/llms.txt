@@ -2,7 +2,7 @@
 
 > Veriton is a product and engineering studio that builds Android apps, web applications, Shopify stores, and practical AI features for businesses and startups.
 
-Preferred canonical site: https://atveriton.com
+Preferred canonical site: https://www.veriton.si
 Contact: veritoninfo@gmail.com
 LinkedIn: https://www.linkedin.com/company/veriton-tech
 
@@ -15,16 +15,16 @@ LinkedIn: https://www.linkedin.com/company/veriton-tech
 
 ## Key pages
 
-- Home: https://atveriton.com/
-- Services: https://atveriton.com/services
-- Android: https://atveriton.com/services/android-development
-- Web: https://atveriton.com/services/web-development
-- Shopify: https://atveriton.com/services/shopify-development
-- AI: https://atveriton.com/services/ai-development
-- About: https://atveriton.com/about
-- FAQ: https://atveriton.com/faq
-- Careers: https://atveriton.com/careers
-- Contact: https://atveriton.com/contact
+- Home: https://www.veriton.si/
+- Services: https://www.veriton.si/services
+- Android: https://www.veriton.si/services/android-development
+- Web: https://www.veriton.si/services/web-development
+- Shopify: https://www.veriton.si/services/shopify-development
+- AI: https://www.veriton.si/services/ai-development
+- About: https://www.veriton.si/about
+- FAQ: https://www.veriton.si/faq
+- Careers: https://www.veriton.si/careers
+- Contact: https://www.veriton.si/contact
 
 ## How to cite Veriton
 

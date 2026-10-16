@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: "FAQ — Veriton",
     description:
       "Straight answers about Veriton’s services, process, and how we work with clients.",
-    url: "https://atveriton.com/faq",
+    url: "https://www.veriton.si/faq",
     type: "website",
     siteName: "Veriton",
   },

@@ -764,13 +764,102 @@ body::before {
   background: rgba(255, 255, 255, 0.22);
 }
 
-.hero-indicator.is-active::after {
-  content: "";
+.hero-indicator__fill {
   position: absolute;
   inset: 0;
   background: #ffffff;
   transform-origin: left;
   animation: indicator-fill 6s linear both;
+}
+
+.hero-indicator__fill.is-paused {
+  animation-play-state: paused;
+}
+
+/* Magnetic CTA sheen */
+.magnetic-sheen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.magnetic-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 75%
+  );
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.magnetic-sheen:hover::after,
+.magnetic-sheen:focus-visible::after {
+  animation: sheen-sweep 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes sheen-sweep {
+  to {
+    transform: translateX(120%);
+  }
+}
+
+.magnetic-ripple.is-rippling::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.35), transparent 65%);
+  animation: ripple-out 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+@keyframes ripple-out {
+  from {
+    opacity: 0.7;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+.team-photo {
+  filter: grayscale(0.35);
+  transition: filter 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .team-photo {
+  filter: grayscale(0);
+}
+
+html.has-custom-cursor,
+html.has-custom-cursor body {
+  cursor: none;
+}
+
+html.has-custom-cursor a,
+html.has-custom-cursor button,
+html.has-custom-cursor [role="button"] {
+  cursor: none;
+}
+
+html.intro-done .site-header {
+  /* header entrance handled by Framer Motion */
+}
+
+.ticker-track-motion {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.project-band__ornament {
+  background-size: 200% 200%;
 }
 
 @media (prefers-reduced-motion: reduce) {

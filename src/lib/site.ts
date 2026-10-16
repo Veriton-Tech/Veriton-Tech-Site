@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Veriton",
   legalName: "Veriton",
-  url: "https://atveriton.com",
+  url: "https://www.veriton.si",
   email: "veritoninfo@gmail.com",
   linkedin: "https://www.linkedin.com/company/veriton-tech",
   description:

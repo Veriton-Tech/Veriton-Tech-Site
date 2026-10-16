@@ -9,6 +9,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Us — Veriton",
     description: "Learn about Veriton's mission to empower businesses with innovative technology solutions.",
-    url: 'https://atveriton.com/about',
+    url: 'https://www.veriton.si/about',
   },
 };

@@ -3,6 +3,7 @@ import { Figtree, Fraunces } from "next/font/google";
 import SiteHeader from "../components/SiteHeader";
 import ScrollProgress from "../components/ScrollProgress";
 import JsonLd from "../components/JsonLd";
+import MotionProviders from "../components/motion/MotionProviders";
 import Footer from "./Footer";
 import { SITE } from "@/lib/site";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
@@ -76,11 +77,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${figtree.variable} ${fraunces.variable} antialiased`}>
-        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
-        <ScrollProgress />
-        <SiteHeader />
-        <main className="relative z-10">{children}</main>
-        <Footer />
+        <MotionProviders>
+          <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
+          <ScrollProgress />
+          <SiteHeader />
+          <main className="relative z-10">{children}</main>
+          <Footer />
+        </MotionProviders>
       </body>
     </html>
   );

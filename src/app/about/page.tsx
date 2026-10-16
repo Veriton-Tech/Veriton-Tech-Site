@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "About Us — Veriton",
     description:
       "Learn about Veriton's mission to empower businesses with innovative technology solutions, including Android, Shopify, web, and AI services.",
-    url: "https://atveriton.com/about",
+    url: "https://www.veriton.si/about",
     type: "website",
     siteName: "Veriton",
   },

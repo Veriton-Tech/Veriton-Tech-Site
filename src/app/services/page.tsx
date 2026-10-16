@@ -7,7 +7,7 @@ import Reveal from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "Services — Veriton",
   alternates: {
-    canonical: "https://www.atveriton.com/services",
+    canonical: "https://www.veriton.si/services",
   },
 };
 

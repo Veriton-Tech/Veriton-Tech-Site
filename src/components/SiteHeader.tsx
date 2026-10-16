@@ -3,7 +3,9 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, useMotionValueEvent, useScroll, useReducedMotion } from "framer-motion";
 import MobileMenu from "./MobileMenu";
+import { DURATION, EASE } from "./motion/config";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -15,20 +17,48 @@ const navLinks = [
 
 export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
+  const reduced = useReducedMotion();
+  const { scrollY } = useScroll();
+  const lastY = React.useRef(0);
+
+  useMotionValueEvent(scrollY, "change", (y) => {
+    setScrolled(y > 40);
+    if (reduced) {
+      setHidden(false);
+      lastY.current = y;
+      return;
+    }
+    const delta = y - lastY.current;
+    if (y < 80) setHidden(false);
+    else if (delta > 6) setHidden(true);
+    else if (delta < -6) setHidden(false);
+    lastY.current = y;
+  });
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    setHidden(false);
+  }, [pathname]);
 
   return (
-    <header
-      className={`site-header sticky top-0 z-50 w-full border-b border-white/10 backdrop-blur-md ${
-        scrolled ? "is-scrolled" : "bg-[#0c1826]/75"
+    <motion.header
+      className={`site-header sticky top-0 z-50 w-full border-b ${
+        scrolled
+          ? "is-scrolled border-white/12 bg-[#0c1826]/72 backdrop-blur-xl"
+          : "border-white/10 bg-[#0c1826]/75 backdrop-blur-md"
       }`}
+      initial={reduced ? false : { y: -24, opacity: 0 }}
+      animate={
+        reduced
+          ? { y: 0, opacity: 1 }
+          : {
+              y: hidden ? "-110%" : 0,
+              opacity: 1,
+            }
+      }
+      transition={{ duration: DURATION.base, ease: EASE }}
+      style={{ willChange: "transform, opacity" }}
     >
       <div
         className={`mx-auto flex max-w-[1120px] items-center justify-between px-5 sm:px-8 transition-[height] duration-300 ease-out ${
@@ -39,7 +69,7 @@ export default function SiteHeader() {
           <MobileMenu />
           <Link
             href="/"
-            className="font-display text-[1.7rem] leading-none tracking-[-0.02em] text-white transition-opacity duration-300 hover:opacity-80"
+            className="font-display text-[1.7rem] leading-none tracking-[-0.02em] text-white transition-opacity duration-300 hover:opacity-80 focus-visible:opacity-80"
           >
             Veriton
           </Link>
@@ -66,6 +96,6 @@ export default function SiteHeader() {
           </Link>
         </nav>
       </div>
-    </header>
+    </motion.header>
   );
 }

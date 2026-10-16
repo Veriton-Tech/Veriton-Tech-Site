@@ -1,4 +1,4 @@
-# robots.txt for atveriton.com
+# robots.txt for www.veriton.si
 
 User-agent: *
 Allow: /
@@ -26,6 +26,6 @@ User-agent: Applebot-Extended
 Allow: /
 
 # Sitemaps & machine-readable summaries
-Sitemap: https://atveriton.com/sitemap.xml
+Sitemap: https://www.veriton.si/sitemap.xml
 # Optional context file for LLM crawlers that read llms.txt
-# https://atveriton.com/llms.txt
+# https://www.veriton.si/llms.txt
