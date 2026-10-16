@@ -45,6 +45,30 @@ export default function Home() {
     <div>
       <BannerCarousel />
 
+      {/* Entity / answer-friendly intro for AEO & GEO */}
+      <section className="border-b border-[#d9dde3] bg-white py-12 sm:py-16">
+        <div className="mx-auto max-w-[1120px] px-5 sm:px-8">
+          <Reveal>
+            <p className="section-label mb-3">About Veriton</p>
+            <h2 className="font-display max-w-3xl text-[2rem] sm:text-[2.6rem] leading-[1.12] tracking-[-0.03em] text-[#14181f]">
+              Veriton is a product &amp; engineering studio
+            </h2>
+            <p className="mt-4 max-w-2xl text-[1.05rem] leading-relaxed text-[#5e6670]">
+              We help businesses and startups ship Android apps, web products,
+              Shopify stores, and practical AI features — from discovery through
+              launch and ongoing support. Clear communication, custom delivery,
+              no black boxes.
+            </p>
+            <ul className="mt-6 grid max-w-2xl grid-cols-1 gap-2 text-[0.95rem] text-[#14181f] sm:grid-cols-2">
+              <li className="border-l-2 border-[#12263a] pl-3">Android development</li>
+              <li className="border-l-2 border-[#12263a] pl-3">Web development</li>
+              <li className="border-l-2 border-[#12263a] pl-3">Shopify development</li>
+              <li className="border-l-2 border-[#12263a] pl-3">AI development</li>
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Animated ticker */}
       <section className="ticker" aria-label="Capabilities">
         <div className="ticker-track">

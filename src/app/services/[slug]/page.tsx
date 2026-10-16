@@ -3,14 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import ServiceAccordion from "@/components/ServiceAccordion";
 import EstimateWidget from "@/components/EstimateWidget";
+import JsonLd from "@/components/JsonLd";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-
-export const metadata: Metadata = {
-  alternates: {
-    canonical: "https://www.atveriton.com/services",
-  },
-};
+import { SITE } from "@/lib/site";
+import { faqPageJsonLd, serviceJsonLd } from "@/lib/structured-data";
 
 type Service = {
   title: string;
@@ -144,6 +141,30 @@ export function generateStaticParams() {
   return Object.keys(SERVICES).map((slug) => ({ slug }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const s = SERVICES[decodeURIComponent(slug)];
+  if (!s) return {};
+
+  const path = `/services/${slug}`;
+  return {
+    title: s.title,
+    description: s.subtitle,
+    alternates: { canonical: path },
+    openGraph: {
+      title: `${s.title} — Veriton`,
+      description: s.subtitle,
+      url: `${SITE.url}${path}`,
+      type: "website",
+      siteName: SITE.name,
+    },
+  };
+}
+
 export default async function ServicePage({
   params,
 }: {
@@ -158,8 +179,26 @@ export default async function ServicePage({
     .filter(([id]) => id !== key && id !== "cloud-services")
     .slice(0, 3);
 
+  const path = `/services/${key}`;
+
   return (
     <main className="min-h-screen bg-[#f7f6f3]">
+      <JsonLd
+        data={[
+          serviceJsonLd({
+            name: s.title,
+            description: s.subtitle,
+            path,
+          }),
+          faqPageJsonLd(
+            s.faqs.map((item) => ({
+              question: item.q,
+              answer: item.a,
+            }))
+          ),
+        ]}
+      />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#0c1826] text-white">
         <div className="absolute inset-0">

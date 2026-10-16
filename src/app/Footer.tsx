@@ -97,9 +97,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom meta */}
-        <div className="flex flex-col gap-2 border-t border-[#d9dde3] pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="border-t border-[#d9dde3] pt-6">
           <p className="text-[0.8rem] text-[#7d8b9a]">© Veriton 2026</p>
-          <p className="text-[0.8rem] text-[#9aa3ad]">Built with care</p>
         </div>
       </div>
     </footer>

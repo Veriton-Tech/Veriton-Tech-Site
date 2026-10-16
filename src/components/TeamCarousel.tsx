@@ -34,15 +34,19 @@ const team = [
   },
 ];
 
+const AUTOPLAY_MS = 4000;
+
 export default function TeamCarousel({
   animateOnView = false,
 }: {
   animateOnView?: boolean;
 }) {
-  const [sectionRef, inView] = useSectionInView(0.3);
+  // Observe early so autoplay starts when the section is approaching, not after it.
+  const [sectionRef, inView] = useSectionInView(0.2);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const wasInView = useRef(false);
 
   const [index, setIndex] = useState(0);
   const [offset, setOffset] = useState(0);
@@ -75,15 +79,34 @@ export default function TeamCarousel({
     return () => window.removeEventListener("resize", onResize);
   }, [index]);
 
+  // When the section first enters view, land on the first member so autoplay
+  // hasn't already skipped ahead while the user was still above the fold.
   useEffect(() => {
+    if (inView && !wasInView.current) {
+      wasInView.current = true;
+      setIndex(0);
+      updatePosition(0);
+    }
+    if (!inView) {
+      wasInView.current = false;
+    }
+  }, [inView]);
+
+  // Autoplay only while the carousel is visible.
+  useEffect(() => {
+    if (!inView) return;
+
     const id = setInterval(() => {
       if (isDragging.current) return;
-      const next = (index + 1) % team.length;
-      setIndex(next);
-      updatePosition(next);
-    }, 4000);
+      setIndex((current) => {
+        const next = (current + 1) % team.length;
+        updatePosition(next);
+        return next;
+      });
+    }, AUTOPLAY_MS);
+
     return () => clearInterval(id);
-  }, [index]);
+  }, [inView, index]);
 
   const onPointerDown = (e: React.PointerEvent) => {
     isDragging.current = true;
@@ -116,7 +139,7 @@ export default function TeamCarousel({
   return (
     <div
       className="flex w-full flex-col items-center py-1"
-      ref={animateOnView ? sectionRef : undefined}
+      ref={sectionRef}
     >
       <div
         ref={wrapperRef}
@@ -138,6 +161,7 @@ export default function TeamCarousel({
         >
           {team.map((m, i) => {
             const animate = animateOnView && inView;
+            const nearActive = Math.abs(i - index) <= 1;
             return (
               <div
                 key={i}
@@ -164,7 +188,11 @@ export default function TeamCarousel({
                       src={m.image}
                       alt={m.name}
                       fill
-                      className={`${i == 2 ? "object-cover" : "object-top object-cover"} bg-neutral-100 grayscale-[30%]`}
+                      priority={i === 0}
+                      {...(i === 0
+                        ? {}
+                        : { loading: nearActive ? "eager" : "lazy" })}
+                      className={`${i === 2 ? "object-cover" : "object-top object-cover"} bg-neutral-100 grayscale-[30%]`}
                       sizes="(max-width: 640px) 100vw, 360px"
                       unoptimized
                     />
