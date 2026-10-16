@@ -66,6 +66,7 @@ export default function BannerCarousel() {
 
   return (
     <section
+      data-cursor-dark
       className="relative flex min-h-[86vh] w-full flex-col justify-end overflow-hidden text-white sm:min-h-[88vh]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -138,12 +139,20 @@ export default function BannerCarousel() {
           transition={{ duration: DURATION.base, ease: EASE, delay: 0.95 }}
         >
           <Magnetic strength={8}>
-            <Link href="/contact" className="btn-primary-light magnetic-sheen">
+            <Link
+              href="/contact"
+              data-cursor="magnetic"
+              className="btn-primary-light magnetic-sheen"
+            >
               Start a project
             </Link>
           </Magnetic>
           <Magnetic strength={6}>
-            <Link href="/services" className="btn-outline-light magnetic-sheen">
+            <Link
+              href="/services"
+              data-cursor="magnetic"
+              className="btn-outline-light magnetic-sheen"
+            >
               View services
             </Link>
           </Magnetic>

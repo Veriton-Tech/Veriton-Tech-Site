@@ -97,7 +97,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="ticker" aria-label="Capabilities">
+      <section className="ticker" data-cursor-dark aria-label="Capabilities">
         <VelocityMarquee className="ticker-track-motion" baseSpeed={42}>
           {tickerItems.map((item) => (
             <span key={item} className="ticker-item">
@@ -144,6 +144,7 @@ export default function Home() {
                     <Link
                       prefetch={false}
                       href={`/services/${slug}`}
+                      data-cursor-label="View"
                       className="service-tile group"
                     >
                       <div className="service-tile__media">
@@ -173,7 +174,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative bg-[#0c1826] py-20 sm:py-28 text-white">
+      <section
+        data-cursor-dark
+        className="relative bg-[#0c1826] py-20 sm:py-28 text-white"
+      >
         <div className="mx-auto max-w-[1120px] px-5 sm:px-8">
           <Reveal>
             <p className="mb-3 text-[0.9rem] text-[#9eacbc]">How we work</p>
@@ -228,6 +232,7 @@ export default function Home() {
               <Magnetic strength={8}>
                 <Link
                   href="/contact"
+                  data-cursor="magnetic"
                   className="btn-primary magnetic-sheen magnetic-ripple"
                   onClick={(e) => {
                     const el = e.currentTarget;

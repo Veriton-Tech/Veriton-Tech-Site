@@ -837,15 +837,27 @@ body::before {
   filter: grayscale(0);
 }
 
-html.has-custom-cursor,
-html.has-custom-cursor body {
-  cursor: none;
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button,
+  html.has-custom-cursor [role="button"],
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea {
+    cursor: none !important;
+  }
 }
 
-html.has-custom-cursor a,
-html.has-custom-cursor button,
-html.has-custom-cursor [role="button"] {
-  cursor: none;
+@media (hover: none), (pointer: coarse) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: auto !important;
+  }
+
+  .veriton-cursor {
+    display: none !important;
+  }
 }
 
 html.intro-done .site-header {

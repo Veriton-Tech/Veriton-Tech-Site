@@ -43,6 +43,7 @@ export default function SiteHeader() {
 
   return (
     <motion.header
+      data-cursor-dark
       className={`site-header sticky top-0 z-50 w-full border-b ${
         scrolled
           ? "is-scrolled border-white/12 bg-[#0c1826]/72 backdrop-blur-xl"

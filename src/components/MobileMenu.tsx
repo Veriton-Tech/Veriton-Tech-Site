@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { DURATION, EASE, STAGGER } from "./motion/config";
@@ -16,38 +17,35 @@ const links = [
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const reduced = useReducedMotion();
 
-  React.useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
     };
   }, [open]);
 
-  return (
-    <div className="md:hidden">
-      <button
-        aria-label={open ? "Close menu" : "Open menu"}
-        aria-expanded={open}
-        onClick={() => setOpen((s) => !s)}
-        className="relative z-[10001] flex h-9 w-9 items-center justify-center text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
-      >
-        {open ? (
-          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        ) : (
-          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
-        )}
-      </button>
-
+  const overlay =
+    mounted &&
+    createPortal(
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[9999] md:hidden"
+            key="mobile-nav"
+            className="fixed inset-0 z-[10040] flex flex-col bg-[#0c1826] md:hidden"
             initial={
               reduced
                 ? { opacity: 1 }
@@ -61,13 +59,39 @@ export default function MobileMenu() {
             exit={
               reduced
                 ? { opacity: 0 }
-                : { clipPath: "inset(0 0 100% 0)", opacity: 1 }
+                : {
+                    clipPath: "inset(0 0 100% 0)",
+                    transition: { duration: DURATION.base, ease: EASE },
+                  }
             }
             transition={{ duration: DURATION.slow, ease: EASE }}
             style={{ willChange: "clip-path, opacity" }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
           >
-            <div className="absolute inset-0 bg-[#0c1826]" />
-            <div className="relative z-10 flex h-full flex-col px-7 pb-10 pt-20">
+            <div className="flex items-center justify-between px-5 pt-4 sm:px-8">
+              <span className="font-display text-[1.7rem] tracking-[-0.02em] text-white">
+                Veriton
+              </span>
+              <button
+                type="button"
+                aria-label="Close menu"
+                onClick={() => setOpen(false)}
+                className="flex h-10 w-10 items-center justify-center text-white"
+              >
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div className="relative z-10 flex flex-1 flex-col px-7 pb-10 pt-10">
               <nav className="flex flex-col">
                 {links.map((link, i) => (
                   <motion.div
@@ -77,7 +101,7 @@ export default function MobileMenu() {
                     transition={{
                       duration: DURATION.base,
                       ease: EASE,
-                      delay: reduced ? 0 : 0.12 + i * STAGGER.base,
+                      delay: reduced ? 0 : 0.1 + i * STAGGER.base,
                     }}
                   >
                     <Link
@@ -98,7 +122,7 @@ export default function MobileMenu() {
                 transition={{
                   duration: DURATION.base,
                   ease: EASE,
-                  delay: reduced ? 0 : 0.45,
+                  delay: reduced ? 0 : 0.4,
                 }}
               >
                 <Link
@@ -112,7 +136,30 @@ export default function MobileMenu() {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+    );
+
+  return (
+    <div className="md:hidden">
+      <button
+        type="button"
+        aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
+        onClick={() => setOpen((s) => !s)}
+        className="relative z-[10041] flex h-10 w-10 items-center justify-center text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
+      >
+        {open ? (
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        )}
+      </button>
+      {overlay}
     </div>
   );
 }
