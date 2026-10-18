@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import CareersApply from "@/components/CareersApply";
 
 const description =
   "Join Veriton in Berlin. We’re hiring an AI Engineer to ship practical LLM features, RAG systems, and production AI workflows with a focused product team.";
@@ -148,7 +148,12 @@ export default function CareersPage() {
                       </li>
                     ))}
                   </ul>
-                  <CareersApply role={position.title} />
+                  <Link
+                    href={`/careers/apply?role=${encodeURIComponent(position.title)}`}
+                    className="btn-primary mt-8 inline-flex"
+                  >
+                    Apply for this role
+                  </Link>
                 </div>
               ))}
             </Reveal>
@@ -195,11 +200,12 @@ export default function CareersPage() {
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:items-end">
-            <CareersApply
-              role={positions[0]?.title ?? "AI Engineer"}
-              variant="band"
-              label="Apply now"
-            />
+            <Link
+              href={`/careers/apply?role=${encodeURIComponent(positions[0]?.title ?? "AI Engineer")}`}
+              className="btn-primary"
+            >
+              Apply now
+            </Link>
             <a
               href="mailto:info@veriton.si"
               className="text-[0.9rem] text-[#2c4a6e] underline-offset-4 hover:underline"
