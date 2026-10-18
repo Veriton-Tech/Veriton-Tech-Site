@@ -1,9 +1,20 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { FaLinkedinIn } from "react-icons/fa";
 
-export default function ContactPage() {
+function openMailto(name: string, email: string, message: string) {
+  const subject = encodeURIComponent(`Project inquiry from ${name}`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\n\n${message}`
+  );
+  window.location.href = `mailto:info@veriton.si?subject=${subject}&body=${body}`;
+}
+
+function ContactForm() {
+  const searchParams = useSearchParams();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -12,11 +23,21 @@ export default function ContactPage() {
   );
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (searchParams.get("sent") === "1") {
+      setStatus("success");
+    }
+  }, [searchParams]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
 
-    if (!name.trim() || !email.trim() || !message.trim()) {
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    const trimmedMessage = message.trim();
+
+    if (!trimmedName || !trimmedEmail || !trimmedMessage) {
       setErrorMessage("Please fill out all fields.");
       return;
     }
@@ -31,37 +52,132 @@ export default function ContactPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim(),
-          message: message.trim(),
+          name: trimmedName,
+          email: trimmedEmail,
+          message: trimmedMessage,
         }),
       });
 
-      const data = (await res.json().catch(() => ({}))) as {
-        message?: string;
-      };
+      const raw = await res.text();
+      let data: { message?: string; code?: string } = {};
+      try {
+        data = JSON.parse(raw) as { message?: string; code?: string };
+      } catch {
+        // Never surface Cloudflare HTML / non-JSON to the UI
+        data = {};
+      }
 
       if (res.ok) {
         setStatus("success");
         setName("");
         setEmail("");
         setMessage("");
-      } else {
-        setErrorMessage(
-          data.message || "Failed to send message. Please try again later."
-        );
-        setStatus("error");
+        return;
       }
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : String(err);
-      setErrorMessage(msg || "Network error");
+
+      // SMTP not wired yet — open the user's mail client as a clean fallback
+      if (data.code === "NOT_CONFIGURED" || res.status === 503) {
+        openMailto(trimmedName, trimmedEmail, trimmedMessage);
+        setStatus("success");
+        setName("");
+        setEmail("");
+        setMessage("");
+        return;
+      }
+
+      setErrorMessage(
+        data.message ||
+          "Could not send your message. Please email info@veriton.si instead."
+      );
       setStatus("error");
+    } catch {
+      openMailto(trimmedName, trimmedEmail, trimmedMessage);
+      setErrorMessage(null);
+      setStatus("success");
     }
   };
 
   const inputClass =
     "w-full border border-[#d9dde3] bg-[#f7f6f3] px-4 py-3 text-[#14181f] placeholder:text-[#9aa8b8] transition-colors focus:border-[#12263a] focus:bg-white focus:outline-none";
 
+  return (
+    <>
+      <form
+        className="space-y-5"
+        onSubmit={handleSubmit}
+        aria-describedby="contact-status"
+      >
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div>
+            <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className={inputClass}
+              placeholder="Your name"
+              required
+              autoComplete="name"
+            />
+          </div>
+          <div>
+            <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={inputClass}
+              placeholder="you@email.com"
+              required
+              autoComplete="email"
+            />
+          </div>
+        </div>
+        <div>
+          <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">Message</label>
+          <textarea
+            name="message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className={inputClass}
+            rows={6}
+            placeholder="Tell us about your project..."
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          className="btn-primary disabled:opacity-60"
+        >
+          {status === "sending" ? "Sending..." : "Send message"}
+        </button>
+      </form>
+
+      <div id="contact-status" className="mt-4 text-sm" role="status">
+        {status === "success" ? (
+          <p className="text-[#2c4a6e]">
+            Thanks — your message was sent. We&apos;ll get back to you shortly.
+          </p>
+        ) : status === "error" || errorMessage ? (
+          <p className="text-red-700">
+            {errorMessage || "Failed to send message."}{" "}
+            <a
+              href="mailto:info@veriton.si"
+              className="underline underline-offset-2"
+            >
+              Email info@veriton.si
+            </a>
+          </p>
+        ) : null}
+      </div>
+    </>
+  );
+}
+
+export default function ContactPage() {
   return (
     <main className="w-full bg-[#f7f6f3]">
       <section className="relative overflow-hidden bg-[#0c1826] text-white">
@@ -127,74 +243,9 @@ export default function ContactPage() {
               <h2 className="font-display text-[1.75rem] tracking-[-0.02em] text-[#14181f] mb-6">
                 Send a note
               </h2>
-
-              <form
-                className="space-y-5"
-                onSubmit={handleSubmit}
-                aria-describedby="contact-status"
-              >
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  <div>
-                    <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className={inputClass}
-                      placeholder="Your name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className={inputClass}
-                      placeholder="you@email.com"
-                      required
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">
-                    Message
-                  </label>
-                  <textarea
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className={inputClass}
-                    rows={6}
-                    placeholder="Tell us about your project..."
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className="btn-primary disabled:opacity-60"
-                >
-                  {status === "sending" ? "Sending..." : "Send message"}
-                </button>
-              </form>
-
-              <div id="contact-status" className="mt-4 text-sm" role="status">
-                {status === "success" ? (
-                  <p className="text-[#2c4a6e]">
-                    Thanks — your message was sent. We&apos;ll get back to you
-                    shortly.
-                  </p>
-                ) : status === "error" || errorMessage ? (
-                  <p className="text-red-700">
-                    {errorMessage || "Failed to send message."}
-                  </p>
-                ) : null}
-              </div>
+              <Suspense fallback={<p className="text-[#5e6670]">Loading form…</p>}>
+                <ContactForm />
+              </Suspense>
             </div>
           </div>
         </div>

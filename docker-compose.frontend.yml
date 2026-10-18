@@ -7,6 +7,14 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
+      - EMAIL_RECEIVER=${EMAIL_RECEIVER:-info@veriton.si}
+      - SMTP_HOST=${SMTP_HOST:-}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_SECURE=${SMTP_SECURE:-false}
+      - SMTP_USER=${SMTP_USER:-}
+      - SMTP_PASS=${SMTP_PASS:-}
+      - EMAIL_USER=${EMAIL_USER:-}
+      - EMAIL_APP_PASSWORD=${EMAIL_APP_PASSWORD:-}
     networks:
       - proxy
 
