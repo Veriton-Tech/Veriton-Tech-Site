@@ -74,10 +74,10 @@ export default function FAQPage() {
                 Contact us
               </Link>
               <a
-                href="mailto:veritoninfo@gmail.com"
+                href="mailto:info@veriton.si"
                 className="text-[0.9rem] text-[#2c4a6e] underline-offset-4 hover:underline"
               >
-                veritoninfo@gmail.com
+                info@veriton.si
               </a>
             </div>
           </div>

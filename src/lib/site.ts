@@ -2,7 +2,7 @@ export const SITE = {
   name: "Veriton",
   legalName: "Veriton",
   url: "https://www.veriton.si",
-  email: "veritoninfo@gmail.com",
+  email: "info@veriton.si",
   linkedin: "https://www.linkedin.com/company/veriton-tech",
   description:
     "Veriton is a product and engineering studio that builds Android apps, web applications, Shopify stores, and practical AI features for businesses and startups.",

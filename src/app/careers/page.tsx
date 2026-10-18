@@ -133,7 +133,7 @@ export default function CareersPage() {
                     ))}
                   </ul>
                   <a
-                    href="mailto:veritoninfo@gmail.com?subject=Application%20-%20AI%20Engineer"
+                    href="mailto:info@veriton.si?subject=Application%20-%20AI%20Engineer"
                     className="btn-primary mt-8 inline-flex"
                   >
                     Apply for this role
@@ -185,7 +185,7 @@ export default function CareersPage() {
           </div>
           <div className="flex flex-col gap-3 sm:items-end">
             <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=veritoninfo@gmail.com&body=Hi%20Veriton%20Team,%0A%0AI%27m%20interested%20in%20joining%20your%20team."
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=info@veriton.si&body=Hi%20Veriton%20Team,%0A%0AI%27m%20interested%20in%20joining%20your%20team."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
@@ -193,10 +193,10 @@ export default function CareersPage() {
               Apply now
             </a>
             <a
-              href="mailto:veritoninfo@gmail.com"
+              href="mailto:info@veriton.si"
               className="text-[0.9rem] text-[#2c4a6e] underline-offset-4 hover:underline"
             >
-              or email veritoninfo@gmail.com
+              or email info@veriton.si
             </a>
           </div>
         </div>

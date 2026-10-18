@@ -43,10 +43,10 @@ export default function Footer() {
 
           <Reveal delay={0.2} className="flex flex-col gap-3 sm:items-end">
             <a
-              href="mailto:veritoninfo@gmail.com"
+              href="mailto:info@veriton.si"
               className="font-display text-[1.35rem] sm:text-[1.55rem] tracking-[-0.02em] text-[#14181f] underline decoration-[#d9dde3] underline-offset-4 transition-colors hover:decoration-[#14181f]"
             >
-              veritoninfo@gmail.com
+              info@veriton.si
             </a>
             <div className="flex items-center gap-4">
               <Link

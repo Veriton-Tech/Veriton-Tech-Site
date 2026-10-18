@@ -245,7 +245,7 @@ export default function Home() {
                 </Link>
               </Magnetic>
               <a
-                href="mailto:veritoninfo@gmail.com"
+                href="mailto:info@veriton.si"
                 className="text-[0.95rem] text-[#2c4a6e] underline-offset-4 hover:underline"
               >
                 or email us directly

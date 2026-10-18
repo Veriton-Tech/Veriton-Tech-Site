@@ -104,10 +104,10 @@ export default function ContactPage() {
               <div className="border border-[#d9dde3] bg-white p-5">
                 <p className="mb-1 text-[0.8rem] text-[#7d8b9a]">Email</p>
                 <a
-                  href="mailto:veritoninfo@gmail.com"
+                  href="mailto:info@veriton.si"
                   className="text-[0.98rem] text-[#14181f] transition-opacity hover:opacity-70 break-all"
                 >
-                  veritoninfo@gmail.com
+                  info@veriton.si
                 </a>
               </div>
               <div className="border border-[#d9dde3] bg-white p-5">
