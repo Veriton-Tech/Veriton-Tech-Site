@@ -12,13 +12,6 @@ export default function ContactPage() {
   );
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const FORM_SUBMIT_ENDPOINT =
-    process.env.NEXT_PUBLIC_FORMSUBMIT_ENDPOINT ||
-    (process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL
-      ? `https://formsubmit.co/ajax/${process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL}`
-      : null);
-  const FORMSPREE = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || null;
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
@@ -30,24 +23,23 @@ export default function ContactPage() {
 
     setStatus("sending");
 
-    let endpoint: string;
-    if (FORM_SUBMIT_ENDPOINT) endpoint = FORM_SUBMIT_ENDPOINT;
-    else if (FORMSPREE) endpoint = FORMSPREE;
-    else endpoint = "/api/contact";
-
     try {
-      const formData = new FormData();
-      formData.append("name", name.trim());
-      formData.append("email", email.trim());
-      formData.append("message", message.trim());
-
-      const res = await fetch(endpoint, {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
         headers: {
           Accept: "application/json",
-        } as HeadersInit,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim(),
+        }),
       });
+
+      const data = (await res.json().catch(() => ({}))) as {
+        message?: string;
+      };
 
       if (res.ok) {
         setStatus("success");
@@ -55,19 +47,14 @@ export default function ContactPage() {
         setEmail("");
         setMessage("");
       } else {
-        let text = await res.text();
-        try {
-          const obj = JSON.parse(text);
-          text = obj.message || JSON.stringify(obj);
-        } catch {}
         setErrorMessage(
-          text || "Failed to send message. Please try again later."
+          data.message || "Failed to send message. Please try again later."
         );
         setStatus("error");
       }
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : String(err);
-      setErrorMessage(message || "Network error");
+      const msg = err instanceof Error ? err.message : String(err);
+      setErrorMessage(msg || "Network error");
       setStatus("error");
     }
   };
