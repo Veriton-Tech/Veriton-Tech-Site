@@ -27,24 +27,28 @@ const services = [
     desc: "Mobile products that feel native — fast, polished, and ready for the store.",
     image:
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=900&h=560&q=80",
+    imageAlt: "Smartphone showing a modern Android mobile app interface",
   },
   {
     name: "Web Development",
     desc: "Sites and apps with solid architecture, sharp UI, and room to grow.",
     image:
       "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=900&h=560&q=80",
+    imageAlt: "Laptop displaying a clean, responsive website design",
   },
   {
     name: "Shopify Development",
     desc: "Commerce experiences built for conversion, clarity, and lasting growth.",
     image:
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&h=560&q=80",
+    imageAlt: "Retail fashion store interior representing ecommerce shopping",
   },
   {
     name: "AI Development",
     desc: "Intelligent product features — assistants, automation, and practical AI workflows.",
     image:
       "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=900&h=560&q=80",
+    imageAlt: "Abstract AI neural network visualization with glowing nodes",
   },
 ];
 
@@ -150,11 +154,12 @@ export default function Home() {
                       <div className="service-tile__media">
                         <Image
                           src={s.image}
-                          alt={s.name}
+                          alt={s.imageAlt}
                           fill
                           unoptimized
                           className="object-cover"
                           sizes="(max-width: 640px) 100vw, 50vw"
+                          loading="lazy"
                         />
                       </div>
                       <div className="service-tile__body">

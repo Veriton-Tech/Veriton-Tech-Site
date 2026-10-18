@@ -4,14 +4,24 @@ import { SITE } from "@/lib/site";
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": ["Organization", "ProfessionalService"],
+    "@type": ["Organization", "LocalBusiness"],
     name: SITE.name,
     legalName: SITE.legalName,
     url: SITE.url,
+    logo: SITE.logo,
+    image: SITE.logo,
     email: SITE.email,
+    telephone: SITE.telephone,
     description: SITE.description,
     sameAs: SITE.sameAs,
-    areaServed: "Worldwide",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: SITE.address.streetAddress,
+      postalCode: SITE.address.postalCode,
+      addressLocality: SITE.address.addressLocality,
+      addressCountry: SITE.address.addressCountry,
+    },
+    areaServed: ["DE", "EU", "Worldwide"],
     knowsAbout: [
       "Android development",
       "Web development",
@@ -24,7 +34,8 @@ export function organizationJsonLd() {
       "@type": "ContactPoint",
       contactType: "sales",
       email: SITE.email,
-      availableLanguage: ["English"],
+      telephone: SITE.telephone,
+      availableLanguage: ["English", "German"],
     },
     makesOffer: SITE.services.map((service) => ({
       "@type": "Offer",
@@ -33,7 +44,7 @@ export function organizationJsonLd() {
         name: service.name,
         description: service.description,
         url: `${SITE.url}${service.path}`,
-        provider: { "@type": "Organization", name: SITE.name },
+        provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
       },
     })),
   };
@@ -50,6 +61,7 @@ export function websiteJsonLd() {
       "@type": "Organization",
       name: SITE.name,
       url: SITE.url,
+      logo: SITE.logo,
     },
   };
 }
@@ -84,6 +96,7 @@ export function serviceJsonLd(service: {
       "@type": "Organization",
       name: SITE.name,
       url: SITE.url,
+      logo: SITE.logo,
     },
     areaServed: "Worldwide",
   };

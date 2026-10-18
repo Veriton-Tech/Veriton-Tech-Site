@@ -12,8 +12,10 @@ import { faqPageJsonLd, serviceJsonLd } from "@/lib/structured-data";
 type Service = {
   title: string;
   subtitle: string;
+  description: string;
   label: string;
   image: string;
+  imageAlt: string;
   features: string[];
   faqs: { q: string; a: string }[];
 };
@@ -23,8 +25,11 @@ const SERVICES: Record<string, Service> = {
     title: "Android Development",
     label: "Mobile",
     subtitle: "Custom, performant Android apps built with modern architecture.",
+    description:
+      "Android app development from Veriton in Berlin — modern architecture, polished UI, store-ready releases, CI/CD, and ongoing post-launch support.",
     image:
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&h=700&q=80",
+    imageAlt: "Smartphone showing a modern Android mobile app interface",
     features: [
       "Flutter with Material & Cupertino widgets",
       "Clean Architecture with modular code & testing",
@@ -46,8 +51,11 @@ const SERVICES: Record<string, Service> = {
     title: "Web Development",
     label: "Web",
     subtitle: "Fast, accessible and maintainable web apps and marketing sites.",
+    description:
+      "Web development with React and Next.js from Veriton — fast, accessible sites and apps with solid architecture, SEO, APIs, and room to scale.",
     image:
       "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1400&h=700&q=80",
+    imageAlt: "Laptop displaying a clean, responsive website design",
     features: [
       "React / Next.js architecture",
       "Responsive & accessible UI",
@@ -69,8 +77,11 @@ const SERVICES: Record<string, Service> = {
     title: "Shopify Development",
     label: "Commerce",
     subtitle: "Custom Shopify stores, theme work and headless commerce setups.",
+    description:
+      "Shopify development from Veriton — custom themes, apps, headless commerce, migrations, and checkout workflows built for conversion and growth.",
     image:
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&h=700&q=80",
+    imageAlt: "Retail fashion store interior representing ecommerce shopping",
     features: [
       "Theme customization & Liquid",
       "App integrations and private apps",
@@ -93,8 +104,11 @@ const SERVICES: Record<string, Service> = {
     label: "Intelligence",
     subtitle:
       "Practical AI features — assistants, automation, and models wired into real products.",
+    description:
+      "AI development from Veriton — LLM assistants, RAG pipelines, automation, evaluations, and secure production UX wired into your real product.",
     image:
       "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1400&h=700&q=80",
+    imageAlt: "Abstract AI neural network visualization with glowing nodes",
     features: [
       "LLM apps, agents & workflow automation",
       "RAG systems with your private data",
@@ -116,8 +130,11 @@ const SERVICES: Record<string, Service> = {
     title: "Cloud Services",
     label: "Infrastructure",
     subtitle: "Scalable infrastructure, cost optimization and secure deployments.",
+    description:
+      "Cloud services from Veriton — infrastructure, containers, CI/CD, and security reviews for reliable, scalable deployments on AWS, GCP, and Azure.",
     image:
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&h=700&q=80",
+    imageAlt: "Cloud infrastructure and network connections over a city skyline",
     features: [
       "AWS / GCP / Azure architecture",
       "Containerization & Kubernetes",
@@ -153,14 +170,19 @@ export async function generateMetadata({
   const path = `/services/${slug}`;
   return {
     title: s.title,
-    description: s.subtitle,
+    description: s.description,
     alternates: { canonical: path },
     openGraph: {
-      title: `${s.title} — Veriton`,
-      description: s.subtitle,
+      title: `${s.title} | Veriton`,
+      description: s.description,
       url: `${SITE.url}${path}`,
       type: "website",
       siteName: SITE.name,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${s.title} | Veriton`,
+      description: s.description,
     },
   };
 }
@@ -204,7 +226,7 @@ export default async function ServicePage({
         <div className="absolute inset-0">
           <Image
             src={s.image}
-            alt=""
+            alt={s.imageAlt}
             fill
             unoptimized
             className="object-cover opacity-35"
@@ -257,7 +279,7 @@ export default async function ServicePage({
                   key={i}
                   className="border border-[#d9dde3] bg-white p-5 transition-colors hover:border-[#c5ccd6]"
                 >
-                  <span className="mb-2 block text-[0.75rem] text-[#7d8b9a]">
+                  <span className="mb-2 block text-[0.75rem] text-[#5e6670]">
                     0{i + 1}
                   </span>
                   <p className="text-[0.95rem] font-medium leading-snug text-[#14181f]">
@@ -335,7 +357,7 @@ export default async function ServicePage({
                   href={`/services/${id}`}
                   className="group border border-[#d9dde3] bg-[#f7f6f3] p-5 transition-colors hover:border-[#c5ccd6] hover:bg-white"
                 >
-                  <span className="text-[0.8rem] text-[#7d8b9a]">{svc.label}</span>
+                  <span className="text-[0.8rem] text-[#5e6670]">{svc.label}</span>
                   <h3 className="mt-2 font-display text-[1.25rem] tracking-[-0.02em] text-[#14181f] group-hover:text-[#12263a]">
                     {svc.title}
                   </h3>

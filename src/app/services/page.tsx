@@ -4,10 +4,26 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 
+const description =
+  "Explore Veriton services: Android apps, web products, Shopify stores, and AI features — clearly scoped, carefully built, shipped from Berlin.";
+
 export const metadata: Metadata = {
-  title: "Services — Veriton",
+  title: "Services",
+  description,
   alternates: {
-    canonical: "https://www.veriton.si/services",
+    canonical: "/services",
+  },
+  openGraph: {
+    title: "Services | Veriton",
+    description,
+    url: "https://www.veriton.si/services",
+    type: "website",
+    siteName: "Veriton",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services | Veriton",
+    description,
   },
 };
 
@@ -18,6 +34,7 @@ const services = [
     detail: "Flutter, clean architecture, release pipelines, and ongoing care.",
     image:
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=900&h=560&q=80",
+    imageAlt: "Smartphone showing a modern Android mobile app interface",
   },
   {
     name: "Web Development",
@@ -25,6 +42,7 @@ const services = [
     detail: "React, Next.js, SEO, APIs, and maintainable frontends.",
     image:
       "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=900&h=560&q=80",
+    imageAlt: "Laptop displaying a clean, responsive website design",
   },
   {
     name: "Shopify Development",
@@ -32,6 +50,7 @@ const services = [
     detail: "Themes, apps, headless storefronts, and migrations.",
     image:
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&h=560&q=80",
+    imageAlt: "Retail fashion store interior representing ecommerce shopping",
   },
   {
     name: "AI Development",
@@ -39,6 +58,7 @@ const services = [
     detail: "LLMs, agents, RAG, integrations, and production-ready AI UX.",
     image:
       "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=900&h=560&q=80",
+    imageAlt: "Abstract AI neural network visualization with glowing nodes",
   },
 ];
 
@@ -74,7 +94,7 @@ export default function ServicesPage() {
                   <div className="service-tile__media">
                     <Image
                       src={s.image}
-                      alt={s.name}
+                      alt={s.imageAlt}
                       fill
                       unoptimized
                       className="object-cover"
@@ -85,7 +105,7 @@ export default function ServicesPage() {
                     <span className="service-tile__index">0{idx + 1}</span>
                     <h2 className="service-tile__title">{s.name}</h2>
                     <p className="service-tile__desc">{s.desc}</p>
-                    <p className="mt-2 text-[0.8rem] text-[#7d8b9a]">{s.detail}</p>
+                    <p className="mt-2 text-[0.8rem] text-[#5e6670]">{s.detail}</p>
                     <span className="service-tile__cta">
                       Learn more <span aria-hidden>→</span>
                     </span>

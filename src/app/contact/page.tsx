@@ -109,8 +109,14 @@ function ContactForm() {
       >
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
-            <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">Name</label>
+            <label
+              htmlFor="contact-name"
+              className="mb-2 block text-[0.8rem] text-[#5e6670]"
+            >
+              Name
+            </label>
             <input
+              id="contact-name"
               type="text"
               name="name"
               value={name}
@@ -122,8 +128,14 @@ function ContactForm() {
             />
           </div>
           <div>
-            <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">Email</label>
+            <label
+              htmlFor="contact-email"
+              className="mb-2 block text-[0.8rem] text-[#5e6670]"
+            >
+              Email
+            </label>
             <input
+              id="contact-email"
               type="email"
               name="email"
               value={email}
@@ -136,8 +148,14 @@ function ContactForm() {
           </div>
         </div>
         <div>
-          <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">Message</label>
+          <label
+            htmlFor="contact-message"
+            className="mb-2 block text-[0.8rem] text-[#5e6670]"
+          >
+            Message
+          </label>
           <textarea
+            id="contact-message"
             name="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -205,7 +223,7 @@ export default function ContactPage() {
 
             <div className="space-y-5">
               <div className="border border-[#d9dde3] bg-white p-5">
-                <p className="mb-1 text-[0.8rem] text-[#7d8b9a]">Email</p>
+                <p className="mb-1 text-[0.8rem] text-[#5e6670]">Email</p>
                 <a
                   href="mailto:info@veriton.si"
                   className="text-[0.98rem] text-[#14181f] transition-opacity hover:opacity-70 break-all"
@@ -214,19 +232,20 @@ export default function ContactPage() {
                 </a>
               </div>
               <div className="border border-[#d9dde3] bg-white p-5">
-                <p className="mb-1 text-[0.8rem] text-[#7d8b9a]">LinkedIn</p>
+                <p className="mb-1 text-[0.8rem] text-[#5e6670]">LinkedIn</p>
                 <a
                   href="https://www.linkedin.com/company/veriton-tech"
                   target="_blank"
                   rel="noreferrer noopener"
+                  aria-label="Veriton on LinkedIn"
                   className="inline-flex items-center gap-2 text-[0.98rem] text-[#14181f] transition-opacity hover:opacity-70"
                 >
-                  <FaLinkedinIn size={14} />
+                  <FaLinkedinIn size={14} aria-hidden />
                   Veriton Tech
                 </a>
               </div>
               <div className="border border-[#d9dde3] bg-white p-5">
-                <p className="mb-1 text-[0.8rem] text-[#7d8b9a]">Services</p>
+                <p className="mb-1 text-[0.8rem] text-[#5e6670]">Services</p>
                 <Link
                   href="/services"
                   className="text-[0.98rem] text-[#14181f] transition-opacity hover:opacity-70"

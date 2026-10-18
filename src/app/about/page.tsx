@@ -3,38 +3,26 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
+const description =
+  "Meet Veriton — a Berlin product & engineering studio shipping Android apps, web products, Shopify stores, and practical AI with clear delivery.";
+
 export const metadata: Metadata = {
-  title: "About Us — Veriton",
-  description:
-    "Learn about Veriton's mission to empower businesses with innovative Android, Shopify, web development, and AI solutions.",
+  title: "About",
+  description,
   alternates: {
     canonical: "/about",
   },
-  keywords: [
-    "About Veriton",
-    "Veriton",
-    "Tech Company",
-    "Android Development",
-    "Shopify Development",
-    "Web Development",
-    "AI Development",
-    "Business Technology",
-    "IT Services",
-    "Company Mission",
-  ],
   openGraph: {
-    title: "About Us — Veriton",
-    description:
-      "Learn about Veriton's mission to empower businesses with innovative technology solutions, including Android, Shopify, web, and AI services.",
+    title: "About | Veriton",
+    description,
     url: "https://www.veriton.si/about",
     type: "website",
     siteName: "Veriton",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us — Veriton",
-    description:
-      "Learn about Veriton's mission to empower businesses with innovative technology solutions, including Android, Shopify, web, and AI services.",
+    title: "About | Veriton",
+    description,
   },
 };
 
@@ -114,7 +102,7 @@ export default function AboutPage() {
                     key={v.title}
                     className="border border-[#d9dde3] bg-white p-6 transition-colors hover:border-[#c5ccd6]"
                   >
-                    <span className="mb-2 block text-[0.75rem] text-[#7d8b9a]">
+                    <span className="mb-2 block text-[0.75rem] text-[#5e6670]">
                       0{i + 1}
                     </span>
                     <h3 className="font-display text-[1.35rem] tracking-[-0.02em] text-[#14181f] mb-2">

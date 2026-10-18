@@ -22,8 +22,14 @@ export default function EstimateWidget() {
   return (
     <div className="space-y-4 text-sm">
       <div>
-        <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">Budget</label>
+        <label
+          htmlFor="estimate-budget"
+          className="mb-2 block text-[0.8rem] text-[#5e6670]"
+        >
+          Budget
+        </label>
         <select
+          id="estimate-budget"
           value={budget}
           onChange={(e) => setBudget(e.target.value)}
           className={selectClass}
@@ -36,10 +42,14 @@ export default function EstimateWidget() {
       </div>
 
       <div>
-        <label className="mb-2 block text-[0.8rem] text-[#7d8b9a]">
+        <label
+          htmlFor="estimate-timeline"
+          className="mb-2 block text-[0.8rem] text-[#5e6670]"
+        >
           Timeline
         </label>
         <select
+          id="estimate-timeline"
           value={timeline}
           onChange={(e) => setTimeline(e.target.value)}
           className={selectClass}

@@ -6,20 +6,26 @@ import JsonLd from "@/components/JsonLd";
 import { faqs } from "@/data/faqs";
 import { faqPageJsonLd } from "@/lib/structured-data";
 
+const description =
+  "FAQ for Veriton: who we are, Android, web, Shopify and AI services, delivery process, support after launch, and how to reach the Berlin studio.";
+
 export const metadata: Metadata = {
-  title: "FAQ — Veriton",
-  description:
-    "Answers about Veriton’s Android, web, Shopify, and AI development services, delivery process, support, and how to get in touch.",
+  title: "FAQ",
+  description,
   alternates: {
     canonical: "/faq",
   },
   openGraph: {
-    title: "FAQ — Veriton",
-    description:
-      "Straight answers about Veriton’s services, process, and how we work with clients.",
+    title: "FAQ | Veriton",
+    description,
     url: "https://www.veriton.si/faq",
     type: "website",
     siteName: "Veriton",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQ | Veriton",
+    description,
   },
 };
 

@@ -62,7 +62,7 @@ export default function Footer() {
                 aria-label="Veriton on LinkedIn"
                 className="inline-flex h-9 w-9 items-center justify-center border border-[#d9dde3] text-[#5e6670] transition-colors hover:border-[#14181f] hover:text-[#14181f]"
               >
-                <FaLinkedinIn size={13} />
+                <FaLinkedinIn size={13} aria-hidden />
               </a>
             </div>
           </Reveal>
@@ -70,7 +70,7 @@ export default function Footer() {
 
         <RevealStagger className="grid grid-cols-1 gap-10 py-10 sm:grid-cols-2">
           <RevealItem>
-            <p className="mb-4 text-[0.78rem] text-[#7d8b9a]">Navigate</p>
+            <p className="mb-4 text-[0.78rem] text-[#5e6670]">Navigate</p>
             <nav className="flex flex-wrap gap-x-5 gap-y-3">
               {links.map((link) => (
                 <Link
@@ -85,7 +85,7 @@ export default function Footer() {
           </RevealItem>
 
           <RevealItem>
-            <p className="mb-4 text-[0.78rem] text-[#7d8b9a]">Services</p>
+            <p className="mb-4 text-[0.78rem] text-[#5e6670]">Services</p>
             <nav className="flex flex-wrap gap-x-5 gap-y-3">
               {services.map((link) => (
                 <Link
@@ -101,7 +101,7 @@ export default function Footer() {
         </RevealStagger>
 
         <div className="border-t border-[#d9dde3] pt-6">
-          <p className="text-[0.8rem] text-[#7d8b9a]">© Veriton 2026</p>
+          <p className="text-[0.8rem] text-[#5e6670]">© Veriton 2026</p>
         </div>
       </div>
     </footer>

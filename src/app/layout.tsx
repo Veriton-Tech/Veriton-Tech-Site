@@ -5,7 +5,7 @@ import ScrollProgress from "../components/ScrollProgress";
 import JsonLd from "../components/JsonLd";
 import MotionProviders from "../components/motion/MotionProviders";
 import Footer from "./Footer";
-import { SITE } from "@/lib/site";
+import { HOME_DESCRIPTION, SITE } from "@/lib/site";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
 import "./globals.css";
 
@@ -13,6 +13,8 @@ const figtree = Figtree({
   variable: "--font-figtree",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+  preload: true,
 });
 
 const fraunces = Fraunces({
@@ -20,18 +22,23 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
+  display: "swap",
+  preload: true,
 });
 
+const HOME_TITLE =
+  "Veriton | Android, Web, Shopify & AI Development Studio in Berlin";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
+  metadataBase: new URL("https://www.veriton.si"),
   title: {
-    default: "Veriton — Android, Web, Shopify & AI Development Studio",
-    template: "%s — Veriton",
+    default: HOME_TITLE,
+    template: "%s | Veriton",
   },
-  description: SITE.description,
+  description: HOME_DESCRIPTION,
   keywords: [
     "Veriton",
-    "Android development",
+    "Android development Berlin",
     "Shopify development",
     "web development",
     "AI development",
@@ -45,17 +52,26 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Veriton — Android, Web, Shopify & AI Development Studio",
-    description: SITE.description,
-    url: SITE.url,
-    siteName: SITE.name,
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    url: "https://www.veriton.si",
+    siteName: "Veriton",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Veriton — Android, Web, Shopify & AI Development Studio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Veriton — Android, Web, Shopify & AI Development Studio",
-    description: SITE.description,
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,

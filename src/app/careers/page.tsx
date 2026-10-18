@@ -1,12 +1,27 @@
 import React from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
+const description =
+  "Join Veriton in Berlin. We’re hiring an AI Engineer to ship practical LLM features, RAG systems, and production AI workflows with a focused product team.";
+
 export const metadata: Metadata = {
-  title: "Careers — Veriton",
+  title: "Careers",
+  description,
   alternates: {
-    canonical: "https://www.veriton.si/careers",
+    canonical: "/careers",
+  },
+  openGraph: {
+    title: "Careers | Veriton",
+    description,
+    url: "https://www.veriton.si/careers",
+    type: "website",
+    siteName: "Veriton",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Careers | Veriton",
+    description,
   },
 };
 
@@ -88,7 +103,7 @@ export default function CareersPage() {
             {values.map((value, i) => (
               <Reveal key={value.label} delay={i * 70}>
                 <div className="h-full border border-[#d9dde3] bg-white p-7 transition-colors hover:border-[#c5ccd6]">
-                  <span className="mb-2 block text-[0.75rem] text-[#7d8b9a]">
+                  <span className="mb-2 block text-[0.75rem] text-[#5e6670]">
                     0{i + 1}
                   </span>
                   <h3 className="font-display text-[1.4rem] tracking-[-0.02em] text-[#14181f] mb-2">
@@ -115,7 +130,7 @@ export default function CareersPage() {
                   key={position.title}
                   className="border border-[#d9dde3] bg-white p-7 sm:p-9"
                 >
-                  <p className="mb-2 text-[0.8rem] text-[#7d8b9a]">Full-time · Remote-friendly</p>
+                  <p className="mb-2 text-[0.8rem] text-[#5e6670]">Full-time · Remote-friendly</p>
                   <h3 className="font-display text-[1.75rem] sm:text-[2rem] tracking-[-0.02em] text-[#14181f]">
                     {position.title}
                   </h3>

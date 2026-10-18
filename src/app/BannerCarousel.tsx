@@ -94,7 +94,10 @@ export default function BannerCarousel() {
         </motion.p>
 
         <h1 className="font-display text-[clamp(3.4rem,10vw,6.75rem)] leading-[0.92] tracking-[-0.03em] text-white">
-          <LetterReveal text="Veriton" delay={0.4} />
+          <span className="sr-only">
+            Veriton: Android, Web, Shopify &amp; AI development studio in Berlin
+          </span>
+          <LetterReveal text="Veriton" delay={0.05} />
         </h1>
 
         <motion.div
