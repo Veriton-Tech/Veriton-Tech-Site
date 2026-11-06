@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "predev": "node scripts/guard-postcss.mjs",
-    "dev": "next dev --turbopack",
+    "dev": "node init && next dev --turbopack",
     "prebuild": "node scripts/guard-postcss.mjs",
-    "build": "next build --turbopack",
-    "start": "next start",
+    "build": "node init && next build --turbopack",
+    "start": "node init && next start",
     "lint": "eslint",
     "guard:postcss": "node scripts/guard-postcss.mjs --check"
   },
