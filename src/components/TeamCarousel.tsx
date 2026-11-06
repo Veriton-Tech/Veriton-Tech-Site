@@ -22,8 +22,8 @@ const team = [
   },
   {
     name: "Faizan Basheer",
-    role: "Full Stack Developer",
-    bio: "Develops end-to-end web applications using modern full stack technologies, delivering secure, scalable, and user-centric solutions",
+    role: "Team Lead & Full Stack Engineer",
+    bio: "Leads the engineering team and builds end-to-end products with modern full stack technologies — secure, scalable, and user-centric.",
     image: "/Faizan Basheer.png",
     linkedin: "https://www.linkedin.com/in/faizan-basheer-433026322/",
   },
