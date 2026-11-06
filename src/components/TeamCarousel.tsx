@@ -34,13 +34,6 @@ const team = [
     image: "/Hur Ali.png",
     linkedin: "https://www.linkedin.com/in/syed-hur-ali-rizvi-23ab45212/",
   },
-  {
-    name: "Laiba Khan",
-    role: "Creative Technologist",
-    bio: "Bridges design and technology to craft thoughtful, engaging digital experiences.",
-    image: "/Laiba Khan.svg",
-    linkedin: "https://www.linkedin.com/in/laibakhan8/",
-  },
 ];
 
 const AUTOPLAY_MS = 4000;
